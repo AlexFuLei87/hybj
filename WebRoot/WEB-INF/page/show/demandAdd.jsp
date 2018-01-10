@@ -19,13 +19,34 @@
 			});
 
 		});
+		function quit() {
+			window.close();
+        }
+
+        function submitDemand() {
+            $.ajax({
+                type : "POST",  //提交方式
+                url : "../cp/hybjDemandAction_save.do",//路径
+                data :$("#Form1").serialize(),//数据，这里使用的是Json格式进行传输
+                dataType : "json",
+                async : true,
+                success : function(result) {//返回数据根据结果进行相应的处理
+
+                }
+            });
+        }
+
+        function checkData() {
+
+			return true;
+        }
 		
 		
 
 		</script>
 </head>
 <body>
-<s:form name="Form1" method="post">
+<s:form action="../cp/hybjDemandAction_save.do" onsubmit="return checkData()" name="Form1" method="post" id="Form1" enctype="multipart/form-data">
 	<br>
 	<table cellSpacing="1" height="88" cellPadding="5" width="630" align="center" bgColor="#eeeeee" style="border:1px solid #8ba7e3" border="0">
 
@@ -66,26 +87,27 @@
 		</tr>
 
 		<tr>
-			<td align="center" bgColor="#f5fafe" class="ta_11">是否付费：</td>
+			<td align="center" bgColor="#f5fafe" class="ta_11">附件上传：</td>
 			<td class="ta_11" bgColor="#ffffff"  colSpan="3">
-				<s:file name="file" cssStyle="width:365px"></s:file>
+				<s:file name="file" id="file" cssStyle="width:365px"></s:file>
 			</td>
 		</tr>
 
 		<TR>
 			<TD class="ta_11" align="left" bgColor="#f5fafe">需&nbsp;&nbsp;求&nbsp;&nbsp;详&nbsp;&nbsp;情：</TD>
 			<TD class="ta_11" bgColor="#ffffff" colSpan="3">
-					<s:textarea name="details" id="details" cssStyle="WIDTH:95%" rows="4" cols="52"></s:textarea>
+					<s:textarea name="xqDetails" id="xqDetails" cssStyle="WIDTH:95%" rows="4" cols="52"></s:textarea>
 		</TR>
 		<TR>
 			<td  align="center"  colSpan="4"  class="sep1"></td>
 		</TR>
 		<tr>
 			<td class="ta_11" style="WIDTH: 100%" align="center" bgColor="#f5fafe" colSpan="4">
-				<input type="button" name="BT_Submit" value="提交"  style="font-size:12px; color:black; height=22;width=55"   onClick="checkAndSave('yes')">
+				<s:submit name="import" value="提交" cssStyle="width: 60px; font-size:12px; color:black; height:22"></s:submit>
 				<FONT face="宋体">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>
-				<input style="font-size:12px; color:black; height=22;width=55"  type="button" value="保存草稿"  name="Reset1"  onClick="checkAndSave('no')">
+				<input style="font-size:12px; color:black; height=22;width=55"  type="button" value="退出"  name="Reset1"  onClick="quit()">
 				<FONT face="宋体">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>
+
 
 			</td>
 

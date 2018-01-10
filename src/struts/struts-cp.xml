@@ -49,31 +49,6 @@
 	    </action>
 	    
 	     <action name="hybjReportAction_*" class="cn.hybj.web.action.HybjReportAction" method="{1}">
-	    	<!--<result name="hs" type="redirectAction">
-	    		<param name="actionName">hybjShowAction_hs</param>
-	    		<param name="namespace">/cp</param>
-	    	</result><result name="yt" type="redirectAction">
-	    		<param name="actionName">hybjShowAction_yt</param>
-	    		<param name="namespace">/cp</param>
-	    	</result><result name="yp" type="redirectAction">
-	    		<param name="actionName">hybjShowAction_yp</param>
-	    		<param name="namespace">/cp</param>
-	    	</result><result name="bst" type="redirectAction">
-	    		<param name="actionName">hybjShowAction_bst</param>
-	    		<param name="namespace">/cp</param>
-	    	</result><result name="aqy" type="redirectAction">
-	    		<param name="actionName">hybjShowAction_aqy</param>
-	    		<param name="namespace">/cp</param>
-	    	</result><result name="mg" type="redirectAction">
-	    		<param name="actionName">hybjShowAction_mg</param>
-	    		<param name="namespace">/cp</param>
-	    	</result><result name="tysx" type="redirectAction">
-	    		<param name="actionName">hybjShowAction_tysx</param>
-	    		<param name="namespace">/cp</param>
-	    	</result><result name="tx" type="redirectAction">
-	    		<param name="actionName">hybjShowAction_tx</param>
-	    		<param name="namespace">/cp</param>
-	    	</result>-->
 	    	<result type="stream">
 				<param name="contentType">text/html</param>
 				<param name="inputName">inputStream</param>
@@ -85,5 +60,16 @@
 	    		/WEB-INF/page/show/importResult.jsp
 	    	</result>
 	    </action>
+
+		<!--需求-->
+		<action name="hybjDemandAction_*" class="cn.hybj.web.action.HybjDemandAction" method="{1}">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+			<result name="demandAdd">
+				/WEB-INF/page/show/demandAdd.jsp
+			</result>
+		</action>
 	</package>
 </struts>
