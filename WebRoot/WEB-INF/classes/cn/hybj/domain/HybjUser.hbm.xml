@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.hybj.domain.HybjUser" table="hybj_user">
+		<id name="userID" type="string">
+			<column name="userID" not-null="true"/>
+			<generator class="uuid"/>
+		</id>
+		<property name="jctID" type="string">
+			<column name="jctID"/>
+		</property>
+		<property name="userName" type="string">
+			<column name="userName"/>
+		</property>
+		<property name="logonName" type="string">
+			<column name="logonName"/>
+		</property>
+		<property name="logonPwd" type="string">
+			<column name="logonPwd"/>
+		</property>
+		<property name="sexID" type="string">
+			<column name="sexID"/>
+		</property>
+		<property name="birthday" type="date">
+			<column name="birthday" length="50"/>
+		</property>
+		<property name="department" type="string">
+			<column name="department"/>
+		</property>
+		<property name="contactTel" type="string">
+			<column name="contactTel"/>
+		</property>
+		<property name="email" type="string">
+			<column name="email"/>
+		</property>
+		<property name="mobile" type="string">
+			<column name="mobile"/>
+		</property>
+		<property name="isDuty" type="string">
+			<column name="isDuty"/>
+		</property>
+		<property name="onDutyDate" type="date">
+			<column name="onDutyDate" length="50"/>
+		</property>
+		<property name="offDutyDate" type="date">
+			<column name="offDutyDate" length="50"/>
+		</property>
+		<property name="remark" type="string">
+			<column name="remark"/>
+		</property>
+	</class>
+</hibernate-mapping>

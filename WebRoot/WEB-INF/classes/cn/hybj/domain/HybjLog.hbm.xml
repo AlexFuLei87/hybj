@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.hybj.domain.HybjLog" table="hybj_log">
+		<id name="logID" type="string">
+			<column name="logID" not-null="true"/>
+			<generator class="uuid"/>
+		</id>
+		<property name="ipAddress" type="string">
+			<column name="ipAddress"/>
+		</property>
+		<property name="opeName" type="string">
+			<column name="opeName"/>
+		</property>
+		<property name="opeTime" type="date">
+			<column name="opeTime" length="50"/>
+		</property>
+		<property name="details" type="string">
+			<column name="details"/>
+		</property>
+	</class>
+</hibernate-mapping>

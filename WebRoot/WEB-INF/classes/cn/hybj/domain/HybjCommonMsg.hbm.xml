@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.hybj.domain.HybjCommonMsg" table="hybj_commonmsg">
+		<id name="comID" type="string">
+			<column name="comID" not-null="true"/>
+			<generator class="uuid"/>
+		</id>
+		<property name="stationRun" type="string">
+			<column name="stationRun"/>
+		</property>
+		<property name="devRun" type="string">
+			<column name="devRun"/>
+		</property>
+		<property name="createDate" type="date">
+			<column name="createDate" length="50"/>
+		</property>
+		
+	</class>
+</hibernate-mapping>

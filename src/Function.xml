@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+应对需求变更：
+	原数据a,b,c,d,e,f,g,h......
+	    数据库中的存储结构，即组成权限的字符串String popedom = abcdefth......
+	    页面控制popedom.contains("a") 是否具有权限
+	
+	现数据aa,ab,ac,ad...az，ba,bb,bc...bz,ca......
+	    数据库中存储结构，即组成权限的字符串String popedom = aa@ab@ac@ad......
+	    页面控制 popedom.contains("aa") 是否具有权限
+	        或者String [] dom = popedom.split("@");
+	          dom[i].equal("aa")，用于判断是否具有权限 
+ -->
+    
+
+<ElecData>
+
+  <Function>
+     <FunctionCode>a</FunctionCode>
+     <FunctionName>华数</FunctionName>
+     <ParentCode>CPUsers</ParentCode>
+     <ParentName>CP用户</ParentName>
+  </Function>    
+  <Function>
+     <FunctionCode>b</FunctionCode>
+     <FunctionName>芒果</FunctionName>
+     <ParentCode>CPUsers</ParentCode>
+     <ParentName>CP用户</ParentName>
+  </Function>  
+  <Function>
+     <FunctionCode>c</FunctionCode>
+     <FunctionName>爱奇艺</FunctionName>
+     <ParentCode>CPUsers</ParentCode>
+     <ParentName>CP用户</ParentName>
+  </Function>
+
+  <Function>
+     <FunctionCode>d</FunctionCode>
+     <FunctionName>优土</FunctionName>
+     <ParentCode>CPUsers</ParentCode>
+     <ParentName>CP用户</ParentName>
+  </Function> 
+
+  <Function>
+     <FunctionCode>e</FunctionCode>
+     <FunctionName>优朋</FunctionName>
+     <ParentCode>CPUsers</ParentCode>
+     <ParentName>CP用户</ParentName>
+  </Function> 
+  <Function>
+     <FunctionCode>f</FunctionCode>
+     <FunctionName>百视通</FunctionName>
+     <ParentCode>CPUsers</ParentCode>
+     <ParentName>CP用户</ParentName>
+  </Function> 
+   <Function>
+     <FunctionCode>w</FunctionCode>
+     <FunctionName>天翼视讯</FunctionName>
+     <ParentCode>CPUsers</ParentCode>
+     <ParentName>CP用户</ParentName>
+  </Function> 
+   <Function>
+     <FunctionCode>z</FunctionCode>
+     <FunctionName>腾讯</FunctionName>
+     <ParentCode>CPUsers</ParentCode>
+     <ParentName>CP用户</ParentName>
+  </Function>  
+
+  
+  <Function>
+     <FunctionCode>o</FunctionCode>
+     <FunctionName>聚合</FunctionName>
+     <ParentCode>JHUsers</ParentCode>
+     <ParentName>聚合EPG方管理</ParentName>
+  </Function>
+     
+  <Function>
+     <FunctionCode>i</FunctionCode>
+     <FunctionName>角色管理</FunctionName>
+     <ParentCode>sysmng</ParentCode>
+     <ParentName>系统管理</ParentName>
+  </Function>
+  <Function>
+     <FunctionCode>j</FunctionCode>
+     <FunctionName>待办事宜</FunctionName>
+     <ParentCode>sysmng</ParentCode>
+     <ParentName>系统管理</ParentName>
+  </Function>	  
+  <Function>
+     <FunctionCode>k</FunctionCode>
+     <FunctionName>数据字典维护</FunctionName>
+     <ParentCode>sysmng</ParentCode>
+     <ParentName>系统管理</ParentName>
+  </Function> 
+       
+<Function>
+     <FunctionCode>l</FunctionCode>
+     <FunctionName>新增功能</FunctionName>
+     <ParentCode>operate</ParentCode>
+     <ParentName>操作权限分配</ParentName>
+  </Function>
+  <Function>
+     <FunctionCode>m</FunctionCode>
+     <FunctionName>删除功能</FunctionName>
+     <ParentCode>operate</ParentCode>
+     <ParentName>操作权限分配</ParentName>
+  </Function>  
+  <Function>
+     <FunctionCode>n</FunctionCode>
+     <FunctionName>编辑功能</FunctionName>
+     <ParentCode>operate</ParentCode>
+     <ParentName>操作权限分配</ParentName>
+  </Function>
+
+</ElecData>
