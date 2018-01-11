@@ -24,6 +24,24 @@ public class HybjDemandForm implements java.io.Serializable {
 	private String status;
 	private String towho;
 	private File file;
+	private String fileFileName;
+	private String fileContentType;
+
+	public String getFileFileName() {
+		return fileFileName;
+	}
+
+	public void setFileFileName(String fileFileName) {
+		this.fileFileName = fileFileName;
+	}
+
+	public String getFileContentType() {
+		return fileContentType;
+	}
+
+	public void setFileContentType(String fileContentType) {
+		this.fileContentType = fileContentType;
+	}
 
 	public File getFile() {
 		return file;

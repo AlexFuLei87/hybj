@@ -4,29 +4,30 @@
   <head>
     <title>load</title>
     <link href="${pageContext.request.contextPath }/css/Style.css" type="text/css" rel="stylesheet" />
+	  <LINK href="${pageContext.request.contextPath }/css/style_1.css" type="text/css" rel="stylesheet">
    </head>
   
   <body>
-    <table width="100%" border="0" id="table8">
+    <table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
     <tr>
-		<td align="left" valign="middle"  style="word-break: break-all">
+		<th scope="col" class="rounded"  style="word-break: break-all">
 		节目名字
-		</td>
-		<td align="left" valign="middle"  style="word-break: break-all">
+		</th>
+		<th scope="col" class="rounded"  style="word-break: break-all">
 		上报时间
-		</td>
-		<td align="left" valign="middle"  style="word-break: break-all">
+		</th>
+		<th scope="col" class="rounded"  style="word-break: break-all">
 		所属分类
-		</td>
-		<td align="left" valign="middle"  style="word-break: break-all">
+		</th>
+		<th scope="col" class="rounded"  style="word-break: break-all">
 		类型
-		</td>
-		<td align="left" valign="middle"  style="word-break: break-all">
+		</th>
+		<th scope="col" class="rounded"  style="word-break: break-all">
 		上映时间
-		</td>
-		<td align="left" valign="middle"  style="word-break: break-all">
+		</th>
+		<th scope="col" class="rounded"  style="word-break: break-all">
 		内容方
-		</td>
+		</th>
 	</tr>	
     	   <s:if test="#request.others!=null">
 			<s:iterator value="%{#request.others}" var="other">

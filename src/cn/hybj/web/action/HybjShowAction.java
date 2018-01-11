@@ -4,15 +4,14 @@ package cn.hybj.web.action;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import cn.hybj.domain.HybjDemand;
 import cn.hybj.domain.HybjReport;
-import cn.hybj.service.IHybjReportService;
+import cn.hybj.domain.HybjUser;
+import cn.hybj.service.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import cn.hybj.container.ServiceProvider;
-import cn.hybj.service.IHybjLogService;
-import cn.hybj.service.IHybjSystemDDlService;
-import cn.hybj.service.IHybjUserService;
 import cn.hybj.web.form.HybjMenuForm;
 import cn.hybj.web.form.HybjSystemDDlForm;
 
@@ -24,6 +23,7 @@ public class HybjShowAction extends BaseAction implements ModelDriven<HybjMenuFo
 
 	
 	private IHybjSystemDDlService hybjSystemDDlService = (IHybjSystemDDlService)ServiceProvider.getService(IHybjSystemDDlService.SERVICE_NAME);
+	private IHybjDemandService hybjDemandService = (IHybjDemandService)ServiceProvider.getService(IHybjDemandService.SERVICE_NAME);
 
 
 	private IHybjReportService hybjReportService = (IHybjReportService)ServiceProvider.getService(IHybjReportService.SERVICE_NAME);
@@ -102,7 +102,11 @@ public class HybjShowAction extends BaseAction implements ModelDriven<HybjMenuFo
 		return "tysx";
 	}
 	public String xq(){
-			return "xq";
+		HybjUser user = (HybjUser)request.getSession().getAttribute("globle_user");
+		System.out.println(user.getDepartment());
+		List<HybjDemand> lists = hybjDemandService.findXQByCp(user.getDepartment());
+		request.setAttribute("xqList",lists);
+		return "xq";
 		}
 	public String demandAdd(){
 			return "demandAdd";

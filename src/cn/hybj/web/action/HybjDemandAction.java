@@ -5,8 +5,12 @@ import cn.hybj.container.ServiceProvider;
 import cn.hybj.service.*;
 import cn.hybj.web.form.HybjDemandForm;
 import com.opensymphony.xwork2.ModelDriven;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import java.io.*;
+import java.util.UUID;
 
 @SuppressWarnings("serial")
 public class HybjDemandAction extends BaseAction implements ModelDriven<HybjDemandForm>{
@@ -31,10 +35,32 @@ public class HybjDemandAction extends BaseAction implements ModelDriven<HybjDema
 	}
 
 
-	public String save(){
+	public String save() throws Exception {
 		hybjDemandForm.setStatus("normal");
-		int id = hybjDemandService.save(hybjDemandForm);
+		File file = hybjDemandForm.getFile();
+		InputStream  is = new FileInputStream(file);
+		String newFilename = "";
+		if (file != null) {
+			String path = request.getSession().getServletContext().getRealPath("uploadFiles");
+			File file1 = new File(path);
+			if (!file1.exists()){
+				//创建目录
+				file1.mkdirs();
+			}
+			String saveFileName = System.currentTimeMillis()+ hybjDemandForm.getFileFileName().substring(hybjDemandForm.getFileFileName().indexOf("."));
+			File realFile = new File(path,saveFileName);
 
+
+			//保存文件到目指定目录中
+			try {
+				FileUtils.copyFile(file, realFile);
+				hybjDemandForm.setAttachmentUrl(path+"\\"+saveFileName);
+				hybjDemandService.save(hybjDemandForm);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
 		return "demandAdd";
 	}
 

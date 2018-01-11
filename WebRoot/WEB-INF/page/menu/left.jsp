@@ -146,16 +146,26 @@ TH {
 				<TR>
 					<TD vAlign="top" bgColor="#F6F6F6" height="100%">
 						<DIV class="parent" id="KB0Parent">
-							<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
-								<TBODY>
-								<TR height=25 >
-									<TD align="left" background="${pageContext.request.contextPath }/images/b-info.gif"  vAlign="middle">
-										&nbsp;&nbsp;&nbsp;
-										&nbsp; <A class="cl"  href="${pageContext.request.contextPath }/system/hybjMenuAction_alermGG.do" target="mainFrame">&nbsp;公告展示</A>
-									</TD>
-								</TR>
-								</TBODY>
-							</TABLE>
+							<%--<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">--%>
+								<%--<TBODY>--%>
+								<%--<TR height=25 >--%>
+									<%--<TD align="left" background="${pageContext.request.contextPath }/images/b-info.gif"  vAlign="middle">--%>
+										<%--&nbsp;&nbsp;&nbsp;--%>
+										<%--&nbsp; <A class="cl"  href="${pageContext.request.contextPath }/system/hybjMenuAction_alermGG.do" target="mainFrame">&nbsp;公告展示</A>--%>
+									<%--</TD>--%>
+								<%--</TR>--%>
+								<%--</TBODY>--%>
+							<%--</TABLE>--%>
+								<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
+									<TBODY>
+									<TR height=25 >
+										<TD align="left" background="${pageContext.request.contextPath }/images/b-info.gif"  vAlign="middle">
+											&nbsp;&nbsp;&nbsp;<img src="" name="imgKB0" width="9" height="9" alt="" border="0" />
+											&nbsp; <A class="cl" onclick="expand('KB0') " href="${pageContext.request.contextPath }/system/hybjMenuAction_alermGG.do" target="mainFrame">&nbsp;公告展示</A>
+										</TD>
+									</TR>
+									</TBODY>
+								</TABLE>
 						</DIV>
                      
                         <%if(popedom.contains("a") || popedom.contains("b") || popedom.contains("c")|| popedom.contains("d")|| popedom.contains("e")|| popedom.contains("f")|| popedom.contains("w")|| popedom.contains("z")){ %>
@@ -296,6 +306,11 @@ TH {
 									<TR>
 										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
 											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/epg/hybjJhEpgAction_showGS.do" target="mainFrame">公示管理</A>
+										</TD>
+									</TR>
+									<TR>
+										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
+											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/epg/hybjJhEpgAction_showXQ.do" target="mainFrame">需求管理</A>
 										</TD>
 									</TR>
 									<%}%>

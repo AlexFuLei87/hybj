@@ -26,6 +26,9 @@ for(int i=0;cookies!=null && i<cookies.length;i++){
 }
 %>
 <SCRIPT type="text/javascript">
+    if(window.parent != window){
+        window.parent.location.reload(true);
+    }
 function ini(){
    document.all.name.focus();
 }

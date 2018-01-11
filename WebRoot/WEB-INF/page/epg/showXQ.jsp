@@ -15,32 +15,64 @@
     <SCRIPT language="javascript">
 		
 		function showDetails(values) {
-			
+            $.ajax({
+                type : "POST",  //提交方式
+                url : "epg/hybjJhEpgAction_findById.do",//路径
+                data : {
+                    "demand.id" : values
+                },//数据，这里使用的是Json格式进行传输
+                dataType : "json",
+                async : true,
+                success : function(result) {//返回数据根据结果进行相应的处理
+                   showResult(result.hybjDemand);
+                }
+            });
+        }
+
+        function showResult(data) {
+            $("#demandName").val(data.demandName);
+            $("#demandType").val(data.fenlei);
+            $("#details").val(data.xqDetails);
+            $("#details1").show();
+        }
+
+        function closeWindow() {
+		    $("#demandName").val("");
+		    $("#demandType").val("");
+		    $("#details").val("");
+			$("#details1").hide();
         }
     </SCRIPT>
    </head>
   
   <body>
 	<div style='width: 100%;z-index: 1'>
-        <input style="font-size:12px; color:black; height=30;width=120"  type="button" value="需求上传" name="BT_Import"
-               onclick="openWindow('cp/hybjShowAction_demandAdd.do','700','400')">
 		<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
 				<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
 					<tr>
-						<th scope="col" class="rounded" style="width: 15%;">
+						<th scope="col" class="rounded" style="width: 12%;">
 							需求名称
 						</th>
-						<th scope="col" class="rounded" style="width: 14%;">
+						<th scope="col" class="rounded" style="width: 12%;">
+							所属内容方
+						</th>
+						<th scope="col" class="rounded" style="width: 12%;">
 							需求分类
 						</th>
-						<th scope="col" class="rounded" style="width: 14%;">
+						<th scope="col" class="rounded" style="width: 12%;">
 							完成时间
 						</th>
-						<th scope="col" class="rounded" style="width: 14%;">
+						<th scope="col" class="rounded" style="width: 12%;">
 							创建时间
 						</th>
-						<th scope="col" class="rounded" style="width: 14%;">
+						<th scope="col" class="rounded" style="width: 12%;">
+							附件下载
+						</th>
+						<th scope="col" class="rounded" style="width: 12%;">
 							详情
+						</th>
+						<th scope="col" class="rounded" style="width: 12%;">
+							需求处理
 						</th>
 					</tr>
 					<s:if test="#request.xqList!=null">
@@ -48,6 +80,9 @@
 						<tr>
 							<td>
 									${list.demand_name }
+							</td>
+							<td>
+									${list.cp }
 							</td>
 							<td>
 									${list.fenlei }
@@ -62,6 +97,18 @@
 							<td>
 								<a href="${pageContext.request.contextPath }/cp/dowFile.do?demandId=${list.id }">${list.attachment_name}</a>
 							</td>
+							<td>
+								<button onclick="showDetails(${list.id })">查看详情</button>
+							</td>
+							<td>
+								<select id="status" class="status1" onchange="changeStatus(this,${list.id});">
+									<option value="">下拉操作</option>
+									<option value="0">待审批</option>
+									<option value="1">审批完成</option>
+									<option value="2">驳回</option>
+									<option value="3">需求完结</option>
+								</select>
+							</td>
 						</tr>
 					</s:iterator>
 					</s:if>
@@ -73,23 +120,23 @@
 
 			<tr>
 				<td class="ta_01" align="center" colSpan="4" background="${pageContext.request.contextPath }/images/b-info.gif">
-					<font face="宋体" size="2"><strong>公示内容</strong></font>
+					<font face="宋体" size="2"><strong>需求详情</strong></font>
 				</td>
 			</tr>
 			<tr>
-				<td align="center" bgColor="#f5fafe" class="ta_11">公&nbsp;&nbsp;示&nbsp;&nbsp;名&nbsp;&nbsp;称：<font color="#FF0000">*</font></td>
+				<td align="center" bgColor="#f5fafe" class="ta_11">需&nbsp;&nbsp;求&nbsp;&nbsp;名&nbsp;&nbsp;称：<font color="#FF0000">*</font></td>
 				<td class="ta_11" bgColor="#ffffff">
-					<input  id="outlineName" maxlength="25" size="20" ></input>
+					<input  id="demandName" maxlength="25" size="20" ></input>
 				</td>
 			</tr>
 			<tr>
-				<td align="center" bgColor="#f5fafe" class="ta_11">公&nbsp;&nbsp;示&nbsp;&nbsp;概&nbsp;&nbsp;要：</td>
+				<td align="center" bgColor="#f5fafe" class="ta_11">需&nbsp;&nbsp;求&nbsp;&nbsp;分&nbsp;&nbsp;类：</td>
 				<td class="ta_11" bgColor="#ffffff">
-					<input  id="outline" maxlength="25" size="20" ></input>
+					<input  id="demandType" maxlength="25" size="20" ></input>
 				</td>
 			</tr>
 			<tr>
-				<td align="center" bgColor="#f5fafe" class="ta_21">公&nbsp;&nbsp;示&nbsp;&nbsp;详&nbsp;&nbsp;情：</td>
+				<td align="center" bgColor="#f5fafe" class="ta_21">需&nbsp;&nbsp;求&nbsp;&nbsp;详&nbsp;&nbsp;情：</td>
 				<td class="ta_21" bgColor="#ffffff">
 					<textarea  id="details" style="height: 400px" rows="4" cols="52"></textarea>
 				</td>

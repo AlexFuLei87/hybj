@@ -71,5 +71,15 @@
 				/WEB-INF/page/show/demandAdd.jsp
 			</result>
 		</action>
+
+		<action name="dowFile" class="cn.hybj.web.action.HybjDownloadAction">
+			<result type="stream" name="success">
+				<!-- 为contentDisposition指定参数值,浏览器收到响应头为attachment时，
+					会打开文件下载对话框-->
+				<param name="contentDisposition">attachment;filename=${dowFileName}</param>
+				<!-- 指定文件下载时要调用的方法 ,默认调用getInputStream方法-->
+				<param name="inputName">fileInputStream</param>
+			</result>
+		</action>
 	</package>
 </struts>

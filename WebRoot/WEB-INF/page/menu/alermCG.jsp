@@ -3,19 +3,21 @@
 <html>
   <head>
     <title>草稿状态</title>
-    <link href="${pageContext.request.contextPath }/css/Style.css" type="text/css" rel="stylesheet" /><script language="javascript"  src="${pageContext.request.contextPath }/script/function.js"></script>
+    <link href="${pageContext.request.contextPath }/css/Style.css" type="text/css" rel="stylesheet" />
+	  <LINK href="${pageContext.request.contextPath }/css/style_1.css" type="text/css" rel="stylesheet">
+	  <script language="javascript"  src="${pageContext.request.contextPath }/script/function.js"></script>
   </head>
   <SCRIPT language="javascript">
 
   </SCRIPT>
   <body>
-    <table width="100%" border="0" id="table8">
+    <table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
 	    <tr>
-		<td style="width: 20%;">节目名字</td>
-		<td style="width: 20%;">创建时间</td>
-		<td style="width: 20%;">所属栏目</td>
-		<td style="width: 20%;">类型</td>
-		<td style="width: 20%;">备注</td>
+		<th scope="col" class="rounded" style="width: 20%;">节目名字</th>
+		<th scope="col" class="rounded" style="width: 20%;">创建时间</th>
+		<th scope="col" class="rounded" style="width: 20%;">所属栏目</th>
+		<th scope="col" class="rounded" style="width: 20%;">类型</td>
+		<th scope="col" class="rounded" style="width: 20%;">备注</th>
 		</tr>
 	<s:if test="#request.cgList!=null">
 	<s:iterator value="%{#request.cgList}" var="list">

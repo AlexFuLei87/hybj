@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" build-on-make="true" name="hybj_dx:war">
-    <output-path>$PROJECT_DIR$/out/artifacts/hybj_dx</output-path>
-    <root id="archive" name="hybj_dx_war.war">
-      <element id="artifact" artifact-name="hybj_dx:war exploded" />
-    </root>
-  </artifact>
-</component>

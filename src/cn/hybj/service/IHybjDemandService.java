@@ -1,7 +1,10 @@
 package cn.hybj.service;
 
 
+import cn.hybj.domain.HybjDemand;
 import cn.hybj.web.form.HybjDemandForm;
+
+import java.util.List;
 
 
 public interface IHybjDemandService {
@@ -9,4 +12,10 @@ public interface IHybjDemandService {
 
 
 	int save(HybjDemandForm hybjDemandForm);
+
+    List<HybjDemand> findXQByCp(String department);
+
+	HybjDemand findById(int id);
+
+	List<HybjDemand> findAll();
 }

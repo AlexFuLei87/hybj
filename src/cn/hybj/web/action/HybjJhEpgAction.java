@@ -4,17 +4,15 @@ package cn.hybj.web.action;
 
 import java.util.List;
 
+import cn.hybj.domain.HybjDemand;
 import cn.hybj.domain.HybjOutline;
-import cn.hybj.service.IHybjNoticeService;
-import cn.hybj.service.IHybjReportService;
+import cn.hybj.service.*;
 import cn.hybj.web.form.HybjOutlineForm;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import cn.hybj.container.ServiceProvider;
 import cn.hybj.domain.HybjReport;
-import cn.hybj.service.IHybjJhEpgService;
-import cn.hybj.service.IHybjLogService;
 import cn.hybj.web.form.HybjReportForm;
 
 import com.alibaba.fastjson.JSONObject;
@@ -26,13 +24,23 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 	private IHybjJhEpgService hybjJhEpgService = (IHybjJhEpgService)ServiceProvider.getService(IHybjJhEpgService.SERVICE_NAME);
 	private IHybjReportService hybjReportService = (IHybjReportService)ServiceProvider.getService(IHybjReportService.SERVICE_NAME);
     private IHybjNoticeService hybjNoticeService = (IHybjNoticeService)ServiceProvider.getService(IHybjNoticeService.SERVICE_NAME);
+	private IHybjDemandService hybjDemandService = (IHybjDemandService)ServiceProvider.getService(IHybjDemandService.SERVICE_NAME);
 
     //调用日志管理的业务层
 	private IHybjLogService hybjLogService = (IHybjLogService)ServiceProvider.getService(IHybjLogService.SERVICE_NAME);
 	private HybjReportForm hybjReportForm = new HybjReportForm();
 	private HybjOutlineForm hybjOutlineForm = new HybjOutlineForm();
+	private HybjDemand demand;
 
-    public HybjOutlineForm getHybjOutlineForm() {
+	public HybjDemand getDemand() {
+		return demand;
+	}
+
+	public void setDemand(HybjDemand demand) {
+		this.demand = demand;
+	}
+
+	public HybjOutlineForm getHybjOutlineForm() {
         return hybjOutlineForm;
     }
 
@@ -122,6 +130,12 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
         return "showYW";
 
     }
+	public String showXQ(){
+			List<HybjDemand> lists = hybjDemandService.findAll();
+			request.setAttribute("xqList", lists);
+			return "showXQ";
+
+		}
 
     public String changeStatus(){
 		hybjNoticeService.changeStatus(hybjOutlineForm);
@@ -131,4 +145,12 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 		return SUCCESS;
 
     }
+	public String findById(){
+		HybjDemand hybjDemand = hybjDemandService.findById(demand.getId());
+		JSONObject json = getSuccessJsonTemplate();
+		json.put("hybjDemand", hybjDemand);
+		writeStream(json);
+		return SUCCESS;
+
+	}
 }

@@ -11,6 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 @Transactional(readOnly=true)
 @Service(IHybjDemandService.SERVICE_NAME)
@@ -30,7 +33,27 @@ public class HybjDemandServiceImpl implements IHybjDemandService {
 		hybjDemand.setCompleteTime(hybjDemandForm.getCompleteTime());
 		hybjDemand.setXqDetails(hybjDemandForm.getXqDetails());
 		hybjDemand.setStatus(hybjDemandForm.getStatus());
+		hybjDemand.setAttachmentName(hybjDemandForm.getFileFileName());
+		hybjDemand.setAttachmentUrl(hybjDemandForm.getAttachmentUrl());
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		hybjDemand.setCreateTime(format.format(new Date()).toString());
 		Serializable id = hybjDemandDao.save(hybjDemand);
 		return (int)id;
+	}
+
+
+	@Override
+	public List<HybjDemand> findXQByCp(String department) {
+		return hybjDemandDao.findXQByCp(department);
+	}
+
+	@Override
+	public HybjDemand findById(int id) {
+		return hybjDemandDao.findObjectByID(id);
+	}
+
+	@Override
+	public List<HybjDemand> findAll() {
+		return hybjDemandDao.findAll();
 	}
 }
