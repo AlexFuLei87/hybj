@@ -41,4 +41,9 @@ public class HybjNoticeServiceImpl implements IHybjNoticeService {
 	public void changeStatus(HybjOutlineForm hybjOutlineForm) {
 		hybjNoticeDao.changeStatus(hybjOutlineForm);
 	}
+
+	@Override
+	public HybjOutline findById(Integer id) {
+		return hybjNoticeDao.findObjectByID(id);
+	}
 }

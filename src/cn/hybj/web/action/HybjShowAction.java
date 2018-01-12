@@ -58,49 +58,12 @@ public class HybjShowAction extends BaseAction implements ModelDriven<HybjMenuFo
 	}
 	public String hs(){
 		initSelect();
-		request.setAttribute("department", "华数TV");
+		HybjUser user = (HybjUser)request.getSession().getAttribute("globle_user");
+		request.setAttribute("department", user.getDepartment());
 		return "hs";
 	}
 
-	public String mg(){
-		initSelect();
-		request.setAttribute("department", "芒果TV");
-		return "mg";
-	}
 
-	public String aqy(){
-		initSelect();
-		return "aqy";
-	}
-
-	public String bst(){
-		initSelect();
-		request.setAttribute("department", "百视通");
-		return "bst";
-	}
-
-	public String yt(){
-		initSelect();
-		request.setAttribute("department", "优酷");
-		return "yt";
-	}
-
-	public String yp(){
-		initSelect();
-		request.setAttribute("department", "优朋");
-		return "yp";
-	}
-
-	public String tx(){
-		initSelect();
-		request.setAttribute("department", "腾讯");
-		return "tx";
-	}
-	public String tysx(){
-		initSelect();
-		request.setAttribute("department", "天翼视讯");
-		return "tysx";
-	}
 	public String xq(){
 		HybjUser user = (HybjUser)request.getSession().getAttribute("globle_user");
 		System.out.println(user.getDepartment());
@@ -109,7 +72,9 @@ public class HybjShowAction extends BaseAction implements ModelDriven<HybjMenuFo
 		return "xq";
 		}
 	public String demandAdd(){
-			return "demandAdd";
+		HybjUser user = (HybjUser)request.getSession().getAttribute("globle_user");
+		request.setAttribute("department",user.getDepartment());
+		return "demandAdd";
 		}
 
 

@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Hashtable;
 import java.util.List;
 
+import cn.hybj.domain.HybjDemand;
 import cn.hybj.domain.HybjOutline;
 import cn.hybj.service.*;
 import org.apache.commons.logging.Log;
@@ -132,7 +133,9 @@ public class HybjMenuAction extends BaseAction implements ModelDriven<HybjMenuFo
 	}
 	
 	public String left(){
-		return "left";
+        HybjUser user = (HybjUser)request.getSession().getAttribute("globle_user");
+        request.setAttribute("department",user.getDepartment());
+	    return "left";
 	}
 	
 	public String change1(){

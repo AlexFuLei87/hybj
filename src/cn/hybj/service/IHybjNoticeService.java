@@ -15,4 +15,6 @@ public interface IHybjNoticeService {
 	List<HybjOutline> findGG();
 
 	void changeStatus(HybjOutlineForm hybjOutlineForm);
+
+    HybjOutline findById(Integer id);
 }

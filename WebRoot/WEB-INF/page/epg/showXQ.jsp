@@ -138,7 +138,7 @@
 			<tr>
 				<td align="center" bgColor="#f5fafe" class="ta_21">需&nbsp;&nbsp;求&nbsp;&nbsp;详&nbsp;&nbsp;情：</td>
 				<td class="ta_21" bgColor="#ffffff">
-					<textarea  id="details" style="height: 400px" rows="4" cols="52"></textarea>
+					<textarea  id="details" style="height: 400px;width:700px" rows="4" cols="52"></textarea>
 				</td>
 
 			</tr>

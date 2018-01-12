@@ -37,7 +37,19 @@
         }
 
         function checkData() {
+		    var demandName = $("#demandName").val();
+		    var fenlei = $("#fenlei").val();
+		    var completeTime = $("#completeTime").val();
 
+            if(!verifyDate(completeTime, "完成时间",true)){
+                return false;
+            }
+            if(!verifyStringNotEmpty(demandName, "需求名称", 32,true)){
+                return false;
+            }
+            if(!verifyStringNotEmpty(fenlei, "需求分类", 32,true)){
+                return false;
+            }
 			return true;
         }
 		

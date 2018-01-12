@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib prefix="c" uri="/struts-tags" %>
 <html>
   <head>
     <title></title>
@@ -72,7 +73,7 @@
 						</th>
 					</tr>
 					<s:if test="#request.ggList!=null">
-					<s:iterator value="%{#request.ggList}" var="list" status="status">
+					<s:iterator value="%{#request.ggList}" var="list" status="vs">
 						<tr>
 							<td hidden>
 									${list.details }
@@ -92,8 +93,8 @@
 							<td>
 								<select id="sele" class="status1" onchange="changeStatus(this,${list.id});" type="text">
 									<option value="">选择操作</option>
-									<option value="0">公示</option>
-									<option value="1">撤销公示</option>
+									<s:if test="%{#list.status != 1}"><option value="0">公示</option></s:if>
+									<s:if test="%{#list.status == 1}"><option value="1">撤销公示</option></s:if>
 								</select>
 							</td>
 						</tr>

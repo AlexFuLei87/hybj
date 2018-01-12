@@ -7,6 +7,7 @@
    <script language="javascript" src="${pageContext.request.contextPath }/script/function.js"></script>
    <script type="text/javascript" language="JavaScript" src="${pageContext.request.contextPath }/script/calendar.js" charset="gb2312"></script>
    <script type="text/javascript" src="${pageContext.request.contextPath }/script/validate.js"></script>
+	  <script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery.min.js"></script>
 <script language="javascript">
 
 	function check_null(){
@@ -24,7 +25,7 @@
 			theForm.userName.focus();
 			return false;
 		}
-	    if(theForm.jctID.value=="")
+	    if(theForm.department.value=="")
 		{
 			alert("请选择所属单位");
 			theForm.jctId.focus();
@@ -36,42 +37,14 @@
 		  alert("两次输入密码不一致，请重新输入");
 		  return;
 		}
-		if(checkNull(theForm.contactTel)){
-         if(!checkPhone(theForm.contactTel.value))
-		  {
-			alert("请输入正确的电话号码");
-			theForm.contactTel.focus();
-			return false;
-		  }
-		}
-		
-	    if(checkNull(theForm.mobile)){
-         if(!checkMobilPhone(theForm.mobile.value))
-		  {
-			alert("请输入正确的手机号码");
-			theForm.mobile.focus();
-			return false;
-		  }
-		}
-		
-	   if(checkNull(theForm.email))	{
-         if(!checkEmail(theForm.email.value))
-		 {
-			alert("请输入正确的EMail");
-			theForm.email.focus();
-			return false;
-		 }
-	   }
-		
-	   if(theForm.remark.value.length>250){
-     
-        	alert("备注字符长度不能超过250");
-			theForm.remark.focus();
-			return false; 
-        }
-		 document.Form1.action="system/hybjUserAction_save.do";
-		 document.Form1.submit();	 		 
-		 refreshOpener();
+		 // document.Form1.action="system/hybjUserAction_save.do";
+		 // document.Form1.submit();
+        $.ajaxSettings.async = false;
+        $.post("system/hybjUserAction_save.do",$("#Form1").serialize(), function(data){
+
+        });
+
+	    window.close();
 	}
 	
 	//使用ajax进行异步校验，校验登录名在数据库是否存在
@@ -88,7 +61,7 @@
   
  <body>
  
-<s:form name="Form1" method="post">
+<s:form  name="Form1" id="Form1" method="post">
  <br>
     <table cellSpacing="1" cellPadding="5" width="580" align="center" bgColor="#eeeeee" style="border:1px solid #8ba7e3" border="0">
 
@@ -120,8 +93,8 @@
 			
 			<td align="center" bgColor="#f5fafe" class="ta_01">所属单位：<font color="#FF0000">*</font></td>
 			<td class="ta_01" bgColor="#ffffff">
-				<s:select list="#request.jctList" name="jctID" id="jctID"
-				          listKey="ddlCode" listValue="ddlName"
+				<s:select list="#request.jctList" name="department" id="department"
+				          listKey="ddlName" listValue="ddlName"
 				          headerKey="" headerValue=""
 				          cssStyle="width:155px"
 				          >
@@ -197,7 +170,7 @@
 		</TR>
 		<tr>
 			<td class="ta_01" style="WIDTH: 100%" align="center" bgColor="#f5fafe" colSpan="4">
-			<input type="button" name="BT_Submit" value="保存"  style="font-size:12px; color:black; height=22;width=55"   onClick="check_null()">
+				<input type="button" name="BT_Submit" value="保存"  style="font-size:12px; color:black; height=22;width=55"   onClick="check_null()">
 			 <FONT face="宋体">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>
 			<input style="font-size:12px; color:black; height=22;width=55"  type="button" value="关闭"  name="Reset1"  onClick="window.close()">
 				

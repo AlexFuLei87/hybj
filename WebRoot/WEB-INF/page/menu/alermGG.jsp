@@ -14,25 +14,26 @@
 	  <script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery.min.js"></script>
     <SCRIPT language="javascript">
     function showDetails(values) {
-        var i =  parseInt(values)+1;
-		for(var j = 0;j<3;j++){
-            var aa = $("#rounded-corner").find("tr").eq(i).find("td").eq(j).text();
-            if(j==0){
-
-                $("#details").val(aa);
-			}else if(j==1){
-                $("#outlineName").val($.trim(aa));
-			}else if(j==2){
-                $("#outline").val($.trim(aa));
-			}
-		}
-		$("#details1").show();
+        $.ajax({
+            type : "POST",  //提交方式
+            url : "../epg/hybjJhEpgAction_findNoticeById.do",//路径
+            data : {
+                "demand.id" : values
+            },//数据，这里使用的是Json格式进行传输
+            dataType : "json",
+            async : true,
+            success : function(result) {//返回数据根据结果进行相应的处理
+                showResult(result.hybjOutline);
+            }
+        });
     }
 
+    function showResult(data) {
+        $("#details").html(data.details);
+        $("#details1").show();
+    }
 
     function closeWindow() {
-        $("#details").val('');
-        $("#outlineName").val("");
         $("#outline").val("");
         $("#details1").hide();
     }
@@ -78,7 +79,7 @@
 							</td>
 
 							<td>
-								<button onclick="showDetails(${statusa.index })">查看详情</button>
+								<button onclick="showDetails(${list.id })">查看详情</button>
 							</td>
 						</tr>
 					</s:iterator>
@@ -94,22 +95,22 @@
 					<font face="宋体" size="2"><strong>公示内容</strong></font>
 				</td>
 			</tr>
-			<tr>
-				<td align="center" bgColor="#f5fafe" class="ta_11">公&nbsp;&nbsp;示&nbsp;&nbsp;名&nbsp;&nbsp;称：<font color="#FF0000">*</font></td>
-				<td class="ta_11" bgColor="#ffffff">
-					<input  id="outlineName" maxlength="25" size="20" ></input>
-				</td>
-			</tr>
-			<tr>
-				<td align="center" bgColor="#f5fafe" class="ta_11">公&nbsp;&nbsp;示&nbsp;&nbsp;概&nbsp;&nbsp;要：</td>
-				<td class="ta_11" bgColor="#ffffff">
-					<input  id="outline" maxlength="25" size="20" ></input>
-				</td>
-			</tr>
+			<%--<tr>--%>
+				<%--<td align="center" bgColor="#f5fafe" class="ta_11">公&nbsp;&nbsp;示&nbsp;&nbsp;名&nbsp;&nbsp;称：<font color="#FF0000">*</font></td>--%>
+				<%--<td class="ta_11" bgColor="#ffffff">--%>
+					<%--<input  id="outlineName" maxlength="25" size="20" ></input>--%>
+				<%--</td>--%>
+			<%--</tr>--%>
+			<%--<tr>--%>
+				<%--<td align="center" bgColor="#f5fafe" class="ta_11">公&nbsp;&nbsp;示&nbsp;&nbsp;概&nbsp;&nbsp;要：</td>--%>
+				<%--<td class="ta_11" bgColor="#ffffff">--%>
+					<%--<input  id="outline" maxlength="25" size="20" ></input>--%>
+				<%--</td>--%>
+			<%--</tr>--%>
 			<tr>
 				<td align="center" bgColor="#f5fafe" class="ta_21">公&nbsp;&nbsp;示&nbsp;&nbsp;详&nbsp;&nbsp;情：</td>
 				<td class="ta_21" bgColor="#ffffff">
-					<textarea  id="details" style="height: 400px" rows="4" cols="52"></textarea>
+					<div  id="details" style="height: 400px;width: 650px;" rows="4" cols="52"></div>
 				</td>
 
 			</tr>

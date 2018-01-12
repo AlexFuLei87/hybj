@@ -158,7 +158,7 @@ TH {
 							<%--</TABLE>--%>
 								<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
 									<TBODY>
-									<TR height=25 >
+									<TR height=50 >
 										<TD align="left" background="${pageContext.request.contextPath }/images/b-info.gif"  vAlign="middle">
 											&nbsp;&nbsp;&nbsp;<img src="" name="imgKB0" width="9" height="9" alt="" border="0" />
 											&nbsp; <A class="cl" onclick="expand('KB0') " href="${pageContext.request.contextPath }/system/hybjMenuAction_alermGG.do" target="mainFrame">&nbsp;公告展示</A>
@@ -168,7 +168,7 @@ TH {
 								</TABLE>
 						</DIV>
                      
-                        <%if(popedom.contains("a") || popedom.contains("b") || popedom.contains("c")|| popedom.contains("d")|| popedom.contains("e")|| popedom.contains("f")|| popedom.contains("w")|| popedom.contains("z")){ %>
+                        <%if(popedom.contains("a") || popedom.contains("b") ){ %>
 						<DIV class="parent" id="KB0Parent">
 							<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
 								<TBODY>
@@ -187,93 +187,25 @@ TH {
 								    <%if(popedom.contains("a")){ %>
 									<TR>
 										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_hs.do" target="mainFrame">华数</A>
+											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_hs.do" target="mainFrame">内容上报</A>
 										</TD>
 									</TR>
+                                    <%}if(popedom.contains("b")){ %>
 									<TR>
 										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_xq.do" target="mainFrame">需求</A>
-										</TD>
-									</TR>
-									<%}if(popedom.contains("b")){ %>
-									
-									<TR>
-										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_mg.do" target="mainFrame">芒果</A>
-										</TD>
-									</TR>
-									
-									<%}if(popedom.contains("c")){ %>
-									<TR>
-										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_aqy.do" target="mainFrame">爱奇艺</A>
-										</TD>
-									</TR>
-									<%}if(popedom.contains("d")){ %>
-									<TR>
-										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_yt.do" target="mainFrame">优土</A>
-										</TD>
-									</TR>
-									<%}if(popedom.contains("e")){ %>
-									<TR>
-										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_yp.do" target="mainFrame">优朋</A>
-										</TD>
-									</TR>
-									<%}if(popedom.contains("f")){ %>
-									<TR>
-										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_bst.do" target="mainFrame">百视通</A>
-										</TD>
-									</TR>
-									<%}if(popedom.contains("w")){ %>
-									<TR>
-										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_tysx.do" target="mainFrame">天翼视讯</A>
-										</TD>
-									</TR>
-									<%}if(popedom.contains("z")){ %>
-									<TR>
-										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_tx.do" target="mainFrame">腾讯</A>
+											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_xq.do" target="mainFrame">需求上报</A>
 										</TD>
 									</TR>
 									<%} %>
+
 									
 								</TBODY>
 							</TABLE>
 						</DIV>
                        <%} %>
-					
-                        <%if(popedom.contains("g")){ %>
-						<DIV class="parent" id="KB1Parent">
-							<TABLE cellSpacing="0" cellPadding="0" width="99%" border="0">
-								<TBODY>
-									<TR>
-									<TR height=25>
-										<TD background="${pageContext.request.contextPath }/images/b-info.gif" align="left" vAlign="middle">
-											&nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath }/images/add.gif" name="imgKB1" width="9" height="9" alt="" border="0" />
-											&nbsp; <A class="cl" onclick="expand('KB1'); return false" href="#">&nbsp;引擎方管理</A>
-										</TD>
-									</TR>
-								</TBODY>
-							</TABLE>
-						</DIV>
-						<DIV class="child" id="KB1Child">
-							<TABLE cellSpacing="0" cellPadding="0" width="99%" border="0">
-								<TBODY>
-									<TR>
-										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/yq/hybjYqAction_dx.do" target="mainFrame">电信</A>
-										</TD>
-									</TR>
-								</TBODY>
-							</TABLE>
-						</DIV>
-                       <%} %>
+
                       
-                      <%if(popedom.contains("s") || popedom.contains("o")){ %>
+                      <%if(popedom.contains("g") || popedom.contains("h")|| popedom.contains("i")){ %>
 						<DIV class="parent" id="KB2Parent">
 							<TABLE cellSpacing="0" cellPadding="0" width="99%" border="0">
 								<TBODY>
@@ -290,24 +222,20 @@ TH {
 						<DIV class="child" id="KB2Child">
 							<TABLE cellSpacing="0" cellPadding="0" width="99%" border="0">
 								<TBODY>
-								    <%if(popedom.contains("s")){ %>
-									<TR>
-										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/epg/hybjJhEpgAction_jhyp.do" target="mainFrame">优朋聚合</A>
-										</TD>
-									</TR>
-									<%}if(popedom.contains("o")){ %>
+									<%if(popedom.contains("g")){ %>
 									
 									<TR>
 										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
 											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/epg/hybjJhEpgAction_jhhy.do" target="mainFrame">明云聚合</A>
 										</TD>
 									</TR>
+									<%}if(popedom.contains("h")){ %>
 									<TR>
 										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
 											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/epg/hybjJhEpgAction_showGS.do" target="mainFrame">公示管理</A>
 										</TD>
 									</TR>
+									<%}if(popedom.contains("i")){ %>
 									<TR>
 										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
 											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/epg/hybjJhEpgAction_showXQ.do" target="mainFrame">需求管理</A>
@@ -338,28 +266,29 @@ TH {
 							<TABLE cellSpacing="0" cellPadding="0" width="99%" border="0">
 								<TBODY>
 								
-								    <%if(popedom.contains("y")){ %>
+								    <%if(popedom.contains("t")){ %>
 									<TR>
 										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
 											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/hybjUserAction_home.do" target="mainFrame">用户管理</A>
 										</TD>
 									</TR>
-									<%-- <%}else{ %>
+                                    <%} %>
+                                    <%if(popedom.contains("p")){ %>
 									<TR>
 										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/hybjUserAction_edit.do?userID=${globle_user.userID }&roleflag=1" target="mainFrame">用户管理</A>
-										</TD>
-									</TR> --%>
-									
-									<%} %>
-									<%if(popedom.contains("i")){ %>
-									
-									<TR>
-										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/hybjRoleAction_home.do" target="mainFrame">角色管理</A>
+											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/hybjUserAction_edit.do?userID=${globle_user.userID }&roleflag=1" target="mainFrame">个人管理</A>
 										</TD>
 									</TR>
-									<%}if(popedom.contains("j")){ %>
+
+									<%} %>
+									<%if(popedom.contains("q")){ %>
+									
+									<TR>
+										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
+											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/hybjRoleAction_home.do" target="mainFrame">权限管理</A>
+										</TD>
+									</TR>
+									<%}if(popedom.contains("r")){ %>
 									
 									
 									<TR>
@@ -367,7 +296,7 @@ TH {
 											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/hybjCommonMsgAction_home.do" target="mainFrame">待办事宜</A>
 										</TD>
 									</TR>
-									<%}if(popedom.contains("k")){ %>
+									<%}if(popedom.contains("s")){ %>
 									
 									
 									<TR>

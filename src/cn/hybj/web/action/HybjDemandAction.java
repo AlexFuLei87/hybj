@@ -54,7 +54,7 @@ public class HybjDemandAction extends BaseAction implements ModelDriven<HybjDema
 			//保存文件到目指定目录中
 			try {
 				FileUtils.copyFile(file, realFile);
-				hybjDemandForm.setAttachmentUrl(path+"\\"+saveFileName);
+				hybjDemandForm.setAttachmentUrl(path+"/"+saveFileName);
 				hybjDemandService.save(hybjDemandForm);
 			} catch (IOException e) {
 				e.printStackTrace();

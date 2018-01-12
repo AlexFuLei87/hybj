@@ -153,4 +153,12 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 		return SUCCESS;
 
 	}
+	public String findNoticeById(){
+		HybjOutline hybjOutline = hybjNoticeService.findById(demand.getId());
+		JSONObject json = getSuccessJsonTemplate();
+		json.put("hybjOutline", hybjOutline);
+		writeStream(json);
+		return SUCCESS;
+
+	}
 }
