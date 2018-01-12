@@ -8,6 +8,7 @@ import cn.hybj.domain.HybjDemand;
 import cn.hybj.domain.HybjOutline;
 import cn.hybj.service.*;
 import cn.hybj.web.form.HybjOutlineForm;
+import cn.hybj.web.form.HybjSystemDDlForm;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -25,7 +26,7 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 	private IHybjReportService hybjReportService = (IHybjReportService)ServiceProvider.getService(IHybjReportService.SERVICE_NAME);
     private IHybjNoticeService hybjNoticeService = (IHybjNoticeService)ServiceProvider.getService(IHybjNoticeService.SERVICE_NAME);
 	private IHybjDemandService hybjDemandService = (IHybjDemandService)ServiceProvider.getService(IHybjDemandService.SERVICE_NAME);
-
+	private IHybjSystemDDlService hybjSystemDDlService = (IHybjSystemDDlService)ServiceProvider.getService(IHybjSystemDDlService.SERVICE_NAME);
     //调用日志管理的业务层
 	private IHybjLogService hybjLogService = (IHybjLogService)ServiceProvider.getService(IHybjLogService.SERVICE_NAME);
 	private HybjReportForm hybjReportForm = new HybjReportForm();
@@ -79,7 +80,9 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 	}
 	
 	public String jhhy(){
+		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
 		List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
+		request.setAttribute("jctList", jctList);
 		request.setAttribute("report", list);
 		return "jhhy";
 	}
@@ -157,6 +160,15 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 		HybjOutline hybjOutline = hybjNoticeService.findById(demand.getId());
 		JSONObject json = getSuccessJsonTemplate();
 		json.put("hybjOutline", hybjOutline);
+		writeStream(json);
+		return SUCCESS;
+
+	}
+
+	public String changeStatusById(){
+		hybjDemandService.changeStatusById(demand.getId(),demand.getStatus());
+		JSONObject json = getSuccessJsonTemplate();
+		json.put("message", "状态修改成功");
 		writeStream(json);
 		return SUCCESS;
 

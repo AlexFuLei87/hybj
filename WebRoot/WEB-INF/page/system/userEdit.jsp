@@ -150,12 +150,13 @@ window.onload = function(){
 		
 		<td align="center" bgColor="#f5fafe" class="ta_01">所属单位：</td>
 		<td class="ta_01" bgColor="#ffffff">
-			<s:select list="#request.jctList" name="jctID" id="jctID"
-			          listKey="ddlCode" listValue="ddlName"
-			          headerKey="" headerValue=""
-			          cssStyle="width:155px"
-			          >
-			</s:select>
+			<%--<s:select list="#request.jctList" name="jctID" id="jctID"--%>
+			          <%--listKey="ddlName" listValue="ddlName"--%>
+			          <%--headerKey="" headerValue=""--%>
+			          <%--cssStyle="width:155px"--%>
+			          <%-->--%>
+			<%--</s:select>--%>
+			<s:textfield name="jctID" id="jctID" maxlength="25" size="20" readonly="true"></s:textfield>
 			<font color="#FF0000">*</font>
 		</td>
 			

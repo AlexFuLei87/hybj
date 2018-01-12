@@ -127,7 +127,15 @@
 			<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
 				<tr>
 					<td colspan="6">
-						<input type="text" size="50" name="id" value="" />
+						节目名：
+						<input type="text" size="25" name="itemName" value="" />
+						cp:
+						<s:select list="#request.jctList" name="department" id="department"
+								  listKey="ddlName" listValue="ddlName"
+								  headerKey="" headerValue=""
+								  cssStyle="width:155px"
+						>
+						</s:select>
 						<input type="button" value="查询" />
 					</td>
 					<td></td>

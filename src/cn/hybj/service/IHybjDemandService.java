@@ -18,4 +18,6 @@ public interface IHybjDemandService {
 	HybjDemand findById(int id);
 
 	List<HybjDemand> findAll();
+
+    void changeStatusById(Integer id, String status);
 }

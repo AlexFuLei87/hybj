@@ -56,4 +56,10 @@ public class HybjDemandServiceImpl implements IHybjDemandService {
 	public List<HybjDemand> findAll() {
 		return hybjDemandDao.findAll();
 	}
+
+
+	@Override
+	public void changeStatusById(Integer id, String status) {
+		hybjDemandDao.changeStatusById(id,status);
+	}
 }

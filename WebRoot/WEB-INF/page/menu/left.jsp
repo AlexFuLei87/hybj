@@ -23,121 +23,7 @@ TH {
 		</STYLE>
 		<LINK href="${pageContext.request.contextPath }/css/Style.css" type="text/css" rel="stylesheet">
 		<SCRIPT language="JavaScript">
-		a="";
-		NS4 = (document.layers) ? 1 : 0;
-		IE4 = (document.all) ? 1 : 0;
-		ver4 = (NS4 || IE4) ? 1 : 0;
-		if (ver4) {
-			with (document) {
-				write("<STYLE TYPE='text/css'>");
-				if (NS4) {
-					write(".parent {position:absolute; visibility:visible}");
-					write(".child {position:absolute; visibility:visible}");
-					write(".regular {position:absolute; visibility:visible}")
-				}
-				else {
-					write(".child {display:none}")
-				}
-				write("</STYLE>");
-			}
-		}
-		function getIndex(el) {
-			ind = null;
-			for (i=0; i<document.layers.length; i++) {
-				whichEl = document.layers[i];
-				if (whichEl.id == el) {
-					ind = i;
-					break;
-				}
-			}
-			return ind;
-		}
-		function arrange() {
-			nextY = document.layers[firstInd].pageY +document.layers[firstInd].document.height;
-			for (i=firstInd+1; i<document.layers.length; i++) {
-				whichEl = document.layers[i];
-				if (whichEl.visibility != "hide") {
-					whichEl.pageY = nextY;
-					nextY += whichEl.document.height;
-				}
-			}
-		}
 
-		function initIt(){
-			if (!ver4) return;
-			if (NS4) {
-				for (i=0; i<document.layers.length; i++) {
-					whichEl = document.layers[i];
-					if (whichEl.id.indexOf("Child") != -1) whichEl.visibility = "hide";
-			}
-				arrange();
-			}
-			else {
-				divColl = document.all.tags("DIV");
-				for (i=0; i<divColl.length; i++) {
-					whichEl = divColl(i);
-					if (whichEl.className == "child") whichEl.style.display = "none";
-				}
-			}
-		}
-		function expand(bb)
-		{
-			
-		if(a!="")
-		{
-		expandIt(a);
-		}
-
-		expandIt(bb);
-
-//		a=bb;
-
-		}
-		
-		function expandIt(el) {
-		
-			//debugger ;
-			if (!ver4) return;
-			if (IE4) {
-				whichEl = eval(el + "Child");
-				whichimg = eval("img" + el)
-				if (whichEl.style.display == "none") {
-					whichEl.style.display = "block";
-					whichimg.src="${pageContext.request.contextPath }/images/open.gif";
-		            
-				}
-				else {
-					whichEl.style.display = "none";
-					whichimg.src="${pageContext.request.contextPath }/images/add.gif";
-				}
-			}
-			else {
-				whichEl = eval("document." + el + "Child");
-				if (whichEl.visibility == "hide") {
-					whichEl.visibility = "show";
-				}
-				else {
-					whichEl.visibility = "hide";
-				}
-				arrange();
-			}
-		}
-		
-		
-		function linkcolorchange(objLink)
-		{
-			for(var i=0;i<document.links.length;i++)
-			{
-				document.links[i].style.color = "" ;
-			}
-				objLink.style.color = "red" ;
-		}
-		function backgroundColorChange(objLink,strColor)
-		{
-			objLink.style.backgroundColor = strColor ;
-		}
-
-		onload = initIt;
 		</SCRIPT>
 	</HEAD>
 	<BODY scroll="no" MS_POSITIONING="GridLayout" scroll="auto" class="bodyscroll">
@@ -175,7 +61,7 @@ TH {
 									<TR height=25 >
 										<TD align="left" background="${pageContext.request.contextPath }/images/b-info.gif"  vAlign="middle">
 											&nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath }/images/add.gif" name="imgKB0" width="9" height="9" alt="" border="0" />
-											&nbsp; <A class="cl" onclick="expand('KB0'); return false" href="#">&nbsp;CP用户管理</A>
+											&nbsp; <A class="cl" onclick="expand('KB0'); return false" href="#">&nbsp;用户管理</A>
 										</TD>
 									</TR>
 								</TBODY>
@@ -213,7 +99,7 @@ TH {
 									<TR height=25>
 										<TD background="${pageContext.request.contextPath }/images/b-info.gif" align="left" vAlign="middle">
 											&nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath }/images/add.gif" name="imgKB2" width="9" height="9" alt="" border="0" />
-											&nbsp; <A class="cl" onclick="expand('KB2'); return false" href="#">&nbsp;聚合EPG方管理</A>
+											&nbsp; <A class="cl" onclick="expand('KB2'); return false" href="#">&nbsp;聚合方管理</A>
 										</TD>
 									</TR>
 								</TBODY>

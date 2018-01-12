@@ -12,4 +12,6 @@ public interface IHybjDemandDao extends ICommonDao<HybjDemand> {
 	List<HybjDemand> findXQByCp(String department);
 
     List<HybjDemand> findAll();
+
+    void changeStatusById(int id,String status);
 }

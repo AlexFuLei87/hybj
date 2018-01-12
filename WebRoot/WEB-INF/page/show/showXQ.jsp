@@ -34,6 +34,9 @@
 							需求分类
 						</th>
 						<th scope="col" class="rounded" style="width: 14%;">
+							需求状态
+						</th>
+						<th scope="col" class="rounded" style="width: 14%;">
 							完成时间
 						</th>
 						<th scope="col" class="rounded" style="width: 14%;">
@@ -51,6 +54,12 @@
 							</td>
 							<td>
 									${list.fenlei }
+							</td>
+							<td>
+								<s:if test="%{#list.status == 1}">待审批</s:if>
+								<s:if test="%{#list.status == 2}">审批完成</s:if>
+								<s:if test="%{#list.status == 3}">驳回</s:if>
+								<s:if test="%{#list.status == 4}">需求完结</s:if>
 							</td>
 							<td>
 									${list.compelete_time }

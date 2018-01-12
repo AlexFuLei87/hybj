@@ -10,27 +10,6 @@
 	    	<result name="hs">
 	    		/WEB-INF/page/show/hsIndex.jsp
 	    	</result>
-	    	<result name="yt">
-	    		/WEB-INF/page/show/hsIndex.jsp
-	    	</result>
-	    	<result name="yp">
-	    		/WEB-INF/page/show/hsIndex.jsp
-	    	</result>
-	    	<result name="bst">
-	    		/WEB-INF/page/show/hsIndex.jsp
-	    	</result>
-	    	<result name="aqy">
-	    		/WEB-INF/page/show/hsIndex.jsp
-	    	</result>
-	    	<result name="mg">
-	    		/WEB-INF/page/show/hsIndex.jsp
-	    	</result>
-	    	<result name="tx">
-	    		/WEB-INF/page/show/hsIndex.jsp
-	    	</result>
-	    	<result name="tysx">
-	    		/WEB-INF/page/show/hsIndex.jsp
-	    	</result>
 	    	<result name="fileImport">
 	    		/WEB-INF/page/show/fileImport.jsp
 	    	</result>

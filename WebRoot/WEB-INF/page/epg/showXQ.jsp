@@ -42,6 +42,34 @@
 		    $("#details").val("");
 			$("#details1").hide();
         }
+
+        function changeStatus(values,id) {
+			var $this = $(values);
+			var chosVal = $this.val();
+			if ("" == chosVal){return}
+			if (chosVal == "0"){ajaxChangeStatus(id,1);}
+			if (chosVal == "1"){ajaxChangeStatus(id,2);}
+			if (chosVal == "2"){ajaxChangeStatus(id,3);}
+			if (chosVal == "3"){ajaxChangeStatus(id,4);}
+        }
+
+
+        function ajaxChangeStatus(id,status) {
+            $.ajax({
+                type : "POST",  //提交方式
+                url : "epg/hybjJhEpgAction_changeStatusById.do",//路径
+                data : {
+                    "demand.id" : id,
+                    "demand.status" : status
+                },//数据，这里使用的是Json格式进行传输
+                dataType : "json",
+                async : true,
+                success : function(result) {//返回数据根据结果进行相应的处理
+					alert(result.message);
+					location.reload();
+                }
+            });
+        }
     </SCRIPT>
    </head>
   
@@ -58,6 +86,9 @@
 						</th>
 						<th scope="col" class="rounded" style="width: 12%;">
 							需求分类
+						</th>
+						<th scope="col" class="rounded" style="width: 12%;">
+							需求状态
 						</th>
 						<th scope="col" class="rounded" style="width: 12%;">
 							完成时间
@@ -88,6 +119,12 @@
 									${list.fenlei }
 							</td>
 							<td>
+								<s:if test="%{#list.status == 1}">待审批</s:if>
+								<s:if test="%{#list.status == 2}">审批完成</s:if>
+								<s:if test="%{#list.status == 3}">驳回</s:if>
+								<s:if test="%{#list.status == 4}">需求完结</s:if>
+							</td>
+							<td>
 									${list.compelete_time }
 							</td>
 							<td>
@@ -103,10 +140,10 @@
 							<td>
 								<select id="status" class="status1" onchange="changeStatus(this,${list.id});">
 									<option value="">下拉操作</option>
-									<option value="0">待审批</option>
-									<option value="1">审批完成</option>
-									<option value="2">驳回</option>
-									<option value="3">需求完结</option>
+									<s:if test="%{#list.status == 1}"><option value="0">待审批</option></s:if>
+									<s:if test="%{#list.status <= 2}"><option value="1">审批完成</option></s:if>
+									<s:if test="%{#list.status <= 3}"><option value="2">驳回</option></s:if>
+									<s:if test="%{#list.status < 4}"><option value="3">需求完结</option></s:if>
 								</select>
 							</td>
 						</tr>

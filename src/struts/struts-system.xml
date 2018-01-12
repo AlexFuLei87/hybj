@@ -132,10 +132,5 @@
 	    		<param name="namespace">/system</param>
 	    	</result>
 	    </action>
-		<action name="hybjTextAction_*" class="cn.hybj.web.action.HybjTextAction" method="{1}">
-			<result name="save">
-				/system/textAdd.jsp
-			</result>
-		</action>
 	</package>
 </struts>
