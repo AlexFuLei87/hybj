@@ -6,7 +6,9 @@ import cn.hybj.data.DataBaseUtil;
 import cn.hybj.data.HibernateSessionFactory;
 import cn.hybj.domain.HybjDemand;
 import cn.hybj.domain.HybjOutline;
+import cn.hybj.domain.HybjReport;
 import cn.hybj.web.form.HybjOutlineForm;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
@@ -88,5 +90,42 @@ public class HybjDemandDaoImpl extends CommonDaoImpl<HybjDemand> implements IHyb
             }
         }
 
+    }
+
+    @Override
+    public List<HybjDemand> findByFuzzy(HybjDemand demand) {
+        Session session = null;
+        List<HybjDemand> list = null;
+        try {
+            session = HibernateSessionFactory.getSession();
+            String sql = "SELECT * from hybj_demand t ";
+            String condition = "";
+            Map<String, Object> parameter_map = new HashMap<String, Object>();
+            condition += "where 1=1 ";
+            if(!StringUtils.isBlank(demand.getCp())){
+                condition += " and t.cp =:cp";
+                parameter_map.put("cp", demand.getCp());
+            }
+            if(!StringUtils.isBlank(demand.getDemandName())){
+                condition += " and t.demand_name =:demandName";
+                parameter_map.put("demandName", demand.getDemandName());
+            }
+            if(!StringUtils.isBlank(demand.getTowho())){
+                condition += " and t.towho =:towho";
+                parameter_map.put("towho", demand.getTowho());
+            }
+
+            list= DataBaseUtil.getDataList(session, sql + condition, parameter_map,
+                    true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                session.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return list;
     }
 }

@@ -21,16 +21,23 @@
      <FunctionName>内容上报</FunctionName>
      <ParentCode>CPUsers</ParentCode>
      <ParentName>CP用户管理</ParentName>
-  </Function>    
-  <Function>
-     <FunctionCode>b</FunctionCode>
-     <FunctionName>需求上报</FunctionName>
-     <ParentCode>CPUsers</ParentCode>
-     <ParentName>CP用户管理</ParentName>
-  </Function>  
+  </Function>
 
-  
   <Function>
+    <FunctionCode>d</FunctionCode>
+    <FunctionName>需求处理</FunctionName>
+    <ParentCode>XQhandle</ParentCode>
+    <ParentName>需求管理</ParentName>
+  </Function>
+<Function>
+    <FunctionCode>e</FunctionCode>
+    <FunctionName>需求上报</FunctionName>
+    <ParentCode>XQhandle</ParentCode>
+    <ParentName>需求管理</ParentName>
+</Function>
+
+
+    <Function>
      <FunctionCode>g</FunctionCode>
      <FunctionName>聚合</FunctionName>
      <ParentCode>JHUsers</ParentCode>

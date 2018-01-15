@@ -62,7 +62,7 @@
 								<s:if test="%{#list.status == 4}">需求完结</s:if>
 							</td>
 							<td>
-									${list.compelete_time }
+									${list.complete_time }
 							</td>
 							<td>
 									${list.create_time }

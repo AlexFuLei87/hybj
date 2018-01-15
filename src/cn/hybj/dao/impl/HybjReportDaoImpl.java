@@ -152,4 +152,36 @@ public class HybjReportDaoImpl extends CommonDaoImpl<HybjReport> implements IHyb
 		}
 	}
 
+	@Override
+	public List<HybjReport> findByFuzzy(HybjReport hybjReport) {
+		Session session = null;
+		List<HybjReport> list = null;
+		try {
+			session = HibernateSessionFactory.getSession();
+			String sql = "SELECT * from hybj_report t ";
+			String condition = "";
+			Map<String, Object> parameter_map = new HashMap<String, Object>();
+			condition += "where 1=1 ";
+			if(!StringUtils.isBlank(hybjReport.getCp())){
+				condition += " and t.cp =:cp";
+				parameter_map.put("cp", hybjReport.getCp());
+			}
+			if(!StringUtils.isBlank(hybjReport.getItemName())){
+				condition += " and t.item_name =:itemName";
+				parameter_map.put("itemName", hybjReport.getItemName());
+			}
+
+			list= DataBaseUtil.getDataList(session, sql + condition, parameter_map,
+					true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				session.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
 }

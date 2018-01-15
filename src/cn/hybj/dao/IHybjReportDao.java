@@ -18,4 +18,6 @@ public interface IHybjReportDao extends ICommonDao<HybjReport> {
 	void updateStatusById(int id);
 
 	void updateById(int id, String status);
+
+    List<HybjReport> findByFuzzy(HybjReport hybjReport);
 }

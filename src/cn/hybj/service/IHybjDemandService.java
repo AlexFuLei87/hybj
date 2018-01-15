@@ -20,4 +20,7 @@ public interface IHybjDemandService {
 	List<HybjDemand> findAll();
 
     void changeStatusById(Integer id, String status);
+
+    List<HybjDemand> findByFuzzy(HybjDemand demand);
+
 }

@@ -37,6 +37,7 @@ public class HybjDemandServiceImpl implements IHybjDemandService {
 		hybjDemand.setAttachmentUrl(hybjDemandForm.getAttachmentUrl());
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		hybjDemand.setCreateTime(format.format(new Date()).toString());
+		hybjDemand.setTowho(hybjDemandForm.getTowho());
 		Serializable id = hybjDemandDao.save(hybjDemand);
 		return (int)id;
 	}
@@ -62,4 +63,10 @@ public class HybjDemandServiceImpl implements IHybjDemandService {
 	public void changeStatusById(Integer id, String status) {
 		hybjDemandDao.changeStatusById(id,status);
 	}
+
+	@Override
+	public List<HybjDemand> findByFuzzy(HybjDemand demand) {
+		return hybjDemandDao.findByFuzzy(demand);
+	}
+
 }

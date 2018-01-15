@@ -36,11 +36,11 @@ public class HybjDemandAction extends BaseAction implements ModelDriven<HybjDema
 
 
 	public String save() throws Exception {
-		hybjDemandForm.setStatus("normal");
+		hybjDemandForm.setStatus("1");
 		File file = hybjDemandForm.getFile();
-		InputStream  is = new FileInputStream(file);
-		String newFilename = "";
 		if (file != null) {
+			InputStream  is = new FileInputStream(file);
+			String newFilename = "";
 			String path = request.getSession().getServletContext().getRealPath("uploadFiles");
 			File file1 = new File(path);
 			if (!file1.exists()){
@@ -60,6 +60,8 @@ public class HybjDemandAction extends BaseAction implements ModelDriven<HybjDema
 				e.printStackTrace();
 			}
 
+		}else {
+			hybjDemandService.save(hybjDemandForm);
 		}
 		return "demandAdd";
 	}

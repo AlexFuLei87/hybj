@@ -94,7 +94,7 @@ a="";
 				arrange();
 			}
 		}
-		function linkcolorchange(objLink)
+		function linkcolorchange1(objLink)
 		{
 			for(var i=0;i<document.links.length;i++)
 			{
@@ -102,7 +102,7 @@ a="";
 			}
 				objLink.style.color = "red" ;
 		}
-		function backgroundColorChange(objLink,strColor)
+		function backgroundColorChange1(objLink,strColor)
 		{
 			objLink.style.backgroundColor = strColor ;
 		}

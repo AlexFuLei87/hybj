@@ -49,6 +49,7 @@
 			<result name="demandAdd">
 				/WEB-INF/page/show/demandAdd.jsp
 			</result>
+
 		</action>
 
 		<action name="dowFile" class="cn.hybj.web.action.HybjDownloadAction">

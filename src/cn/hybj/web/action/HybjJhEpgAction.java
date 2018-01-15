@@ -2,10 +2,12 @@ package cn.hybj.web.action;
 
 
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import cn.hybj.domain.HybjDemand;
 import cn.hybj.domain.HybjOutline;
+import cn.hybj.domain.HybjUser;
 import cn.hybj.service.*;
 import cn.hybj.web.form.HybjOutlineForm;
 import cn.hybj.web.form.HybjSystemDDlForm;
@@ -32,6 +34,15 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 	private HybjReportForm hybjReportForm = new HybjReportForm();
 	private HybjOutlineForm hybjOutlineForm = new HybjOutlineForm();
 	private HybjDemand demand;
+	private  HybjReport hybjReport;
+
+	public HybjReport getHybjReport() {
+		return hybjReport;
+	}
+
+	public void setHybjReport(HybjReport hybjReport) {
+		this.hybjReport = hybjReport;
+	}
 
 	public HybjDemand getDemand() {
 		return demand;
@@ -134,9 +145,34 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 
     }
 	public String showXQ(){
-			List<HybjDemand> lists = hybjDemandService.findAll();
-			request.setAttribute("xqList", lists);
-			return "showXQ";
+		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
+		request.setAttribute("jctList", jctList);
+		HybjDemand hybjDemand =  new HybjDemand();
+		HybjUser user = (HybjUser)request.getSession().getAttribute("globle_user");
+		if("电信".equals(user.getDepartment())){
+			hybjDemand.setTowho("dx");
+		}else if("华数TV".equals(user.getDepartment())) {
+			hybjDemand.setTowho("hs");
+		}else if("芒果".equals(user.getDepartment())) {
+			hybjDemand.setTowho("mg");
+		}else if("优酷".equals(user.getDepartment())) {
+			hybjDemand.setTowho("yk");
+		}else if("优朋".equals(user.getDepartment())) {
+			hybjDemand.setTowho("yp");
+		}else if("百视通".equals(user.getDepartment())) {
+			hybjDemand.setTowho("bst");
+		}else if("天翼视讯".equals(user.getDepartment())) {
+			hybjDemand.setTowho("tysx");
+		}else if("腾讯".equals(user.getDepartment())) {
+			hybjDemand.setTowho("tx");
+		}else if("爱奇艺".equals(user.getDepartment())) {
+			hybjDemand.setTowho("aqy");
+		}else if("聚合".equals(user.getDepartment())){
+			hybjDemand.setTowho("jh");
+		}
+		List<HybjDemand> lists = hybjDemandService.findByFuzzy(hybjDemand);
+		request.setAttribute("xqList", lists);
+		return "showXQ";
 
 		}
 
@@ -171,6 +207,38 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 		json.put("message", "状态修改成功");
 		writeStream(json);
 		return SUCCESS;
+
+	}
+	public String findByFuzzy() throws UnsupportedEncodingException {
+        List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
+        request.setAttribute("jctList", jctList);
+		byte[] bytes =hybjReport.getCp().getBytes("iso-8859-1");
+		String cp = new String(bytes, "utf-8");
+		byte[] bytes1 =hybjReport.getItemName().getBytes("iso-8859-1");
+		String itemName = new String(bytes1, "utf-8");
+		hybjReport.setCp(cp);
+		hybjReport.setItemName(itemName);
+		List<HybjReport> report = hybjReportService.findByFuzzy(hybjReport);
+		request.setAttribute("report", report);
+
+		return "jhhy";
+
+	}
+
+	public String findXQByFuzzy() throws UnsupportedEncodingException {
+        List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
+        request.setAttribute("jctList", jctList);
+		byte[] bytes =demand.getCp().getBytes("iso-8859-1");
+		String cp = new String(bytes, "utf-8");
+		byte[] bytes1 =demand.getDemandName().getBytes("iso-8859-1");
+		String demandName = new String(bytes1, "utf-8");
+		demand.setCp(cp);
+		demand.setDemandName(demandName);
+		demand.setTowho("dx");
+		List<HybjDemand> report = hybjDemandService.findByFuzzy(demand);
+		request.setAttribute("xqList", report);
+
+		return "showXQ";
 
 	}
 }

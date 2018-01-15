@@ -69,6 +69,13 @@
 					location.reload();
                 }
             });
+
+
+        }
+        function findXQByFuzzy() {
+            var itemName = $("#itemName1").val();
+            var cp = $("#cp").val();
+            window.location.href = "epg/hybjJhEpgAction_findXQByFuzzy.do?demand.demandName="+itemName+"&demand.cp="+cp;
         }
     </SCRIPT>
    </head>
@@ -77,6 +84,20 @@
 	<div style='width: 100%;z-index: 1'>
 		<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
 				<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
+					<tr>
+						<td colspan="6">
+							节目名：
+							<input type="text" size="25" name="itemName1" id="itemName1" value="" />
+							cp:
+							<s:select list="#request.jctList" name="cp" id="cp"
+									  listKey="ddlName" listValue="ddlName"
+									  headerKey="" headerValue=""
+									  cssStyle="width:155px"
+							>
+							</s:select>
+							<input onclick="findXQByFuzzy();" type="button" value="查询"/>
+						</td>
+					</tr>
 					<tr>
 						<th scope="col" class="rounded" style="width: 12%;">
 							需求名称
@@ -125,7 +146,7 @@
 								<s:if test="%{#list.status == 4}">需求完结</s:if>
 							</td>
 							<td>
-									${list.compelete_time }
+									${list.complete_time }
 							</td>
 							<td>
 									${list.create_time }
@@ -138,12 +159,13 @@
 								<button onclick="showDetails(${list.id })">查看详情</button>
 							</td>
 							<td>
-								<select id="status" class="status1" onchange="changeStatus(this,${list.id});">
+								<select id="status" class="status1" onchange="changeStatus(this,${list.id});"
+										<s:if test="%{#list.status == 4}">disabled="disabled"</s:if>>
 									<option value="">下拉操作</option>
 									<s:if test="%{#list.status == 1}"><option value="0">待审批</option></s:if>
 									<s:if test="%{#list.status <= 2}"><option value="1">审批完成</option></s:if>
 									<s:if test="%{#list.status <= 3}"><option value="2">驳回</option></s:if>
-									<s:if test="%{#list.status < 4}"><option value="3">需求完结</option></s:if>
+									<s:if test="%{#list.status <= 4}"><option value="3" <s:if test="%{#list.status == 4}">selected="selected"</s:if>>需求已完结</option></s:if>
 								</select>
 							</td>
 						</tr>

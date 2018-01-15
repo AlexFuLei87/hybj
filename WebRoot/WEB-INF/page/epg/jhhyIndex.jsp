@@ -117,26 +117,34 @@
                 }
             });
         }
-		
+
+
+        function findByFuzzy() {
+			var itemName = $("#demandName").val();
+			var cpName = $("#cp").val();
+            //"epg/hybjJhEpgAction_findByFuzzy.do"
+			window.location.href = "epg/hybjJhEpgAction_findByFuzzy.do?hybjReport.itemName="+itemName+"&hybjReport.cp="+cpName;
+
+        }
 		</script>
 	</HEAD>
 	<body>
 		<div style='width: 100%'>
 	<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
-		<form id="form" name="form">
+		<form id="form" name="form" >
 			<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
 				<tr>
 					<td colspan="6">
 						节目名：
-						<input type="text" size="25" name="itemName" value="" />
+						<input type="text" size="25" name="demandName" id="demandName" value="" />
 						cp:
-						<s:select list="#request.jctList" name="department" id="department"
+						<s:select list="#request.jctList" name="cp" id="cp"
 								  listKey="ddlName" listValue="ddlName"
 								  headerKey="" headerValue=""
 								  cssStyle="width:155px"
 						>
 						</s:select>
-						<input type="button" value="查询" />
+						<input onclick="findByFuzzy();" type="button" value="查询"/>
 					</td>
 					<td></td>
 					<td></td>

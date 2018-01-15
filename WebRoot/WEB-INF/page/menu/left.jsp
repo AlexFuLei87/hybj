@@ -22,26 +22,22 @@ TH {
 } 
 		</STYLE>
 		<LINK href="${pageContext.request.contextPath }/css/Style.css" type="text/css" rel="stylesheet">
+		<script type="text/javascript" src="${pageContext.request.contextPath }/script/tabletool.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery.min.js"></script>
 		<SCRIPT language="JavaScript">
+			function showOrHid(value) {
+			    if($("TBODY[name="+value+"]").is(':hidden')){
+                    $("TBODY[name="+value+"]").show();
+				}else{
+                    $("TBODY[name="+value+"]").hide();
+				}
+
+            }
 
 		</SCRIPT>
 	</HEAD>
 	<BODY scroll="no" MS_POSITIONING="GridLayout" scroll="auto" class="bodyscroll">
-		<TABLE height="100%" cellSpacing="0" cellPadding="0" width="143" border="0">
-			<TBODY>
-				<TR>
-					<TD vAlign="top" bgColor="#F6F6F6" height="100%">
-						<DIV class="parent" id="KB0Parent">
-							<%--<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">--%>
-								<%--<TBODY>--%>
-								<%--<TR height=25 >--%>
-									<%--<TD align="left" background="${pageContext.request.contextPath }/images/b-info.gif"  vAlign="middle">--%>
-										<%--&nbsp;&nbsp;&nbsp;--%>
-										<%--&nbsp; <A class="cl"  href="${pageContext.request.contextPath }/system/hybjMenuAction_alermGG.do" target="mainFrame">&nbsp;公告展示</A>--%>
-									<%--</TD>--%>
-								<%--</TR>--%>
-								<%--</TBODY>--%>
-							<%--</TABLE>--%>
+
 								<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
 									<TBODY>
 									<TR height=50 >
@@ -52,16 +48,15 @@ TH {
 									</TR>
 									</TBODY>
 								</TABLE>
-						</DIV>
                      
-                        <%if(popedom.contains("a") || popedom.contains("b") ){ %>
+                        <%if(popedom.contains("a")){ %>
 						<DIV class="parent" id="KB0Parent">
 							<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
 								<TBODY>
 									<TR height=25 >
 										<TD align="left" background="${pageContext.request.contextPath }/images/b-info.gif"  vAlign="middle">
 											&nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath }/images/add.gif" name="imgKB0" width="9" height="9" alt="" border="0" />
-											&nbsp; <A class="cl" onclick="expand('KB0'); return false" href="#">&nbsp;用户管理</A>
+											&nbsp; <A class="cl" onclick="showOrHid('cps');" href="#">&nbsp;用户管理</A>
 										</TD>
 									</TR>
 								</TBODY>
@@ -69,26 +64,57 @@ TH {
 						</DIV>
 						<DIV class="child" id="KB0Child">
 							<TABLE cellSpacing="0" cellPadding="0" width="99%" border="0">
-								<TBODY>
+								<TBODY name="cps">
 								    <%if(popedom.contains("a")){ %>
 									<TR>
 										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
 											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_hs.do" target="mainFrame">内容上报</A>
 										</TD>
 									</TR>
-                                    <%}if(popedom.contains("b")){ %>
-									<TR>
-										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_xq.do" target="mainFrame">需求上报</A>
-										</TD>
-									</TR>
-									<%} %>
+                                    <%}%>
 
 									
 								</TBODY>
 							</TABLE>
 						</DIV>
                        <%} %>
+
+
+						<%if(popedom.contains("d") || popedom.contains("e") ){ %>
+						<DIV class="parent" id="KB0Parent">
+							<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
+								<TBODY>
+								<TR height=25 >
+									<TD align="left" background="${pageContext.request.contextPath }/images/b-info.gif"  vAlign="middle">
+										&nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath }/images/add.gif" name="imgKB0" width="9" height="9" alt="" border="0" />
+										&nbsp; <A class="cl" onclick="showOrHid('xq')" href="#">&nbsp;需求管理</A>
+									</TD>
+								</TR>
+								</TBODY>
+							</TABLE>
+						</DIV>
+						<DIV class="child" id="KB0Child">
+							<TABLE cellSpacing="0" cellPadding="0" width="99%" border="0">
+								<TBODY name="xq">
+								<%if(popedom.contains("d")){ %>
+								<TR>
+									<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
+										<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/epg/hybjJhEpgAction_showXQ.do" target="mainFrame">需求处理</A>
+									</TD>
+								</TR>
+								<%}if(popedom.contains("e")){ %>
+								<TR>
+									<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
+										<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_xq.do" target="mainFrame">需求上报</A>
+									</TD>
+								</TR>
+								<%} %>
+
+
+								</TBODY>
+							</TABLE>
+						</DIV>
+						<%} %>
 
                       
                       <%if(popedom.contains("g") || popedom.contains("h")|| popedom.contains("i")){ %>
@@ -99,7 +125,7 @@ TH {
 									<TR height=25>
 										<TD background="${pageContext.request.contextPath }/images/b-info.gif" align="left" vAlign="middle">
 											&nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath }/images/add.gif" name="imgKB2" width="9" height="9" alt="" border="0" />
-											&nbsp; <A class="cl" onclick="expand('KB2'); return false" href="#">&nbsp;聚合方管理</A>
+											&nbsp; <A class="cl" onclick="showOrHid('jh')" href="#">&nbsp;聚合方管理</A>
 										</TD>
 									</TR>
 								</TBODY>
@@ -107,7 +133,7 @@ TH {
 						</DIV>
 						<DIV class="child" id="KB2Child">
 							<TABLE cellSpacing="0" cellPadding="0" width="99%" border="0">
-								<TBODY>
+								<TBODY name="jh">
 									<%if(popedom.contains("g")){ %>
 									
 									<TR>
@@ -142,7 +168,7 @@ TH {
 									<TR height=25>
 										<TD background="${pageContext.request.contextPath }/images/b-info.gif" align="left" vAlign="middle">
 											&nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath }/images/add.gif" name="imgKB4" width="9" height="9" alt="" border="0" />
-											&nbsp; <A class="cl" onclick="expand('KB4'); return false" href="#">&nbsp;系统管理</A>
+											&nbsp; <A class="cl" onclick="showOrHid('xt'); return false" href="#">&nbsp;系统管理</A>
 										</TD>
 									</TR>
 								</TBODY>
@@ -150,7 +176,7 @@ TH {
 						</DIV>
 						<DIV class="child" id="KB4Child">
 							<TABLE cellSpacing="0" cellPadding="0" width="99%" border="0">
-								<TBODY>
+								<TBODY name="xt">
 								
 								    <%if(popedom.contains("t")){ %>
 									<TR>
@@ -200,6 +226,7 @@ TH {
 								</TBODY>
 							</TABLE>
 						</DIV>
+
 					
 						
 	</BODY>

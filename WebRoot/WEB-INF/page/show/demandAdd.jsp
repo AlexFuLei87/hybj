@@ -12,12 +12,13 @@
 		<script type="text/javascript" src="${pageContext.request.contextPath }/script/datepicker_cn.js"></script>
 	   <script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-ui.min.js"></script>
 		<script language="javascript">
+
 		$(function() {
+
 			initdatepicker_cn();
 			$("#completeTime").datepicker({
 				dateFormat : "yy-mm-dd"
 			});
-
 		});
 		function quit() {
 			window.close();
@@ -31,7 +32,7 @@
                 dataType : "json",
                 async : true,
                 success : function(result) {//返回数据根据结果进行相应的处理
-
+					location.reload();
                 }
             });
         }
@@ -97,7 +98,26 @@
 			</td>
 
 		</tr>
+		<tr>
+			<td align="center" bgColor="#f5fafe" class="ta_11">需&nbsp;&nbsp;求&nbsp;&nbsp;指&nbsp;&nbsp;派：</td>
+			<td class="ta_11" bgColor="#ffffff" colspan="2">
+					<%-- <s:textfield name="programaName" id="programaName" maxlength="25" size="20"></s:textfield> --%>
+				<select name="towho" id="towho" style="width:170px;height:25px" onchange="change(this);">
+					<option value="jh">聚合</option>
+					<option value="dx">电信</option>
+					<option value="hs">华数TV</option>
+					<option value="mg">芒果TV</option>
+					<option value="yk">优酷</option>
+					<option value="yp">优朋</option>
+					<option value="bst">百视通</option>
+					<option value="aqy">爱奇艺</option>
+					<option value="tysx">天翼视讯</option>
+					<option value="tx">腾讯</option>
+				</select>
+			</td>
 
+
+		</tr>
 		<tr>
 			<td align="center" bgColor="#f5fafe" class="ta_11">附件上传：</td>
 			<td class="ta_11" bgColor="#ffffff"  colSpan="3">

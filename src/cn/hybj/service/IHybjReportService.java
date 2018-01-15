@@ -35,4 +35,7 @@ public interface IHybjReportService {
 	HybjReport getItemById(int i);
 
     void updateReport(HybjReportForm hybjReportForm);
+
+
+	List<HybjReport> findByFuzzy(HybjReport hybjReport);
 }
