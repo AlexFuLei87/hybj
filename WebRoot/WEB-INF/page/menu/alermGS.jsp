@@ -1,5 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <html>
   <head>
     <title></title>
@@ -13,43 +15,22 @@
 	  <script type="text/javascript" src="${pageContext.request.contextPath }/script/pub.js"></script>
 	  <script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery.min.js"></script>
     <SCRIPT language="javascript">
-
+        function overShow(value) {
+            var showDiv = document.getElementById('showDiv');
+            showDiv.style.left = event.clientX;
+            showDiv.style.top = event.clientY;
+            showDiv.style.display = 'block';
+            showDiv.innerHTML = value;
+        }
+        function outHide() {
+            var showDiv = document.getElementById('showDiv');
+            showDiv.style.display = 'none';
+            showDiv.innerHTML = '';
+        }
     </SCRIPT>
    </head>
   
   <body>
-
-	<%--<div class="list_lh">--%>
-			<%-- <ul>
-				<li>
-				<s:if test="#request.gsList!=null">
-				<s:iterator value="%{#request.gsList}" var="list">
-				<p>${list.item_name } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>${list.status=="pass"?"通过审核":"未通过审核" }</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${list.feedback }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${list.cp }</p>
-				</s:iterator>	
-		  		</s:if>
-				</li>
-			</ul> --%>
-			<%--<table width="100%" border="0" id="table8">--%>
-				<%--<tr>--%>
-				<%--<td style="width: 20%;">节目名字</td>--%>
-				<%--<td style="width: 20%;">审核时间</td>--%>
-				<%--<td style="width: 20%;">上报状态</td>--%>
-				<%--<td style="width: 20%;">反馈</td>--%>
-				<%--<td style="width: 20%;">所属cp</td>--%>
-				<%--</tr>--%>
-				<%--<s:if test="#request.gsList!=null">--%>
-				<%--<s:iterator value="%{#request.gsList}" var="list">--%>
-				<%--<tr>--%>
-				<%--<td style="width: 20%;">${list.item_name }</td>--%>
-				<%--<td style="width: 20%;">${list.verify_time }</td>--%>
-				<%--<td style="width: 20%;">${list.status=="pass"?"通过审核":"未通过审核" }</td>--%>
-				<%--<td style="width: 20%;">${list.feedback }</td>--%>
-				<%--<td style="width: 20%;">${list.cp }</td>--%>
-				<%--</tr>--%>
-				<%--</s:iterator>	--%>
-		  		<%--</s:if>--%>
-			<%--</table>--%>
-		<%--</div>--%>
 	<div style='width: 100%'>
 		<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
 			<form id="form" name="form">
@@ -95,10 +76,15 @@
 							<td>
 									${list.preonline_time}
 							</td>
-							<td style="text-overflow: ellipsis">
-
-									${list.feedback }
-
+							<td onmouseover="overShow('${list.feedback}')" onmouseout="outHide()">
+								<c:choose>
+									<c:when test="${fn:length(list.feedback)>10}">
+										${fn:substring(list.feedback, 0, 10)}...
+									</c:when>
+									<c:otherwise>
+										${list.feedback}
+									</c:otherwise>
+								</c:choose>
 							</td>
 							<td>
 									${list.cp }
@@ -108,6 +94,7 @@
 					</s:if>
 				</table>
 			</form>
+			<div id="showDiv" style="position: absolute; background-color: white; border: 1px solid black;"></div>
 		</div>
 	</div>
 
