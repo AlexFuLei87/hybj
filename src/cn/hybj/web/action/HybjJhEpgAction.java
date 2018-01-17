@@ -11,6 +11,7 @@ import cn.hybj.domain.HybjUser;
 import cn.hybj.service.*;
 import cn.hybj.web.form.HybjOutlineForm;
 import cn.hybj.web.form.HybjSystemDDlForm;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -92,12 +93,21 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 	
 	public String jhhy(){
 		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
+		hybjReportForm.setReportStatus("online");
 		List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
 		request.setAttribute("jctList", jctList);
 		request.setAttribute("report", list);
 		return "jhhy";
 	}
-	
+	public String showOffline(){
+		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
+		hybjReportForm.setReportStatus("offline");
+		List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
+		request.setAttribute("jctList", jctList);
+		request.setAttribute("report", list);
+		return "showOffline";
+	}
+
 	public String checkStatus(){
 		hybjJhEpgService.changeStatus(hybjReportForm);
 		
@@ -218,10 +228,15 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 		String itemName = new String(bytes1, "utf-8");
 		hybjReport.setCp(cp);
 		hybjReport.setItemName(itemName);
+		if(!StringUtils.isBlank(hybjReport.getReportStatus())){
+			List<HybjReport> report = hybjReportService.findByFuzzy(hybjReport);
+			request.setAttribute("report", report);
+			return "showOffline";
+		}else {
 		List<HybjReport> report = hybjReportService.findByFuzzy(hybjReport);
 		request.setAttribute("report", report);
-
 		return "jhhy";
+		}
 
 	}
 

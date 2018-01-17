@@ -49,6 +49,8 @@ public class HybjReportServiceImpl implements IHybjReportService {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		hybjReport.setCreateTime(format.format(new Date()).toString());
 		hybjReport.setStatus(hybjReportForm.getStatus());
+		hybjReport.setReportStatus(hybjReportForm.getReportStatus());
+		hybjReport.setOfflineReason(hybjReportForm.getOfflineReason());
 		hybjReportDao.save(hybjReport);
 	}
 
@@ -109,6 +111,7 @@ public class HybjReportServiceImpl implements IHybjReportService {
 				hybjReport.setIsJh(data[7].toString()=="未同步"?false:true);
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				hybjReport.setCreateTime(format.format(new Date()).toString());
+				hybjReport.setReportStatus("online");
 				Serializable id = hybjReportDao.save(hybjReport);
 				idList.add(id);
 			}

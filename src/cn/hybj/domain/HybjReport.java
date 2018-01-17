@@ -35,6 +35,8 @@ public class HybjReport implements java.io.Serializable {
 	private String offlineTime;
 	private Boolean zqIsonline;
 	private String verifyTime;
+	private String reportStatus;
+	private String offlineReason;
 	
 	
 	// Constructors
@@ -42,6 +44,23 @@ public class HybjReport implements java.io.Serializable {
 
 
 	// Property accessors
+
+
+	public String getOfflineReason() {
+		return offlineReason;
+	}
+
+	public void setOfflineReason(String offlineReason) {
+		this.offlineReason = offlineReason;
+	}
+
+	public String getReportStatus() {
+		return reportStatus;
+	}
+
+	public void setReportStatus(String reportStatus) {
+		this.reportStatus = reportStatus;
+	}
 
 	public String getVerifyTime() {
 		return verifyTime;

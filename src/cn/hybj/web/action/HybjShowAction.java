@@ -93,6 +93,14 @@ public class HybjShowAction extends BaseAction implements ModelDriven<HybjMenuFo
 		request.setAttribute("department", name);
 		return "reportAdd";
 	}
+	public String reportOffAdd() throws Exception{
+		String name=request.getParameter("cpName");
+		byte[] bytes =name.getBytes("iso-8859-1");
+		name = new String(bytes, "utf-8");
+		initSelect();
+		request.setAttribute("department", name);
+		return "reportOffAdd";
+	}
 
 	public String showCG() throws Exception{
 

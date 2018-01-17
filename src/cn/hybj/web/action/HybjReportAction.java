@@ -28,8 +28,15 @@ public class HybjReportAction extends BaseAction implements ModelDriven<HybjRepo
 	private IHybjSystemDDlService hybjSystemDDlService = (IHybjSystemDDlService)ServiceProvider.getService(IHybjSystemDDlService.SERVICE_NAME);
 	private String isSubmit;
 	private String ids;
-	
-	
+	private String status;
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public String getIds() {
 		return ids;
@@ -73,23 +80,10 @@ public class HybjReportAction extends BaseAction implements ModelDriven<HybjRepo
 
 	
 	public String save() throws Exception{
-		String where = request.getParameter("where");
-		if("华数TV".equals(where)){
-			where = "hs";
-		}else if("芒果TV".equals(where)){
-			where = "mg";
-		}else if("爱奇艺".equals(where)){
-			where = "aqy";
-		}else if("优酷".equals(where)){
-			where = "yt";
-		}else if("优朋".equals(where)){
-			where = "yp";
-		}else if("百视通".equals(where)){
-			where = "bst";
-		}else if("天翼视讯".equals(where)){
-			where = "tysx";
-		}else if("腾讯".equals(where)){
-			where = "tx";
+		if("online".equals(status)){
+			hybjReportForm.setReportStatus("online");
+		}else {
+			hybjReportForm.setReportStatus("offline");
 		}
 		JSONObject json = getSuccessJsonTemplate();
 		if("yes".equals(isSubmit)){

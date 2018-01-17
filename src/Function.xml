@@ -49,13 +49,6 @@
       <ParentCode>JHUsers</ParentCode>
       <ParentName>聚合EPG方管理</ParentName>
   </Function>
-    <Function>
-        <FunctionCode>i</FunctionCode>
-        <FunctionName>需求管理</FunctionName>
-        <ParentCode>JHUsers</ParentCode>
-        <ParentName>聚合EPG方管理</ParentName>
-    </Function>
-     
   <Function>
      <FunctionCode>t</FunctionCode>
      <FunctionName>用户管理</FunctionName>

@@ -2,7 +2,7 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <html>
   <head>
-   <title></title>
+   <title>下线报备</title>
    <LINK href="${pageContext.request.contextPath }/css/Style.css"  type="text/css" rel="stylesheet">
 		<LINK href="${pageContext.request.contextPath }/css/jquery-ui.min.css"  type="text/css" rel="stylesheet">
 		<script language="javascript"  src="${pageContext.request.contextPath }/script/function.js"></script>
@@ -33,6 +33,7 @@
 		   		var isCharge = $("#isCharge").val()=='1'?true:false;
 		   		var isjh = $("#isjh").val()=='1'?true:false;
 		   		var remarks = $("#remarks").val();
+		   		var reason = $("#reason").val();
 		   		var now = new Date();
 		   		var date = new Date(onlineTime);
 		   		if (!date>now){
@@ -67,6 +68,8 @@
 					return;
 				}if(!verifyStringNotEmpty(isjh, "是否聚合", 32,true)){
 					return;
+				}if(!verifyStringNotEmpty(reason, "下线原因", 32,true)){
+					return;
 				}
                 $.ajax({
                     type : "POST",  //提交方式
@@ -81,8 +84,9 @@
                         "hybjReportForm.isCharge" : isCharge,
                         "hybjReportForm.remarks" : remarks,
                         "hybjReportForm.type" : type,
+                        "hybjReportForm.offlineReason" : reason,
                         "isSubmit" : value,
-                        "status" : "online"
+                        "status" : "offline"
                     },//数据，这里使用的是Json格式进行传输
                     dataType : "json",
                     async : true,
@@ -97,6 +101,7 @@
                             $("#isCharge").val('');
                             $("#isjh").val('');
                             $("#remarks").val('');
+                            $("#reason").val('');
                         }
                     }
                 });
@@ -235,6 +240,13 @@
 				          >
 				</s:select>
 			</td>
+		</tr>
+		<tr>
+			<td align="center" bgColor="#f5fafe" class="ta_11">下线原因：</td>
+			<td class="ta_11" bgColor="#ffffff" colspan="3">
+				<s:textfield name="reason" id="reason" maxlength="90" size="65"></s:textfield>
+			</td>
+
 		</tr>
 
 			<TR>

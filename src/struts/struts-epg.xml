@@ -10,6 +10,9 @@
 	    	<result name="jhhy">
 	    		/WEB-INF/page/epg/jhhyIndex.jsp
 	    	</result>
+			  <result name="showOffline">
+				  /WEB-INF/page/epg/showOffline.jsp
+			  </result>
 			  <result name="showGS">
 	    		/WEB-INF/page/epg/showGS.jsp
 	    	</result>

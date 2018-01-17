@@ -16,6 +16,9 @@
 	    	<result name="reportAdd">
 	    		/WEB-INF/page/show/reportAdd.jsp
 	    	</result>
+			  <result name="reportOffAdd">
+	    		/WEB-INF/page/show/reportOffAdd.jsp
+	    	</result>
 			  <result name="showCG">
 	    		/WEB-INF/page/menu/showCG.jsp
 	    	</result>

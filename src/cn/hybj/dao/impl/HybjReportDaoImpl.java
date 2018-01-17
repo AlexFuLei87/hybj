@@ -170,6 +170,10 @@ public class HybjReportDaoImpl extends CommonDaoImpl<HybjReport> implements IHyb
 				condition += " and t.item_name =:itemName";
 				parameter_map.put("itemName", hybjReport.getItemName());
 			}
+			if(!StringUtils.isBlank(hybjReport.getReportStatus())){
+				condition += " and t.report_status =:reportStatus";
+				parameter_map.put("reportStatus", hybjReport.getReportStatus());
+			}
 
 			list= DataBaseUtil.getDataList(session, sql + condition, parameter_map,
 					true);

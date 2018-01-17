@@ -37,6 +37,9 @@ public class HybjJhEpgDaoImpl extends CommonDaoImpl<HybjReport> implements IHybj
 			if (!StringUtils.isBlank(hybjReportForm.getItemName())) {
 				condition += " and t.item_name like:itemName ";
 				parameter_map.put("itemName", "%" + hybjReportForm.getItemName() + "%");
+			}if(!StringUtils.isBlank(hybjReportForm.getReportStatus())) {
+				condition += " and t.report_status =:reportStatus ";
+				parameter_map.put("reportStatus", hybjReportForm.getReportStatus());
 			}
 			list= DataBaseUtil.getDataList(session, sql + condition + " order by t.create_time", parameter_map, 
 					true);

@@ -100,5 +100,11 @@
          <property name="verifyTime" type="java.lang.String">
             <column name="verify_time" />
         </property>
+        <property name="reportStatus" type="java.lang.String">
+            <column name="report_status" />
+        </property>
+        <property name="offlineReason" type="java.lang.String">
+            <column name="offline_reason" />
+        </property>
     </class>
 </hibernate-mapping>

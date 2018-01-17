@@ -22,11 +22,28 @@ public class HybjReportForm implements java.io.Serializable {
     private String status;
     private boolean isSubmit;
 	private String feedback;
+	private String reportStatus;
+	private String offlineReason;
+
     
 	private File file;
-	
-	
-    
+
+	public String getOfflineReason() {
+		return offlineReason;
+	}
+
+	public void setOfflineReason(String offlineReason) {
+		this.offlineReason = offlineReason;
+	}
+
+	public String getReportStatus() {
+		return reportStatus;
+	}
+
+	public void setReportStatus(String reportStatus) {
+		this.reportStatus = reportStatus;
+	}
+
 	public File getFile() {
 		return file;
 	}

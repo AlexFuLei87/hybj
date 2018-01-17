@@ -26,7 +26,7 @@
 		上映时间
 		</th>
 		<th scope="col" class="rounded"  style="word-break: break-all">
-		内容方
+		上报类型
 		</th>
 	</tr>	
     	   <s:if test="#request.others!=null">
@@ -47,7 +47,7 @@
 					${other.online_time }
 					</td>
 					<td align="left" valign="middle"  style="word-break: break-all">
-					${other.cp }
+					${other.report_status == 'online'?'上线上报':'下线上报' }
 					</td>
 				</tr>	
 			</s:iterator>	

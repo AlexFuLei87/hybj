@@ -123,7 +123,7 @@
 			var itemName = $("#demandName").val();
 			var cpName = $("#cp").val();
             //"epg/hybjJhEpgAction_findByFuzzy.do"
-			window.location.href = "epg/hybjJhEpgAction_findByFuzzy.do?hybjReport.itemName="+itemName+"&hybjReport.cp="+cpName;
+			window.location.href = "epg/hybjJhEpgAction_findByFuzzy.do?hybjReport.itemName="+itemName+"&hybjReport.cp="+cpName+"&hybjReport.reportStatus=offline";
 
         }
 		</script>
@@ -184,7 +184,10 @@
 						是否同步到聚合
 					</th>
 					<th scope="col" class="rounded" style="width: 9%;">
-						反馈
+						下线原因
+					</th>
+					<th scope="col" class="rounded" style="width: 9%;">
+						备注
 					</th>
 					<th scope="col" class="rounded" style="width: 9%;">
 						操作
@@ -221,6 +224,9 @@
 						</td>
 						<td>
 							${report.is_jh==true?'是':'否'}
+						</td>
+						<td>
+							${report.offline_reason}
 						</td>
 						<td>
 							<input  type="text" value="${report.feedback}" onblur="saveFeedback(this,${report.id})"/>
