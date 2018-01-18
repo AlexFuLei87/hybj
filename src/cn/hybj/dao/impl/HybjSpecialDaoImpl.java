@@ -32,12 +32,12 @@ public class HybjSpecialDaoImpl extends CommonDaoImpl<HybjSpecial> implements IH
                 parameter_map.put("cp", hybjSpecial.getCp());
             }
             if(!StringUtils.isBlank(hybjSpecial.getItemName())){
-                condition += " and t.item_name =:itemName";
-                parameter_map.put("itemName", hybjSpecial.getItemName());
+                condition += " and t.item_name like :itemName";
+                parameter_map.put("itemName", "%"+hybjSpecial.getItemName()+"%");
             }
             if(!StringUtils.isBlank(hybjSpecial.getSpecialName())){
-                condition += " and t.special_name =:specialName";
-                parameter_map.put("specialName", hybjSpecial.getSpecialName());
+                condition += " and t.special_name like :specialName";
+                parameter_map.put("specialName", "%"+hybjSpecial.getSpecialName()+"%");
             }
             if(!StringUtils.isBlank(hybjSpecial.getStatus())){
                 condition += " and t.status =:status";

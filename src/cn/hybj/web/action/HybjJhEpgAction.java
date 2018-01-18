@@ -165,6 +165,22 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 
 	}
 
+	public String batchSpecialPass(){
+			String[] idss = ids.split(",");
+			HybjSpecial hybjSpecial = new HybjSpecial();
+			hybjSpecial.setStatus("pass");
+			for (String string : idss) {
+				int id = Integer.parseInt(string);
+				hybjSpecial.setId(id);
+				hybjSpecialService.updateStatus(hybjSpecial);
+			}
+			JSONObject json = getSuccessJsonTemplate();
+			json.put("message", "批量审核成功");
+			writeStream(json);
+			return SUCCESS;
+
+		}
+
 
 	public String showGS(){
 		return "showGS";
@@ -269,6 +285,20 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 		}
 
 	}
+	public String findSpecialByFuzzy() throws UnsupportedEncodingException {
+			List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
+			request.setAttribute("jctList", jctList);
+			byte[] bytes =hybjSpecial.getCp().getBytes("iso-8859-1");
+			String cp = new String(bytes, "utf-8");
+			byte[] bytes1 =hybjSpecial.getSpecialName().getBytes("iso-8859-1");
+			String special = new String(bytes1, "utf-8");
+			hybjSpecial.setCp(cp);
+			hybjSpecial.setSpecialName(special);
+			hybjSpecial.setStatus("normal");
+			List<HybjSpecial> list = hybjSpecialService.findByCondition(hybjSpecial);
+			request.setAttribute("special", list);
+			return "handleZt";
+		}
 
 	public String findXQByFuzzy() throws UnsupportedEncodingException {
         List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");

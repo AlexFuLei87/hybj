@@ -97,7 +97,7 @@
             }
             $.ajax({
                 type : "POST",  //提交方式
-                url : "epg/hybjJhEpgAction_batchPass.do",//路径
+                url : "epg/hybjJhEpgAction_batchSpecialPass.do",//路径
                 data : {
                     "ids" : ids
                 },//数据，这里使用的是Json格式进行传输
@@ -120,10 +120,10 @@
 
 
         function findByFuzzy() {
-			var itemName = $("#demandName").val();
-			var cpName = $("#cp").val();
+			var specialName = $("#specialName").val();
+			var cp = $("#cp").val();
             //"epg/hybjJhEpgAction_findByFuzzy.do"
-			//window.location.href = "epg/hybjJhEpgAction_findByFuzzy.do?hybjReport.itemName="+itemName+"&hybjReport.cp="+cpName+"&hybjReport.reportStatus=offline";
+			window.location.href = "epg/hybjJhEpgAction_findSpecialByFuzzy.do?hybjSpecial.specialName="+specialName+"&hybjSpecial.cp="+cp;
 
         }
 		</script>
@@ -134,9 +134,9 @@
 		<form id="form" name="form" >
 			<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
 				<tr>
-					<td colspan="6">
+					<td colspan="5">
 						专题名：
-						<input type="text" size="25" name="demandName" id="demandName" value="" />
+						<input type="text" size="25" name="specialName" id="specialName" value="" />
 						cp:
 						<s:select list="#request.jctList" name="cp" id="cp"
 								  listKey="ddlName" listValue="ddlName"
@@ -146,9 +146,6 @@
 						</s:select>
 						<input onclick="findByFuzzy();" type="button" value="查询"/>
 					</td>
-					<td></td>
-					<td></td>
-					<td></td>
 					<td></td>
 					<td><input type="button" value="批量通过" onclick="batchPass();"/></td>
 				</tr>
