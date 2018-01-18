@@ -15,7 +15,16 @@
 	  <script type="text/javascript" src="${pageContext.request.contextPath }/script/pub.js"></script>
 	  <script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery.min.js"></script>
     <SCRIPT language="javascript">
+        getBLen = function(str) {
+            if (str == null) return 0;
+            if (typeof str != "string"){
+                str += "";
+            }
+            return str.replace(/[^\x00-\xff]/g,"01").length;
+        }
         function overShow(value) {
+            var len = getBLen(value);
+            if (len < 10){return}
             var showDiv = document.getElementById('showDiv');
             showDiv.style.left = event.clientX;
             showDiv.style.top = event.clientY;

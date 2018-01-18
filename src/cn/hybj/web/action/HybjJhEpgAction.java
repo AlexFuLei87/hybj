@@ -5,9 +5,7 @@ package cn.hybj.web.action;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-import cn.hybj.domain.HybjDemand;
-import cn.hybj.domain.HybjOutline;
-import cn.hybj.domain.HybjUser;
+import cn.hybj.domain.*;
 import cn.hybj.service.*;
 import cn.hybj.web.form.HybjOutlineForm;
 import cn.hybj.web.form.HybjSystemDDlForm;
@@ -16,7 +14,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import cn.hybj.container.ServiceProvider;
-import cn.hybj.domain.HybjReport;
 import cn.hybj.web.form.HybjReportForm;
 
 import com.alibaba.fastjson.JSONObject;
@@ -30,12 +27,23 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
     private IHybjNoticeService hybjNoticeService = (IHybjNoticeService)ServiceProvider.getService(IHybjNoticeService.SERVICE_NAME);
 	private IHybjDemandService hybjDemandService = (IHybjDemandService)ServiceProvider.getService(IHybjDemandService.SERVICE_NAME);
 	private IHybjSystemDDlService hybjSystemDDlService = (IHybjSystemDDlService)ServiceProvider.getService(IHybjSystemDDlService.SERVICE_NAME);
-    //调用日志管理的业务层
+	private IHybjSpecialService hybjSpecialService = (IHybjSpecialService)ServiceProvider.getService(IHybjSpecialService.SERVICE_NAME);
+
+	//调用日志管理的业务层
 	private IHybjLogService hybjLogService = (IHybjLogService)ServiceProvider.getService(IHybjLogService.SERVICE_NAME);
 	private HybjReportForm hybjReportForm = new HybjReportForm();
 	private HybjOutlineForm hybjOutlineForm = new HybjOutlineForm();
 	private HybjDemand demand;
 	private  HybjReport hybjReport;
+	private HybjSpecial hybjSpecial;
+
+	public HybjSpecial getHybjSpecial() {
+		return hybjSpecial;
+	}
+
+	public void setHybjSpecial(HybjSpecial hybjSpecial) {
+		this.hybjSpecial = hybjSpecial;
+	}
 
 	public HybjReport getHybjReport() {
 		return hybjReport;
@@ -107,6 +115,28 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 		request.setAttribute("report", list);
 		return "showOffline";
 	}
+	public String handleZt(){
+		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
+		HybjSpecial hybjSpecial = new HybjSpecial();
+		hybjSpecial.setStatus("normal");
+		List<HybjSpecial> list =  hybjSpecialService.findByCondition(hybjSpecial);
+		request.setAttribute("jctList", jctList);
+		request.setAttribute("special", list);
+		return "handleZt";
+	}
+	public String changSpecialStatus(){
+		hybjSpecialService.updateStatus(hybjSpecial);
+		JSONObject json = getSuccessJsonTemplate();
+		json.put("message", "操作成功");
+		writeStream(json);
+		return SUCCESS;
+	}
+	public String saveSpecialFeedback(){
+		hybjSpecialService.updatefeedback(hybjSpecial);
+		JSONObject json = getSuccessJsonTemplate();
+		writeStream(json);
+		return SUCCESS;
+		}
 
 	public String checkStatus(){
 		hybjJhEpgService.changeStatus(hybjReportForm);

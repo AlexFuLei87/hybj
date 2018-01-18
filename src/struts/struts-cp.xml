@@ -10,11 +10,17 @@
 	    	<result name="hs">
 	    		/WEB-INF/page/show/hsIndex.jsp
 	    	</result>
+			  <result name="zt">
+	    		/WEB-INF/page/show/specialReport.jsp
+	    	</result>
 	    	<result name="fileImport">
 	    		/WEB-INF/page/show/fileImport.jsp
 	    	</result>
 	    	<result name="reportAdd">
 	    		/WEB-INF/page/show/reportAdd.jsp
+	    	</result>
+			  <result name="specialAdd">
+	    		/WEB-INF/page/show/specialAdd.jsp
 	    	</result>
 			  <result name="reportOffAdd">
 	    		/WEB-INF/page/show/reportOffAdd.jsp
@@ -63,6 +69,14 @@
 				<!-- 指定文件下载时要调用的方法 ,默认调用getInputStream方法-->
 				<param name="inputName">fileInputStream</param>
 			</result>
+		</action>
+
+		<action name="hybjSpecialAction_*" class="cn.hybj.web.action.HybjSpecialAction" method="{1}">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+
 		</action>
 	</package>
 </struts>

@@ -6,6 +6,7 @@ import java.util.List;
 
 import cn.hybj.domain.HybjDemand;
 import cn.hybj.domain.HybjReport;
+import cn.hybj.domain.HybjSpecial;
 import cn.hybj.domain.HybjUser;
 import cn.hybj.service.*;
 import org.apache.commons.logging.Log;
@@ -24,7 +25,7 @@ public class HybjShowAction extends BaseAction implements ModelDriven<HybjMenuFo
 	
 	private IHybjSystemDDlService hybjSystemDDlService = (IHybjSystemDDlService)ServiceProvider.getService(IHybjSystemDDlService.SERVICE_NAME);
 	private IHybjDemandService hybjDemandService = (IHybjDemandService)ServiceProvider.getService(IHybjDemandService.SERVICE_NAME);
-
+	private IHybjSpecialService hybjSpecialService = (IHybjSpecialService)ServiceProvider.getService(IHybjSpecialService.SERVICE_NAME);
 
 	private IHybjReportService hybjReportService = (IHybjReportService)ServiceProvider.getService(IHybjReportService.SERVICE_NAME);
 
@@ -62,6 +63,16 @@ public class HybjShowAction extends BaseAction implements ModelDriven<HybjMenuFo
 		request.setAttribute("department", user.getDepartment());
 		return "hs";
 	}
+	public String zt(){
+		initSelect();
+		HybjUser user = (HybjUser)request.getSession().getAttribute("globle_user");
+		request.setAttribute("department", user.getDepartment());
+		HybjSpecial hybjSpecial = new HybjSpecial();
+		hybjSpecial.setCp(user.getDepartment());
+		List<HybjSpecial> ztList = hybjSpecialService.findByCondition(hybjSpecial);
+		request.setAttribute("ztList", ztList);
+		return "zt";
+	}
 
 
 	public String xq(){
@@ -92,6 +103,11 @@ public class HybjShowAction extends BaseAction implements ModelDriven<HybjMenuFo
 		initSelect();
 		request.setAttribute("department", name);
 		return "reportAdd";
+	}
+	public String specialAdd() {
+		HybjUser user = (HybjUser)request.getSession().getAttribute("globle_user");
+		request.setAttribute("department",user.getDepartment());
+		return "specialAdd";
 	}
 	public String reportOffAdd() throws Exception{
 		String name=request.getParameter("cpName");

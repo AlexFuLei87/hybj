@@ -39,7 +39,7 @@
 
     <Function>
      <FunctionCode>g</FunctionCode>
-     <FunctionName>聚合</FunctionName>
+     <FunctionName>上线处理</FunctionName>
      <ParentCode>JHUsers</ParentCode>
      <ParentName>聚合EPG方管理</ParentName>
   </Function>
@@ -49,6 +49,14 @@
       <ParentCode>JHUsers</ParentCode>
       <ParentName>聚合EPG方管理</ParentName>
   </Function>
+    <Function>
+        <FunctionCode>i</FunctionCode>
+        <FunctionName>下线处理</FunctionName>
+        <ParentCode>JHUsers</ParentCode>
+        <ParentName>聚合EPG方管理</ParentName>
+    </Function>
+
+
   <Function>
      <FunctionCode>t</FunctionCode>
      <FunctionName>用户管理</FunctionName>

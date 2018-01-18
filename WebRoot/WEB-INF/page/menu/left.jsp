@@ -49,7 +49,7 @@ TH {
 									</TBODY>
 								</TABLE>
                      
-                        <%if(popedom.contains("a")){ %>
+                        <%if(popedom.contains("a")||popedom.contains("b")){ %>
 						<DIV class="parent" id="KB0Parent">
 							<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
 								<TBODY>
@@ -69,6 +69,12 @@ TH {
 									<TR>
 										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
 											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_hs.do" target="mainFrame">内容上报</A>
+										</TD>
+									</TR>
+									<%}if(popedom.contains("b")){ %>
+									<TR>
+										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
+											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_zt.do" target="mainFrame">专题上报</A>
 										</TD>
 									</TR>
                                     <%}%>
@@ -141,16 +147,22 @@ TH {
 											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/epg/hybjJhEpgAction_jhhy.do" target="mainFrame">上线处理</A>
 										</TD>
 									</TR>
-									<%}if(popedom.contains("h")){ %>
-									<TR>
-										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/epg/hybjJhEpgAction_showGS.do" target="mainFrame">公示管理</A>
-										</TD>
-									</TR>
 									<%}if(popedom.contains("i")){ %>
 									<TR>
 										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
 											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/epg/hybjJhEpgAction_showOffline.do" target="mainFrame">下线处理</A>
+										</TD>
+									</TR>
+									<%}if(popedom.contains("j")){ %>
+									<TR>
+										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
+											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/epg/hybjJhEpgAction_handleZt.do" target="mainFrame">专题处理</A>
+										</TD>
+									</TR>
+									<%}if(popedom.contains("h")){ %>
+									<TR>
+										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
+											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/epg/hybjJhEpgAction_showGS.do" target="mainFrame">公示管理</A>
 										</TD>
 									</TR>
 									<%}%>

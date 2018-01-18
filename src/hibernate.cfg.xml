@@ -22,6 +22,7 @@
 		<mapping resource="cn/hybj/domain/HybjReport.hbm.xml"/>
 		<mapping resource="cn/hybj/domain/HybjOutline.hbm.xml"/>
 		<mapping resource="cn/hybj/domain/HybjDemand.hbm.xml"/>
+		<mapping resource="cn/hybj/domain/HybjSpecial.hbm.xml"/>
 		<!--<mapping class="cn.hybj.domain.HybjOutline"/>-->
 	</session-factory>
 </hibernate-configuration>
