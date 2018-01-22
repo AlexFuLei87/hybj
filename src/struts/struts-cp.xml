@@ -16,6 +16,9 @@
 	    	<result name="fileImport">
 	    		/WEB-INF/page/show/fileImport.jsp
 	    	</result>
+			  <result name="fileImportOff">
+	    		/WEB-INF/page/show/fileImportOff.jsp
+	    	</result>
 	    	<result name="reportAdd">
 	    		/WEB-INF/page/show/reportAdd.jsp
 	    	</result>

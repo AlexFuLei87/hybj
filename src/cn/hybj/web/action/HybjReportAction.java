@@ -118,6 +118,12 @@ public class HybjReportAction extends BaseAction implements ModelDriven<HybjRepo
 		 return "importResult";
 		 
 	  }
+	  public String importOffdata(){
+		  List<HybjReport> list = hybjReportService.saveReportWithExcel(hybjReportForm);
+		  request.setAttribute("cpList", list);
+		 return "importResult";
+
+	  }
 	  
 	  public String changeType(){
 		 List<HybjSystemDDlForm> typeList = hybjSystemDDlService.findElecSystemDDlListByKeyword(hybjReportForm.getProgramaName());

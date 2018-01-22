@@ -156,7 +156,7 @@ window.onload = function(){
 			          <%--cssStyle="width:155px"--%>
 			          <%-->--%>
 			<%--</s:select>--%>
-			<s:textfield name="jctID" id="jctID" maxlength="25" size="20" readonly="true"></s:textfield>
+			<s:textfield name="department" id="department" maxlength="25" size="20" readonly="true"></s:textfield>
 			<font color="#FF0000">*</font>
 		</td>
 			

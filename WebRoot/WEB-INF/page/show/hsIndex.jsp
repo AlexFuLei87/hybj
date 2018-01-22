@@ -18,13 +18,15 @@
 	
 <form name="Form1" method="post" action="name.aspx" id="Form1">
 	<div>
-		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="编辑上传(上线)" name="BT_Import"
+		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="编辑上线申报" name="BT_Import"
 				 onclick="openWindow('cp/hybjShowAction_reportAdd.do?cpName=${department}','700','400')">
-		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="批量上传(上线)" name="BT_Import"
+		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="批量上线申报" name="BT_Import"
 				 onclick="openWindow('cp/hybjShowAction_importpage.do?cpName=${department}','700','400')">
 		<span>||</span>
-		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="编辑上传(下线)" name="BT_Import"
+		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="编辑下线申报" name="BT_Import"
 			   onclick="openWindow('cp/hybjShowAction_reportOffAdd.do?cpName=${department}','700','500')">
+		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="批量下线申报" name="BT_Import"
+			   onclick="openWindow('cp/hybjShowAction_importOffpage.do?cpName=${department}','700','500')">
 	</div>
 	<table width="100%" border="0" height="88" border="1" background=${pageContext.request.contextPath }/images/back1.jpg>
 		<%-- <tr>

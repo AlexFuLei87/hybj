@@ -103,15 +103,19 @@ public class HybjReportServiceImpl implements IHybjReportService {
 				}
 				hybjReport.setStatus("draft");
 				hybjReport.setItemName(data[3].toString());
-				hybjReport.setType(data[4].toString());
-				hybjReport.setIsCharge(data[5].toString()=="N"?false:true);
+				hybjReport.setProgramaName(data[4].toString());
+				hybjReport.setType(data[5].toString());
+				hybjReport.setIsCharge(data[6].toString()=="N"?false:true);
 				//如果不是cp中的就 不保存
-				if(!cplist.contains(data[6].toString())&& !hybjReportForm.getCp().equals(data[6].toString())){ continue; }
-				hybjReport.setCp(data[6].toString());
-				hybjReport.setIsJh(data[7].toString()=="未同步"?false:true);
+				if(!cplist.contains(data[7].toString()) || !hybjReportForm.getCp().equals(data[7].toString())){ continue; }
+				hybjReport.setCp(data[7].toString());
+				hybjReport.setIsJh(data[8].toString()=="未同步"?false:true);
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				hybjReport.setCreateTime(format.format(new Date()).toString());
-				hybjReport.setReportStatus("online");
+				if("offline".equals(hybjReportForm.getReportStatus())){
+					hybjReport.setOfflineReason(data[9].toString());
+				}
+				hybjReport.setReportStatus(hybjReportForm.getReportStatus());
 				Serializable id = hybjReportDao.save(hybjReport);
 				idList.add(id);
 			}

@@ -39,6 +39,17 @@
     }
 
     </SCRIPT>
+	  <style>
+		  .dialog_container1 {
+			  position: fixed;
+			  left: 50%;
+			  top: 40%;
+			  margin: -225px 0 0 -389px;
+			  width: 588px;
+			  height: 580px;
+			  border-radius: 5px;
+		  }
+	  </style>
    </head>
   
   <body>
@@ -87,7 +98,7 @@
 				</table>
 		</div>
 	</div>
-	<div class="dialog_container" id="details1" hidden >
+	<div class="dialog_container1" id="details1" hidden  style="z-index: 999">
 		<table cellSpacing="1" height="88" cellPadding="5" width="580" align="center" bgColor="#eeeeee" style="border:1px solid #8ba7e3" border="0">
 
 			<tr>
@@ -95,18 +106,6 @@
 					<font face="宋体" size="2"><strong>公示内容</strong></font>
 				</td>
 			</tr>
-			<%--<tr>--%>
-				<%--<td align="center" bgColor="#f5fafe" class="ta_11">公&nbsp;&nbsp;示&nbsp;&nbsp;名&nbsp;&nbsp;称：<font color="#FF0000">*</font></td>--%>
-				<%--<td class="ta_11" bgColor="#ffffff">--%>
-					<%--<input  id="outlineName" maxlength="25" size="20" ></input>--%>
-				<%--</td>--%>
-			<%--</tr>--%>
-			<%--<tr>--%>
-				<%--<td align="center" bgColor="#f5fafe" class="ta_11">公&nbsp;&nbsp;示&nbsp;&nbsp;概&nbsp;&nbsp;要：</td>--%>
-				<%--<td class="ta_11" bgColor="#ffffff">--%>
-					<%--<input  id="outline" maxlength="25" size="20" ></input>--%>
-				<%--</td>--%>
-			<%--</tr>--%>
 			<tr>
 				<td align="center" bgColor="#f5fafe" class="ta_21">公&nbsp;&nbsp;示&nbsp;&nbsp;详&nbsp;&nbsp;情：</td>
 				<td class="ta_21" bgColor="#ffffff">

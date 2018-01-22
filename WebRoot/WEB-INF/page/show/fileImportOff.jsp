@@ -34,7 +34,7 @@
   </head>
   
   <body>
-    <s:form action="/cp/hybjReportAction_importdata.do" method="post" enctype="multipart/form-data">
+    <s:form action="/cp/hybjReportAction_importOffdata.do" method="post" enctype="multipart/form-data">
       <br>
       <table border="0" width="100%" cellspacing="0" cellpadding="0">
       	<tr>
@@ -54,7 +54,8 @@
           <td width="83%" align="left">
           <s:file onchange="checkFile(this);" name="file" cssStyle="width:365px"></s:file>
           <input name = "cp" id="cp" value="${department }" hidden>
-          <input name = "reportStatus" id="reportStatus" value="online" hidden>
+          <input name = "reportStatus" id="reportStatus" value="offline" hidden>
+
           </td>
           <td width="1%"></td>
         </tr>

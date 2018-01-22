@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.hybj.container.ServiceProvider;
+import cn.hybj.domain.HybjSystemDDl;
 import cn.hybj.service.IHybjLogService;
 import cn.hybj.service.IHybjSystemDDlService;
 import cn.hybj.service.IHybjUserService;
@@ -61,7 +62,18 @@ public class HybjUserAction extends BaseAction implements ModelDriven<HybjUserFo
 	* @Return: String add 跳转到userAdd.jsp
 	*/
 	public String add(){
-		this.initSystemDDl();
+		List<HybjSystemDDlForm> sexList = elecSystemDDlService.findElecSystemDDlListByKeyword("性别");
+		List<HybjSystemDDlForm> jctList = elecSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
+		HybjSystemDDlForm form = new HybjSystemDDlForm();
+		HybjSystemDDlForm form1 = new HybjSystemDDlForm();
+		form.setDdlName("电信");
+		form1.setDdlName("聚合");
+		jctList.add(form);
+		jctList.add(form1);
+		List<HybjSystemDDlForm> isdutyList = elecSystemDDlService.findElecSystemDDlListByKeyword("是否在职");
+		request.setAttribute("sexList", sexList);
+		request.setAttribute("jctList", jctList);
+		request.setAttribute("isdutyList", isdutyList);
 		return "add";
 	}
 	

@@ -56,7 +56,7 @@ TH {
 									<TR height=25 >
 										<TD align="left" background="${pageContext.request.contextPath }/images/b-info.gif"  vAlign="middle">
 											&nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath }/images/add.gif" name="imgKB0" width="9" height="9" alt="" border="0" />
-											&nbsp; <A class="cl" onclick="showOrHid('cps');" href="#">&nbsp;用户管理</A>
+											&nbsp; <A class="cl" onclick="showOrHid('cps');" href="#">&nbsp;内容管理</A>
 										</TD>
 									</TR>
 								</TBODY>
@@ -68,13 +68,13 @@ TH {
 								    <%if(popedom.contains("a")){ %>
 									<TR>
 										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_hs.do" target="mainFrame">内容上报</A>
+											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_hs.do" target="mainFrame">内容申报</A>
 										</TD>
 									</TR>
 									<%}if(popedom.contains("b")){ %>
 									<TR>
 										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_zt.do" target="mainFrame">专题上报</A>
+											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_zt.do" target="mainFrame">专题申报</A>
 										</TD>
 									</TR>
                                     <%}%>
@@ -111,7 +111,7 @@ TH {
 								<%}if(popedom.contains("e")){ %>
 								<TR>
 									<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-										<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_xq.do" target="mainFrame">需求上报</A>
+										<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/hybjShowAction_xq.do" target="mainFrame">需求报备</A>
 									</TD>
 								</TR>
 								<%} %>
@@ -170,9 +170,9 @@ TH {
 							</TABLE>
 						</DIV>
                        <%} %>
- 
-                       
-                   
+
+
+					<%if(popedom.contains("t") || popedom.contains("p")|| popedom.contains("q")|| popedom.contains("r")|| popedom.contains("s")|| popedom.contains("z")){ %>
 						<DIV class="parent" id="KB4Parent">
 							<TABLE cellSpacing="0" cellPadding="0" width="99%" border="0">
 								<TBODY>
@@ -228,16 +228,18 @@ TH {
 											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/hybjSystemDDlAction_home.do" target="mainFrame">数据字典维护</A>
 										</TD>
 									</TR>
-									<%} %>
-									
+
+									<%}if(popedom.contains("z")){ %>
 									<TR>
 										<TD class="box06" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
 											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/hybjLogAction_home.do" target="mainFrame">日志管理</A>
 										</TD>
 									</TR>
+									<%} %>
 								</TBODY>
 							</TABLE>
 						</DIV>
+						<%} %>
 
 					
 						

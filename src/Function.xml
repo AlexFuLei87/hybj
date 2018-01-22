@@ -18,9 +18,15 @@
 
   <Function>
      <FunctionCode>a</FunctionCode>
-     <FunctionName>内容上报</FunctionName>
+     <FunctionName>内容申报</FunctionName>
      <ParentCode>CPUsers</ParentCode>
-     <ParentName>CP用户管理</ParentName>
+     <ParentName>内容方申报</ParentName>
+  </Function>
+<Function>
+     <FunctionCode>b</FunctionCode>
+     <FunctionName>专题申报</FunctionName>
+     <ParentCode>CPUsers</ParentCode>
+     <ParentName>内容方申报</ParentName>
   </Function>
 
   <Function>
@@ -31,7 +37,7 @@
   </Function>
 <Function>
     <FunctionCode>e</FunctionCode>
-    <FunctionName>需求上报</FunctionName>
+    <FunctionName>需求申报</FunctionName>
     <ParentCode>XQhandle</ParentCode>
     <ParentName>需求管理</ParentName>
 </Function>
@@ -41,19 +47,25 @@
      <FunctionCode>g</FunctionCode>
      <FunctionName>上线处理</FunctionName>
      <ParentCode>JHUsers</ParentCode>
-     <ParentName>聚合EPG方管理</ParentName>
+     <ParentName>聚合管理</ParentName>
   </Function>
   <Function>
       <FunctionCode>h</FunctionCode>
       <FunctionName>公示管理</FunctionName>
       <ParentCode>JHUsers</ParentCode>
-      <ParentName>聚合EPG方管理</ParentName>
+      <ParentName>聚合管理</ParentName>
   </Function>
     <Function>
         <FunctionCode>i</FunctionCode>
         <FunctionName>下线处理</FunctionName>
         <ParentCode>JHUsers</ParentCode>
-        <ParentName>聚合EPG方管理</ParentName>
+        <ParentName>聚合管理</ParentName>
+    </Function>
+ <Function>
+        <FunctionCode>j</FunctionCode>
+        <FunctionName>专题处理</FunctionName>
+        <ParentCode>JHUsers</ParentCode>
+        <ParentName>聚合管理</ParentName>
     </Function>
 
 
@@ -84,6 +96,12 @@
     <Function>
         <FunctionCode>s</FunctionCode>
         <FunctionName>数据字典维护</FunctionName>
+        <ParentCode>sysmng</ParentCode>
+        <ParentName>系统管理</ParentName>
+    </Function>
+    <Function>
+        <FunctionCode>z</FunctionCode>
+        <FunctionName>日志管理</FunctionName>
         <ParentCode>sysmng</ParentCode>
         <ParentName>系统管理</ParentName>
     </Function>

@@ -53,9 +53,9 @@
 									${list.item_name }
 							</td>
 							<td>
-								<s:if test="%{#list.status == 1}">待审批</s:if>
-								<s:if test="%{#list.status == 2}">审批完成</s:if>
-								<s:if test="%{#list.status == 3}">驳回</s:if>
+								<s:if test="%{#list.status == 'normal'}">待审批</s:if>
+								<s:if test="%{#list.status == 'pass'}">审批完成</s:if>
+								<s:if test="%{#list.status == 'fail'}">驳回</s:if>
 							</td>
 							<td>
 									${list.create_time }

@@ -172,7 +172,7 @@ A.cl_02:hover {
 .dialog_container {
     position: fixed;
     left: 50%;
-    top: 30%;
+    top: 40%;
     margin: -225px 0 0 -389px;
     width: 588px;
     height: 580px;
@@ -532,12 +532,12 @@ A:hover {
 {
 	word-break:break-all;word-wrap:break-word;
 }
-.test 
+.test
 {
 	BACKGROUND-IMAGE: url(../images/aaa.gif); HEIGHT: 25px;
-	
+
 }
-.optionOff 
+.optionOff
 {
 	color:#909090;
 	background-image:url(../images/optionbgOff.gif);

@@ -81,6 +81,8 @@
 					<option value="营销">营销</option>
 					<option value="支撑">支撑</option>
 					<option value="数据">数据</option>
+					<option value="运营">运营</option>
+					<option value="开发">开发</option>
 					<option value="其他">其他</option>
 				</select>
 			</td>
