@@ -95,7 +95,13 @@ public class HybjShowAction extends BaseAction implements ModelDriven<HybjMenuFo
 		name = new String(bytes, "utf-8");
 		request.setAttribute("department", name);
 		return "fileImport";
-	}
+		}
+	public String specialImport() throws Exception {
+		HybjUser user = (HybjUser)request.getSession().getAttribute("globle_user");
+		request.setAttribute("department",user.getDepartment());
+		return "specialImport";
+		}
+
 	public String importOffpage() throws Exception {
 		String name=request.getParameter("cpName");
 		byte[] bytes =name.getBytes("iso-8859-1");

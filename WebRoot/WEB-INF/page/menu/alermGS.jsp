@@ -24,7 +24,7 @@
         }
         function overShow(value) {
             var len = getBLen(value);
-            if (len < 10){return}
+            if (len < 6){return}
             var showDiv = document.getElementById('showDiv');
             showDiv.style.left = event.clientX;
             showDiv.style.top = event.clientY;
@@ -87,8 +87,8 @@
 							</td>
 							<td onmouseover="overShow('${list.feedback}')" onmouseout="outHide()">
 								<c:choose>
-									<c:when test="${fn:length(list.feedback)>10}">
-										${fn:substring(list.feedback, 0, 10)}...
+									<c:when test="${fn:length(list.feedback)>6}">
+										${fn:substring(list.feedback, 0, 6)}...
 									</c:when>
 									<c:otherwise>
 										${list.feedback}

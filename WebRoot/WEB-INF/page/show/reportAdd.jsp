@@ -82,7 +82,7 @@
                         "hybjReportForm.remarks" : remarks,
                         "hybjReportForm.type" : type,
                         "isSubmit" : value,
-                        "status" : "online"
+                        "submitStatus" : 'online'
                     },//数据，这里使用的是Json格式进行传输
                     dataType : "json",
                     async : true,

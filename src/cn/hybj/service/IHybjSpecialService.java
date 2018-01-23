@@ -4,6 +4,7 @@ package cn.hybj.service;
 import cn.hybj.domain.HybjDemand;
 import cn.hybj.domain.HybjSpecial;
 import cn.hybj.web.form.HybjDemandForm;
+import cn.hybj.web.form.HybjSpecialForm;
 
 import java.util.List;
 
@@ -19,4 +20,8 @@ public interface IHybjSpecialService {
     void updateStatus(HybjSpecial hybjSpecial);
 
     void updatefeedback(HybjSpecial hybjSpecial);
+
+    List<HybjSpecial> saveReportWithExcel(HybjSpecialForm hybjSpecial);
+
+    void updateStatusById(HybjSpecial special);
 }

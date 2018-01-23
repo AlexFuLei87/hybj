@@ -5,6 +5,7 @@ import cn.hybj.container.ServiceProvider;
 import cn.hybj.domain.HybjSpecial;
 import cn.hybj.service.IHybjLogService;
 import cn.hybj.service.IHybjSpecialService;
+import cn.hybj.web.form.HybjSpecialForm;
 import com.alibaba.fastjson.JSONObject;
 import com.opensymphony.xwork2.ModelDriven;
 import org.apache.commons.logging.Log;
@@ -12,16 +13,35 @@ import org.apache.commons.logging.LogFactory;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @SuppressWarnings("serial")
-public class HybjSpecialAction extends BaseAction implements ModelDriven<HybjSpecial>{
+public class HybjSpecialAction extends BaseAction implements ModelDriven<HybjSpecialForm>{
 	private IHybjSpecialService hybjSpecialService = (IHybjSpecialService)ServiceProvider.getService(IHybjSpecialService.SERVICE_NAME);
 
 	//调用日志管理的业务层
 	private IHybjLogService elecLogService = (IHybjLogService)ServiceProvider.getService(IHybjLogService.SERVICE_NAME);
 
 
+	private HybjSpecialForm hybjSpecialForm = new HybjSpecialForm();
 	private HybjSpecial hybjSpecial;
+	private String ids;
+
+	public String getIds() {
+		return ids;
+	}
+
+	public void setIds(String ids) {
+		this.ids = ids;
+	}
+
+	public HybjSpecialForm getHybjSpecialForm() {
+		return hybjSpecialForm;
+	}
+
+	public void setHybjSpecialForm(HybjSpecialForm hybjSpecialForm) {
+		this.hybjSpecialForm = hybjSpecialForm;
+	}
 
 	public HybjSpecial getHybjSpecial() {
 		return hybjSpecial;
@@ -33,8 +53,8 @@ public class HybjSpecialAction extends BaseAction implements ModelDriven<HybjSpe
 
 	//使用log4j
 	Log log = LogFactory.getLog(HybjSpecialAction.class);
-	public HybjSpecial getModel() {
-		return hybjSpecial;
+	public HybjSpecialForm getModel() {
+		return hybjSpecialForm;
 	}
 
    public String save(){
@@ -50,6 +70,43 @@ public class HybjSpecialAction extends BaseAction implements ModelDriven<HybjSpe
 	   writeStream(json);
 		return SUCCESS;
    }
+
+	public String importSpecial(){
+		List<HybjSpecial> list = hybjSpecialService.saveReportWithExcel(hybjSpecialForm);
+		request.setAttribute("cpList", list);
+		return "specialResult";
+
+	}
+
+	public String batchUpdate(){
+		String[] idss = ids.split(",");
+		HybjSpecial special = new HybjSpecial();
+		for (String string : idss) {
+			int id = Integer.parseInt(string);
+			special.setId(id);
+			special.setStatus("normal");
+			hybjSpecialService.updateStatusById(special);
+		}
+		JSONObject json = getSuccessJsonTemplate();
+		json.put("message", "批量上传成功");
+		writeStream(json);
+		return SUCCESS;
+
+	}
+
+
+	public String update(){
+		int id = Integer.parseInt(ids);
+		HybjSpecial special = new HybjSpecial();
+		special.setStatus("normal");
+		special.setId(id);
+		hybjSpecialService.updateStatusById(special);
+		JSONObject json = getSuccessJsonTemplate();
+		json.put("message", "上传成功");
+		writeStream(json);
+		return SUCCESS;
+
+	}
 
 
 

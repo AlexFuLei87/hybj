@@ -24,6 +24,8 @@
 	<div style='width: 100%;z-index: 1'>
         <input style="font-size:12px; color:black; height=30;width=120"  type="button" value="专题上传" name="BT_Import"
                onclick="openWindow('cp/hybjShowAction_specialAdd.do','600','300')">
+		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="批量上传" name="BT_Import"
+               onclick="openWindow('cp/hybjShowAction_specialImport.do','600','300')">
 		<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
 				<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
 					<tr>
@@ -56,6 +58,7 @@
 								<s:if test="%{#list.status == 'normal'}">待审批</s:if>
 								<s:if test="%{#list.status == 'pass'}">审批完成</s:if>
 								<s:if test="%{#list.status == 'fail'}">驳回</s:if>
+								<s:if test="%{#list.status == 'draft'}">草稿</s:if>
 							</td>
 							<td>
 									${list.create_time }

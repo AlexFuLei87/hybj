@@ -1,5 +1,6 @@
 package cn.hybj.domain;// default package
 
+import java.io.File;
 import java.util.Date;
 
 /**

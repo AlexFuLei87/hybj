@@ -307,9 +307,30 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 		String cp = new String(bytes, "utf-8");
 		byte[] bytes1 =demand.getDemandName().getBytes("iso-8859-1");
 		String demandName = new String(bytes1, "utf-8");
+		HybjUser user = (HybjUser)request.getSession().getAttribute("globle_user");
+		if("电信".equals(user.getDepartment())){
+			demand.setTowho("dx");
+		}else if("华数TV".equals(user.getDepartment())) {
+			demand.setTowho("hs");
+		}else if("芒果".equals(user.getDepartment())) {
+			demand.setTowho("mg");
+		}else if("优酷".equals(user.getDepartment())) {
+			demand.setTowho("yk");
+		}else if("优朋".equals(user.getDepartment())) {
+			demand.setTowho("yp");
+		}else if("百视通".equals(user.getDepartment())) {
+			demand.setTowho("bst");
+		}else if("天翼视讯".equals(user.getDepartment())) {
+			demand.setTowho("tysx");
+		}else if("腾讯".equals(user.getDepartment())) {
+			demand.setTowho("tx");
+		}else if("爱奇艺".equals(user.getDepartment())) {
+			demand.setTowho("aqy");
+		}else if("聚合".equals(user.getDepartment())){
+			demand.setTowho("jh");
+		}
 		demand.setCp(cp);
 		demand.setDemandName(demandName);
-		demand.setTowho("dx");
 		List<HybjDemand> report = hybjDemandService.findByFuzzy(demand);
 		request.setAttribute("xqList", report);
 

@@ -52,7 +52,7 @@ public class GenerateSqlFromExcel {
 					}*/
 					System.out.println(sheet[i].getRows());
 					for (int j = 1; j < sheet[i].getRows(); j++) {
-						String[] valStr = new String[sheet[i].getRows()];
+						String[] valStr = new String[20];
 						for (int k = 0; k < sheet[i].getColumns(); k++) {
 							Cell cell = sheet[i].getCell(k, j);
 							String content = "";

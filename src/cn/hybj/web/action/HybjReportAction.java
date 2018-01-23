@@ -3,15 +3,14 @@ package cn.hybj.web.action;
 
 import java.util.List;
 
+import cn.hybj.domain.HybjSpecial;
+import cn.hybj.service.*;
+import cn.hybj.web.form.HybjSpecialForm;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import cn.hybj.container.ServiceProvider;
 import cn.hybj.domain.HybjReport;
-import cn.hybj.service.IHybjLogService;
-import cn.hybj.service.IHybjReportService;
-import cn.hybj.service.IHybjSystemDDlService;
-import cn.hybj.service.IHybjUserService;
 import cn.hybj.web.form.HybjReportForm;
 import cn.hybj.web.form.HybjSystemDDlForm;
 
@@ -22,20 +21,20 @@ import com.opensymphony.xwork2.ModelDriven;
 public class HybjReportAction extends BaseAction implements ModelDriven<HybjReportForm>{
 	
 	private IHybjUserService hybjUserService = (IHybjUserService)ServiceProvider.getService(IHybjUserService.SERVICE_NAME);
-	
+	private IHybjSpecialService hybjSpecialService = (IHybjSpecialService)ServiceProvider.getService(IHybjSpecialService.SERVICE_NAME);
 	private IHybjReportService hybjReportService = (IHybjReportService)ServiceProvider.getService(IHybjReportService.SERVICE_NAME);
 	
 	private IHybjSystemDDlService hybjSystemDDlService = (IHybjSystemDDlService)ServiceProvider.getService(IHybjSystemDDlService.SERVICE_NAME);
 	private String isSubmit;
 	private String ids;
-	private String status;
+	private String submitStatus;
 
-	public String getStatus() {
-		return status;
+	public String getSubmitStatus() {
+		return submitStatus;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setSubmitStatus(String submitStatus) {
+		this.submitStatus = submitStatus;
 	}
 
 	public String getIds() {
@@ -72,6 +71,16 @@ public class HybjReportAction extends BaseAction implements ModelDriven<HybjRepo
 	}
 
 
+	private HybjSpecialForm hybjSpecialForm;
+
+	public HybjSpecialForm getHybjSpecialForm() {
+		return hybjSpecialForm;
+	}
+
+	public void setHybjSpecialForm(HybjSpecialForm hybjSpecialForm) {
+		this.hybjSpecialForm = hybjSpecialForm;
+	}
+
 	//使用log4j
 	Log log = LogFactory.getLog(HybjReportAction.class);
 	public HybjReportForm getModel() {
@@ -80,7 +89,7 @@ public class HybjReportAction extends BaseAction implements ModelDriven<HybjRepo
 
 	
 	public String save() throws Exception{
-		if("online".equals(status)){
+		if("online".equals(submitStatus)){
 			hybjReportForm.setReportStatus("online");
 		}else {
 			hybjReportForm.setReportStatus("offline");
@@ -116,8 +125,11 @@ public class HybjReportAction extends BaseAction implements ModelDriven<HybjRepo
 		  List<HybjReport> list = hybjReportService.saveReportWithExcel(hybjReportForm);
 		  request.setAttribute("cpList", list);
 		 return "importResult";
-		 
+
 	  }
+
+
+
 	  public String importOffdata(){
 		  List<HybjReport> list = hybjReportService.saveReportWithExcel(hybjReportForm);
 		  request.setAttribute("cpList", list);

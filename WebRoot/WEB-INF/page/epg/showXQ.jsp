@@ -86,7 +86,7 @@
 				<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
 					<tr>
 						<td colspan="6">
-							节目名：
+							需求名：
 							<input type="text" size="25" name="itemName1" id="itemName1" value="" />
 							cp:
 							<s:select list="#request.jctList" name="cp" id="cp"

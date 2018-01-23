@@ -16,6 +16,9 @@
 	    	<result name="fileImport">
 	    		/WEB-INF/page/show/fileImport.jsp
 	    	</result>
+			  <result name="specialImport">
+	    		/WEB-INF/page/show/specialfileImport.jsp
+	    	</result>
 			  <result name="fileImportOff">
 	    		/WEB-INF/page/show/fileImportOff.jsp
 	    	</result>
@@ -80,6 +83,9 @@
 				<param name="inputName">inputStream</param>
 			</result>
 
+			<result name="specialResult">
+				/WEB-INF/page/show/specialResult.jsp
+			</result>
 		</action>
 	</package>
 </struts>

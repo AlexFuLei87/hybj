@@ -40,7 +40,7 @@ document.onkeydown = function(){
 		 }
 		 $.ajax({  
              type : "POST",  //提交方式  
-             url : "cp/hybjReportAction_batchUpdate.do",//路径  
+             url : "cp/hybjSpecialAction_batchUpdate.do",//路径
              data : {  
                  "ids" : ids  
              },//数据，这里使用的是Json格式进行传输  
@@ -67,7 +67,7 @@ document.onkeydown = function(){
 		 if(choseValue=="normal"){
 		 $.ajax({  
              type : "POST",  //提交方式  
-             url : "cp/hybjReportAction_update.do",//路径  
+             url : "cp/hybjSpecialAction_update.do",//路径
              data : {  
                  "ids" : id  
              },//数据，这里使用的是Json格式进行传输  
@@ -97,19 +97,13 @@ document.onkeydown = function(){
 						<input type="checkbox" name="all" id="all" onClick="checkAll()" />
 					</th>
 					<th scope="col" class="rounded" width="130px">
-						预上映时间
+						专题名
 					</th>
 					<th scope="col" class="rounded" width="130px">
-						上映时间
+						节目名
 					</th>
 					<th scope="col" class="rounded" width="130px">
-						节目名字
-					</th>
-					<th scope="col" class="rounded" width="130px">
-						所属分类
-					</th>
-					<th scope="col" class="rounded" width="130px">
-						类型
+						内容方
 					</th>
 					<th scope="col" class="rounded" width="130px">
 						状态
@@ -124,19 +118,13 @@ document.onkeydown = function(){
 							<input type="checkbox" id="report_id" name="report_id" value="${list.id}" />
 						</td>
 						<td>
-							<span>${list.preonlineTime } </span>
-						</td>
-						<td>
-							<span>${list.onlineTime }</span>
+							<span>${list.specialName } </span>
 						</td>
 						<td>
 							<span>${list.itemName }</span>
 						</td>
 						<td>
-							<span>${list.programaName }</span>
-						</td>
-						<td>
-							<span>${list.type }</span>
+							<span>${list.cp }</span>
 						</td>
 						<td>
 							<span>待提交</span>

@@ -15,4 +15,6 @@ public interface IHybjSpecialDao extends ICommonDao<HybjSpecial> {
     void updateStatus(HybjSpecial hybjSpecial);
 
     void updataFeedback(HybjSpecial hybjSpecial);
+
+
 }
