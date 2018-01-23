@@ -22,11 +22,15 @@
 				 onclick="openWindow('cp/hybjShowAction_reportAdd.do?cpName=${department}','700','400')">
 		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="批量上线申报" name="BT_Import"
 				 onclick="openWindow('cp/hybjShowAction_importpage.do?cpName=${department}','700','400')">
+		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="模板下载" name="BT_Import"
+				 onclick="window.location.href='cp/dowTemplate.do?tempType=online'">
 		<span>||</span>
 		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="编辑下线申报" name="BT_Import"
 			   onclick="openWindow('cp/hybjShowAction_reportOffAdd.do?cpName=${department}','700','500')">
 		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="批量下线申报" name="BT_Import"
 			   onclick="openWindow('cp/hybjShowAction_importOffpage.do?cpName=${department}','700','500')">
+		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="模板下载" name="BT_Import"
+			   onclick="window.location.href='cp/dowTemplate.do?tempType=offline'">
 	</div>
 	<table width="100%" border="0" height="88" border="1" background=${pageContext.request.contextPath }/images/back1.jpg>
 		<%-- <tr>

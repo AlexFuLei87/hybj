@@ -35,7 +35,7 @@ BODY {SCROLLBAR-FACE-COLOR: #cccccc; SCROLLBAR-HIGHLIGHT-COLOR: #ffffFF; SCROLLB
 
 	<table width="100%" border="0" height="88" border="1" background=${pageContext.request.contextPath }/images/back1.jpg>
 		<tr>
-			<td  class="ta_01" align="center" background="${pageContext.request.contextPath }/images/b-info.gif"><strong>公告首页</strong></td>
+			<td  class="ta_01" align="center" background="${pageContext.request.contextPath }/images/b-info.gif"><strong>公示首页</strong></td>
 			<td  class="ta_01" align="center" background="${pageContext.request.contextPath }/images/b-info.gif"><strong>公告首页</strong></td>
 		</tr>
 
