@@ -23,4 +23,5 @@ public interface IHybjDemandService {
 
     List<HybjDemand> findByFuzzy(HybjDemand demand);
 
+    void changeTowhoById(Integer id, String towho);
 }

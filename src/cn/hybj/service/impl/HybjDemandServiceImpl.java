@@ -69,4 +69,8 @@ public class HybjDemandServiceImpl implements IHybjDemandService {
 		return hybjDemandDao.findByFuzzy(demand);
 	}
 
+	@Override
+	public void changeTowhoById(Integer id, String towho) {
+		hybjDemandDao.changeTowhoById(id,towho);
+	}
 }

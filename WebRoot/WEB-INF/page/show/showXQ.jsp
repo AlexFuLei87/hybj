@@ -56,10 +56,15 @@
 									${list.fenlei }
 							</td>
 							<td>
-								<s:if test="%{#list.status == 1}">待审批</s:if>
-								<s:if test="%{#list.status == 2}">审批完成</s:if>
-								<s:if test="%{#list.status == 3}">驳回</s:if>
-								<s:if test="%{#list.status == 4}">需求完结</s:if>
+								<s:if test="%{#list.status == 0}">未开始</s:if>
+								<s:if test="%{#list.status == 1}">已计划</s:if>
+								<s:if test="%{#list.status == 2}">以立项</s:if>
+								<s:if test="%{#list.status == 3}">研发中</s:if>
+								<s:if test="%{#list.status == 4}">研发完毕</s:if>
+								<s:if test="%{#list.status == 5}">测试中</s:if>
+								<s:if test="%{#list.status == 6}">测试完毕</s:if>
+								<s:if test="%{#list.status == 7}">已验收</s:if>
+								<s:if test="%{#list.status == 8}">已发布</s:if>
 							</td>
 							<td>
 									${list.complete_time }

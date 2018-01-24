@@ -102,6 +102,10 @@ public class HybjReportServiceImpl implements IHybjReportService {
 					continue;
 				}
 				hybjReport.setStatus("draft");
+				int repeat = hybjReportDao.findReportByItemName(data[3].toString());
+				if(repeat != 0){
+					hybjReport.setIsRepeat("yes");
+				}
 				hybjReport.setItemName(data[3].toString());
 				hybjReport.setProgramaName(data[4].toString());
 				hybjReport.setType(data[5].toString());

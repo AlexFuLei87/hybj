@@ -22,6 +22,10 @@
                    updataStatus(id,"1");
 			   }else if(chos==1){
                    updataStatus(id,"2");
+			   }else if(chos==2){
+					deleteById($this,id);
+                   tr = values.parentNode.parentNode;
+                   tr.parentNode.removeChild(tr);
 			   }
 			}
         }
@@ -40,6 +44,23 @@
                     if(result.message){
                         alert(result.message);
 
+
+                    }
+                }
+            });
+        }
+        function deleteById(value,id) {
+            $.ajax({
+                type : "POST",  //提交方式
+                url : "epg/hybjJhEpgAction_deleteOutlineById.do",//路径
+                data : {
+                    "hybjOutlineForm.id" : id
+                },//数据，这里使用的是Json格式进行传输
+                dataType : "json",
+                async : false,
+                success : function(result) {//返回数据根据结果进行相应的处理
+                    if(result.message){
+                        alert(result.message);
 
                     }
                 }
@@ -95,6 +116,7 @@
 									<option value="">选择操作</option>
 									<s:if test="%{#list.status != 1}"><option value="0">公示</option></s:if>
 									<s:if test="%{#list.status == 1}"><option value="1">撤销公示</option></s:if>
+									<option value="2">删除</option>
 								</select>
 							</td>
 						</tr>

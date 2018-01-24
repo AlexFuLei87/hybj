@@ -16,4 +16,6 @@ public interface IHybjDemandDao extends ICommonDao<HybjDemand> {
     void changeStatusById(int id,String status);
 
     List<HybjDemand> findByFuzzy(HybjDemand demand);
+
+    void changeTowhoById(Integer id, String towho);
 }

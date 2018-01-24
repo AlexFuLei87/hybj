@@ -54,8 +54,10 @@
   
   <body>
 	<div style='width: 100%;z-index: 1'>
+		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="公示区" name="BT_Import"
+			   onclick="window.location.href='system/hybjMenuAction_alermGS.do'">
 		<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
-				<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
+				<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: center; border-collapse: collapse;">
 					<tr>
 						<th scope="col" class="rounded" style="width: 15%;" hidden>
 
@@ -79,7 +81,7 @@
 							<td hidden>
 									${list.details }
 							</td>
-							<td>
+							<td >
 									${list.gg_name }
 							</td>
 							<td>

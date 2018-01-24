@@ -37,8 +37,16 @@ public class HybjReport implements java.io.Serializable {
 	private String verifyTime;
 	private String reportStatus;
 	private String offlineReason;
-	
-	
+	private String isRepeat;
+
+	public String getIsRepeat() {
+		return isRepeat;
+	}
+
+	public void setIsRepeat(String isRepeat) {
+		this.isRepeat = isRepeat;
+	}
+
 	// Constructors
 
 
@@ -263,5 +271,6 @@ public class HybjReport implements java.io.Serializable {
 	public void setZqIsonline(Boolean zqIsonline) {
 		this.zqIsonline = zqIsonline;
 	}
+
 
 }

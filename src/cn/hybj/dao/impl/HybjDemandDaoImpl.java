@@ -128,4 +128,28 @@ public class HybjDemandDaoImpl extends CommonDaoImpl<HybjDemand> implements IHyb
         }
         return list;
     }
+
+
+    @Override
+    public void changeTowhoById(Integer id, String towho) {
+        Session session = null;
+        try {
+            session = HibernateSessionFactory.getSession();
+            String sql = "UPDATE  hybj_demand t set t.towho=:towho ";
+            String condition = "";
+            Map<String, Object> parameter_map = new HashMap<String, Object>();
+            condition += "where t.id=:id";
+            parameter_map.put("id", id);
+            parameter_map.put("towho", towho);
+            DataBaseUtil.executeUpdateByMap(session, sql+condition, parameter_map);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                session.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

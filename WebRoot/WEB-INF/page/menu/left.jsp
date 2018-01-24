@@ -38,16 +38,16 @@ TH {
 	</HEAD>
 	<BODY scroll="no" MS_POSITIONING="GridLayout" scroll="auto" class="bodyscroll">
 
-				<%--<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">--%>
-					<%--<TBODY>--%>
-					<%--<TR height=50 >--%>
-						<%--<TD align="left" background="${pageContext.request.contextPath }/images/b-info.gif"  vAlign="middle">--%>
-							<%--&nbsp;&nbsp;&nbsp;<img src="" name="imgKB0" width="9" height="9" alt="" border="0" />--%>
-							<%--&nbsp; <A class="cl" onclick="expand('KB0') " href="${pageContext.request.contextPath }/system/hybjMenuAction_alermGG.do" target="mainFrame">&nbsp;公告展示</A>--%>
-						<%--</TD>--%>
-					<%--</TR>--%>
-					<%--</TBODY>--%>
-				<%--</TABLE>--%>
+				<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
+					<TBODY>
+					<TR height=50 >
+						<TD align="left" background="${pageContext.request.contextPath }/images/b-info.gif"  vAlign="middle">
+							&nbsp;&nbsp;&nbsp;<img src="" name="imgKB0" width="9" height="9" alt="" border="0" />
+							&nbsp; <A class="cl" onclick="expand('KB0') " href="${pageContext.request.contextPath }/system/hybjMenuAction_alermGG.do" target="mainFrame">&nbsp;公告公示</A>
+						</TD>
+					</TR>
+					</TBODY>
+				</TABLE>
                      
                         <%if(popedom.contains("a")||popedom.contains("b")){ %>
 						<DIV class="parent" id="KB0Parent">

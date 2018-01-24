@@ -265,6 +265,24 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 		return SUCCESS;
 
 	}
+
+	public String changeTowhoById(){
+		hybjDemandService.changeTowhoById(demand.getId(),demand.getTowho());
+		JSONObject json = getSuccessJsonTemplate();
+		json.put("message", "已指派给"+demand.getCp());
+		writeStream(json);
+		return SUCCESS;
+
+	}
+
+	public String deleteOutlineById(){
+		hybjNoticeService.deleteById(hybjOutlineForm.getId());
+		JSONObject json = getSuccessJsonTemplate();
+		json.put("message", "该公示已被删除");
+		writeStream(json);
+		return SUCCESS;
+
+	}
 	public String findByFuzzy() throws UnsupportedEncodingException {
         List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
         request.setAttribute("jctList", jctList);

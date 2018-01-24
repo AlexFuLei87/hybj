@@ -106,5 +106,8 @@
         <property name="offlineReason" type="java.lang.String">
             <column name="offline_reason" />
         </property>
+        <property name="isRepeat" type="java.lang.String">
+            <column name="is_repeat" />
+        </property>
     </class>
 </hibernate-mapping>

@@ -9,15 +9,15 @@
     <link href="${pageContext.request.contextPath }/css/style_1.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery.min.js"></script>
    <SCRIPT language="javascript">
-document.onkeydown = function(){
-    var k = event.keyCode;
-    if((event.ctrlKey == true && k == 82) || (k == 116) || (event.ctrlKey == true && k == 116))
-    {
-        event.keyCode = 0;
-        event.returnValue = false;
-        event.cancelBubble = true;
-    }
-}
+	document.onkeydown = function(){
+		var k = event.keyCode;
+		if((event.ctrlKey == true && k == 82) || (k == 116) || (event.ctrlKey == true && k == 116))
+		{
+			event.keyCode = 0;
+			event.returnValue = false;
+			event.cancelBubble = true;
+		}
+	}
    
     	function checkAll(){
 		 if ($("#all").is(':checked')){
@@ -85,7 +85,25 @@ document.onkeydown = function(){
 		 
 		 }
 		}
-		
+
+
+		function showDetails(value) {
+			if(value == 'yes'){
+                var showDiv = document.getElementById('showDiv');
+                showDiv.style.left = event.clientX;
+                showDiv.style.top = event.clientY;
+                showDiv.style.display = 'block';
+                showDiv.innerHTML = '该节目已经被其他内容方上传过';
+			}else {
+			    return
+			}
+        }
+
+		function outHide() {
+			var showDiv = document.getElementById('showDiv');
+			showDiv.style.display = 'none';
+			showDiv.innerHTML = '';
+		}
    </SCRIPT>
    </head>
   <body>
@@ -119,18 +137,20 @@ document.onkeydown = function(){
 					</th>
 				</tr>
 				<c:forEach items="${cpList}" var="list" varStatus="vs">
-					<tr id="${vs.index }" >
+					<tr id="${vs.index }"  >
 						<td>
 							<input type="checkbox" id="report_id" name="report_id" value="${list.id}" />
 						</td>
 						<td>
-							<span>${list.preonlineTime } </span>
+							<span>${list.preonlineTime.substring(0,10) } </span>
 						</td>
 						<td>
-							<span>${list.onlineTime }</span>
+							<span>${list.onlineTime.substring(0,10) }</span>
 						</td>
-						<td>
-							<span>${list.itemName }</span>
+						<td onmouseover="showDetails('${list.isRepeat }')" onmouseout="outHide()">
+							<c:if test="${list.isRepeat == 'yes' }"><span style="color:#F00"> ${list.itemName }</span></c:if>
+							<c:if test="${list.isRepeat == null }"><span> ${list.itemName }</span></c:if>
+
 						</td>
 						<td>
 							<span>${list.programaName }</span>
@@ -158,5 +178,6 @@ document.onkeydown = function(){
 					</tr>
 			</table>
 		</form>
+		<div id="showDiv" style="position: absolute; background-color: white; border: 1px solid black;"></div>
   </body>
 </html>

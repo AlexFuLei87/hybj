@@ -17,4 +17,6 @@ public interface IHybjNoticeService {
 	void changeStatus(HybjOutlineForm hybjOutlineForm);
 
     HybjOutline findById(Integer id);
+
+    void deleteById(String id);
 }

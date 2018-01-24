@@ -41,6 +41,8 @@
   
   <body>
 	<div style='width: 100%'>
+		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="公告区" name="BT_Import"
+			   onclick="window.location.href='system/hybjMenuAction_alermGG.do'">
 		<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
 			<form id="form" name="form">
 				<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">

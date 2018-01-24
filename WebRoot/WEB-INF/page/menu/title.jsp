@@ -89,8 +89,8 @@ eval("document.location='"+action+"'");
       <table border="0" width="100%" cellspacing="0" cellpadding="0">
         <tr>
           <td width="100%" align="center">
-          <A href="system/hybjMenuAction_loading.do" target="mainFrame"><font color="#FFFFFF"><b>返回首页</b></font></a>
-          <font color="#FFFFFF"><b>|</b></font>
+          <%--<A href="system/hybjMenuAction_loading.do" target="mainFrame"><font color="#FFFFFF"><b>返回首页</b></font></a>--%>
+          <%--<font color="#FFFFFF"><b>|</b></font>--%>
           <A href="system/hybjMenuAction_logout.do"   target="_top"> <font color="#FFFFFF"><b>退出登录</b></font></A>
           <!-- <font color="#FFFFFF"><b>|</b></font>
        	  <A href="system/hybjMenuAction_updatePasswd.do"  target="mainFrame"> <font color="#FFFFFF"><b>修改密码</b></font></A> -->

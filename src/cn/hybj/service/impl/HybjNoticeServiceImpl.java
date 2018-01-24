@@ -20,7 +20,9 @@ import java.util.List;
 
 @Transactional(readOnly=true)
 @Service(IHybjNoticeService.SERVICE_NAME)
-public class HybjNoticeServiceImpl implements IHybjNoticeService {
+public
+
+class HybjNoticeServiceImpl implements IHybjNoticeService {
 
 	@Resource(name= IHybjNoticeDao.SERVICE_NAME)
 	private IHybjNoticeDao hybjNoticeDao;
@@ -45,5 +47,12 @@ public class HybjNoticeServiceImpl implements IHybjNoticeService {
 	@Override
 	public HybjOutline findById(Integer id) {
 		return hybjNoticeDao.findObjectByID(id);
+	}
+
+	@Override
+	@Transactional(isolation=Isolation.DEFAULT,propagation=Propagation.REQUIRED,readOnly=false)
+	public void deleteById(String id) {
+		int idd =Integer.parseInt(id);
+		hybjNoticeDao.deleteObjectByIDs(idd);
 	}
 }
