@@ -23,9 +23,9 @@
   <body>
 	<div style='width: 100%;z-index: 1'>
         <input style="font-size:12px; color:black; height=30;width=120"  type="button" value="专题上传" name="BT_Import"
-               onclick="openWindow('cp/hybjShowAction_specialAdd.do','600','350')">
+               onclick="openWindow('cp/jhShowAction_specialAdd.do','600','350')">
 		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="批量上传" name="BT_Import"
-               onclick="openWindow('cp/hybjShowAction_specialImport.do','600','300')">
+               onclick="openWindow('cp/jhShowAction_specialImport.do','600','300')">
 		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="模板下载" name="BT_Import"
 			   onclick="window.location.href='cp/dowTemplate.do?tempType=zt'">
 		<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>

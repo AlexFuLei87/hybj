@@ -38,4 +38,6 @@ public interface IHybjReportService {
 
 
 	List<HybjReport> findByFuzzy(HybjReport hybjReport);
+
+    List<HybjReport> findByCondition(HybjReport hybjReport);
 }

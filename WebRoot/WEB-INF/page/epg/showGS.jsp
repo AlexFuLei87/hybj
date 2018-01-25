@@ -23,7 +23,7 @@
             
             function submitOutline() {
                 contentAddEditor.sync();
-                $.post("epg/hybjJhEpgAction_saveOutline.do",$("#Form1").serialize(), function(data){
+                $.post("epg/jhJhEpgAction_saveOutline.do",$("#Form1").serialize(), function(data){
                     var data1 = eval("("+data+")");
                    alert(data1.message);
                    location.reload();
@@ -100,7 +100,7 @@
 			<font color="#0000FF">
 			<img border="0" src="${pageContext.request.contextPath }/images/zoom.gif" width="14" height="14">以往公示内容</font></legend>
 			
-			<IFRAME src="${pageContext.request.contextPath }/epg/hybjJhEpgAction_showYW.do"  name="station"  frameBorder=0 width=100% scrolling=auto height=100%></IFRAME>
+			<IFRAME src="${pageContext.request.contextPath }/epg/jhJhEpgAction_showYW.do"  name="station"  frameBorder=0 width=100% scrolling=auto height=100%></IFRAME>
 				     
 		   </fieldset>
 			

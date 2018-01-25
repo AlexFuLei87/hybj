@@ -26,7 +26,7 @@
             }
             $.ajax({
                 type : "POST",  //提交方式
-                url : "../cp/hybjSpecialAction_save.do",//路径
+                url : "../cp/jhSpecialAction_save.do",//路径
                 data :{
                     "hybjSpecial.specialName":specialName,
                     "hybjSpecial.itemName":itemName,

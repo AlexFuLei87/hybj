@@ -5,12 +5,15 @@ import cn.hybj.container.ServiceProvider;
 import cn.hybj.domain.HybjSpecial;
 import cn.hybj.service.IHybjLogService;
 import cn.hybj.service.IHybjSpecialService;
+import cn.hybj.service.IHybjSystemDDlService;
 import cn.hybj.web.form.HybjSpecialForm;
+import cn.hybj.web.form.HybjSystemDDlForm;
 import com.alibaba.fastjson.JSONObject;
 import com.opensymphony.xwork2.ModelDriven;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -21,7 +24,7 @@ public class HybjSpecialAction extends BaseAction implements ModelDriven<HybjSpe
 
 	//调用日志管理的业务层
 	private IHybjLogService elecLogService = (IHybjLogService)ServiceProvider.getService(IHybjLogService.SERVICE_NAME);
-
+	private IHybjSystemDDlService hybjSystemDDlService = (IHybjSystemDDlService)ServiceProvider.getService(IHybjSystemDDlService.SERVICE_NAME);
 
 	private HybjSpecialForm hybjSpecialForm = new HybjSpecialForm();
 	private HybjSpecial hybjSpecial;
@@ -108,6 +111,20 @@ public class HybjSpecialAction extends BaseAction implements ModelDriven<HybjSpe
 
 	}
 
+	public String findByFuzzy() throws UnsupportedEncodingException {
+		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
+		request.setAttribute("jctList", jctList);
+		byte[] bytes =hybjSpecial.getCp().getBytes("iso-8859-1");
+		String cp = new String(bytes, "utf-8");
+		byte[] bytes1 =hybjSpecial.getSpecialName().getBytes("iso-8859-1");
+		String specialName = new String(bytes1, "utf-8");
+		hybjSpecial.setCp(cp);
+		hybjSpecial.setSpecialName(specialName);
+		hybjSpecial.setStatus("PassAndFail");
+		List<HybjSpecial> list = hybjSpecialService.findByCondition(hybjSpecial);
+		request.setAttribute("ztList", list);
+		return "alermZT";
+	}
 
 
 }

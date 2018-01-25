@@ -16,10 +16,10 @@
                  </td>
 			<td class="ta_01" align="right">
 			    <input style="font-size:12px; color:black; height=20;width=80" id="BT_Add" type="button" value="查询" name="BT_find" 
-				 onclick="gotoquery('system/hybjUserAction_home.do')">&nbsp;&nbsp;
+				 onclick="gotoquery('system/jhUserAction_home.do')">&nbsp;&nbsp;
 				 <%if(popedom.contains("l")){ %>
 				<input style="font-size:12px; color:black; height=20;width=80" id="BT_Add" type="button" value="添加用户" name="BT_Add" 
-				 onclick="openWindow('system/hybjUserAction_add.do','700','400')">
+				 onclick="openWindow('system/jhUserAction_add.do','700','400')">
 				 <%} %>
 			</td>
 			<td class="ta_01" align="right">
@@ -28,11 +28,11 @@
 			</td>
 			<td class="ta_01" align="right">
 			    <input style="font-size:12px; color:black; height=20;width=80" id="BT_Import" type="button" value="导入Excel" name="BT_Import" 
-				 onclick="openWindow('system/hybjUserAction_importpage.do','700','400')">
+				 onclick="openWindow('system/jhUserAction_importpage.do','700','400')">
 			</td>
 			<td class="ta_01" align="right">
 			    <input style="font-size:12px; color:black; height=20;width=80" id="BT_User" type="button" value="人员统计" name="BT_User" 
-				 onclick="openWindow('system/hybjUserAction_chart.do','700','400')">
+				 onclick="openWindow('system/jhUserAction_chart.do','700','400')">
 			</td>
 		</tr>
 		<tr>

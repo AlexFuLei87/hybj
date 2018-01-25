@@ -44,14 +44,14 @@ BODY {SCROLLBAR-FACE-COLOR: #cccccc; SCROLLBAR-HIGHLIGHT-COLOR: #ffffFF; SCROLLB
 			<fieldset style="width: 99.6%; height: 700%; padding: 1"><legend>
 			<font color="#0000FF">
 			<img border="0" src="${pageContext.request.contextPath }/images/zoom.gif" width="14" height="14"> 公示区展示</font></legend>
-			<IFRAME src="${pageContext.request.contextPath }/system/hybjMenuAction_alermGS.do"  name="project" id="project" frameBorder=0 width=100% scrolling=auto height=100%></IFRAME>
+			<IFRAME src="${pageContext.request.contextPath }/system/jhMenuAction_alermGS.do"  name="project" id="project" frameBorder=0 width=100% scrolling=auto height=100%></IFRAME>
 			</fieldset>
 			</td>
 			<td width="50%" height="84" align="left" valign="top" >
 				<fieldset style="width: 100%; height: 700%; padding: 1"><legend>
 					<font color="#0000FF">
 						<img border="0" src="${pageContext.request.contextPath }/images/zoom.gif" width="14" height="14"> 公告展示</font></legend>
-					<IFRAME src="${pageContext.request.contextPath }/system/hybjMenuAction_alermGG.do"  name="project"  frameBorder=0 width=100% scrolling=auto height=100%></IFRAME>
+					<IFRAME src="${pageContext.request.contextPath }/system/jhMenuAction_alermGG.do"  name="project"  frameBorder=0 width=100% scrolling=auto height=100%></IFRAME>
 				</fieldset>
 			</td>
 		</tr>

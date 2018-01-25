@@ -33,7 +33,7 @@
         function updataStatus(id,status) {
             $.ajax({
                 type : "POST",  //提交方式
-                url : "epg/hybjJhEpgAction_changeStatus.do",//路径
+                url : "epg/jhJhEpgAction_changeStatus.do",//路径
                 data : {
                     "hybjOutlineForm.id" : id,
                     "hybjOutlineForm.status" : status
@@ -52,7 +52,7 @@
         function deleteById(value,id) {
             $.ajax({
                 type : "POST",  //提交方式
-                url : "epg/hybjJhEpgAction_deleteOutlineById.do",//路径
+                url : "epg/jhJhEpgAction_deleteOutlineById.do",//路径
                 data : {
                     "hybjOutlineForm.id" : id
                 },//数据，这里使用的是Json格式进行传输

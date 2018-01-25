@@ -17,7 +17,7 @@
 				if(value){
 				$.ajax({
 					type : "POST",  //提交方式
-					url : "epg/hybjJhEpgAction_changSpecialStatus.do",//路径
+					url : "epg/jhJhEpgAction_changSpecialStatus.do",//路径
 					data : {
 						"hybjSpecial.status" : "fail",
 						"hybjSpecial.id" : id
@@ -36,7 +36,7 @@
 				    var cp = $this.val();
                     $.ajax({
                         type : "POST",  //提交方式
-                        url : "epg/hybjJhEpgAction_changSpecialStatus.do",//路径
+                        url : "epg/jhJhEpgAction_changSpecialStatus.do",//路径
                         data : {
                             "hybjSpecial.status" : "pass",
                             "hybjSpecial.cp" : cp,
@@ -61,7 +61,7 @@
    			if(feedback=="")return;
 			$.ajax({  
                     type : "POST",  //提交方式  
-                    url : "epg/hybjJhEpgAction_saveSpecialFeedback.do",//路径
+                    url : "epg/jhJhEpgAction_saveSpecialFeedback.do",//路径
                     data : {  
                         "hybjSpecial.feedback" : feedback,
                         "hybjSpecial.id" : id
@@ -98,7 +98,7 @@
             }
             $.ajax({
                 type : "POST",  //提交方式
-                url : "epg/hybjJhEpgAction_batchSpecialFail.do",//路径
+                url : "epg/jhJhEpgAction_batchSpecialFail.do",//路径
                 data : {
                     "ids" : ids
                 },//数据，这里使用的是Json格式进行传输
@@ -124,7 +124,7 @@
 			var specialName = $("#specialName").val();
 			var cp = $("#cp").val();
             //"epg/hybjJhEpgAction_findByFuzzy.do"
-			window.location.href = "epg/hybjJhEpgAction_findSpecialByFuzzy.do?hybjSpecial.specialName="+specialName+"&hybjSpecial.cp="+cp;
+			window.location.href = "epg/jhJhEpgAction_findSpecialByFuzzy.do?hybjSpecial.specialName="+specialName+"&hybjSpecial.cp="+cp;
 
         }
 		</script>

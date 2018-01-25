@@ -73,7 +73,7 @@
 				}
                 $.ajax({
                     type : "POST",  //提交方式
-                    url : "cp/hybjReportAction_save.do",//路径
+                    url : "cp/jhReportAction_save.do",//路径
                     data : {
                         "hybjReportForm.itemName" : itemName,
                         "hybjReportForm.programaName" : programaName,
@@ -118,7 +118,7 @@
 		   	var itemName = $("#itemName").val();
 			$.ajax({  
                     type : "POST",  //提交方式  
-                    url : "cp/hybjReportAction_checkItemName.do",//路径  
+                    url : "cp/jhReportAction_checkItemName.do",//路径
                     data : {  
                         "hybjReportForm.itemName" : itemName  
                     },//数据，这里使用的是Json格式进行传输  
@@ -137,7 +137,7 @@
    			var choseValue = $this.val();
 			$.ajax({  
                     type : "POST",  //提交方式  
-                    url : "../cp/hybjReportAction_changeType.do",//路径  
+                    url : "../cp/jhReportAction_changeType.do",//路径
                     data : {  
                         "hybjReportForm.programaName" : choseValue  
                     },//数据，这里使用的是Json格式进行传输  

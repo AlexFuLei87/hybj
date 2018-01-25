@@ -40,8 +40,12 @@ public class HybjSpecialDaoImpl extends CommonDaoImpl<HybjSpecial> implements IH
                 parameter_map.put("specialName", "%"+hybjSpecial.getSpecialName()+"%");
             }
             if(!StringUtils.isBlank(hybjSpecial.getStatus())){
-                condition += " and t.status =:status";
-                parameter_map.put("status", hybjSpecial.getStatus());
+                if(hybjSpecial.getStatus().contains("And")){
+                    condition += " and t.status in ('fail' , 'pass') ";
+                } else {
+                    condition += " and t.status =:status";
+                    parameter_map.put("status", hybjSpecial.getStatus());
+                }
             }
 
             list= DataBaseUtil.getDataList(session, sql + condition+" order by t.verify_time,t.create_time", parameter_map,

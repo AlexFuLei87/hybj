@@ -48,7 +48,13 @@
             $("#details1").hide();
         }
 
+        function findByFuzzy() {
+            var specialName = $("#specialName").val();
+            var cpName = $("#cp").val();
+            //"epg/hybjJhEpgAction_findByFuzzy.do"
+            window.location.href = "../cp/jhSpecialAction_findByFuzzy.do?hybjSpecial.specialName="+specialName+"&hybjSpecial.cp="+cpName;
 
+        }
 
 
     </SCRIPT>
@@ -72,6 +78,20 @@
 		<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
 			<form id="form" name="form">
 				<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
+					<tr>
+						<td colspan="4">
+							专题名：
+							<input type="text" size="25" name="specialName" id="specialName" value="" />
+							内容方:
+							<s:select list="#request.jctList" name="cp" id="cp"
+									  listKey="ddlName" listValue="ddlName"
+									  headerKey="" headerValue=""
+									  cssStyle="width:155px"
+							>
+							</s:select>
+							<input onclick="findByFuzzy();" type="button" value="查询"/>
+						</td>
+					</tr>
 					<tr>
 						<th scope="col" class="rounded" style="width: 12.5%;">
 							专题名

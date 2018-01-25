@@ -61,7 +61,7 @@ FORM {
 <title>聚合上报平台</title>
 </head>
 <body onload="ini()">
-<form action="${pageContext.request.contextPath}/system/hybjMenuAction_home.do" method="post" onsubmit="return check();">
+<form action="${pageContext.request.contextPath}/system/jhMenuAction_home.do" method="post" onsubmit="return check();">
 <table border="0" width="100%" id="table1" height="532" cellspacing="0" cellpadding="0" >
 	<tr>
 		<td>　</td>

@@ -40,7 +40,7 @@
 		 // document.Form1.action="system/hybjUserAction_save.do";
 		 // document.Form1.submit();
         $.ajaxSettings.async = false;
-        $.post("system/hybjUserAction_save.do",$("#Form1").serialize(), function(data){
+        $.post("system/jhUserAction_save.do",$("#Form1").serialize(), function(data){
 
         });
 

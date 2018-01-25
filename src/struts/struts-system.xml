@@ -6,7 +6,7 @@
 <struts>
 	<package name="system" namespace="/system" extends="struts-default">
 	    <!-- 首页登录cn.hybj.web.action.HybjMenuAction -->
-	    <action name="hybjMenuAction_*" class="cn.hybj.web.action.HybjMenuAction" method="{1}">
+	    <action name="jhMenuAction_*" class="cn.hybj.web.action.HybjMenuAction" method="{1}">
 	    	<result name="home">
 	    		/WEB-INF/page/menu/home.jsp
 	    	</result>
@@ -55,7 +55,7 @@
 			</result>
 	    </action>
 	    <!-- 代办事宜 -->
-	    <action name="hybjCommonMsgAction_*" class="cn.hybj.web.action.HybjCommonMsgAction" method="{1}">
+	    <action name="jhCommonMsgAction_*" class="cn.hybj.web.action.HybjCommonMsgAction" method="{1}">
 	    	<result name="home">
 	    		/WEB-INF/page/system/actingIndex.jsp
 	    	</result>	 
@@ -65,7 +65,7 @@
 	    	</result>   
 	    </action>
 	    <!-- 数据字典 -->
-	    <action name="hybjSystemDDlAction_*" class="cn.hybj.web.action.HybjSystemDDlAction" method="{1}">
+	    <action name="jhSystemDDlAction_*" class="cn.hybj.web.action.HybjSystemDDlAction" method="{1}">
 	    	<result name="home">
 	    		/WEB-INF/page/system/dictionaryIndex.jsp
 	    	</result>
@@ -78,7 +78,7 @@
 	    	</result>
 	    </action>
 	    <!-- 用户管理 -->
-	    <action name="hybjUserAction_*" class="cn.hybj.web.action.HybjUserAction" method="{1}">
+	    <action name="jhUserAction_*" class="cn.hybj.web.action.HybjUserAction" method="{1}">
 	    	<result name="home">
 	    		/WEB-INF/page/system/userIndex.jsp
 	    	</result>
@@ -113,7 +113,7 @@
 	    	</result>
 	    </action>
 	    <!-- 角色管理 -->
-	    <action name="hybjRoleAction_*" class="cn.hybj.web.action.HybjRoleAction" method="{1}">
+	    <action name="jhRoleAction_*" class="cn.hybj.web.action.HybjRoleAction" method="{1}">
 	    	<result name="home">
 	    		/WEB-INF/page/system/roleIndex.jsp
 	    	</result>
@@ -126,7 +126,7 @@
 	    	</result>
 	    </action>
 	    <!-- 日志管理 -->
-	    <action name="hybjLogAction_*" class="cn.hybj.web.action.HybjLogAction" method="{1}">
+	    <action name="jhLogAction_*" class="cn.hybj.web.action.HybjLogAction" method="{1}">
 	    	<result name="home">
 	    		/WEB-INF/page/system/logIndex.jsp
 	    	</result>

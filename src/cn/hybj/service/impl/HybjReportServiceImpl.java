@@ -187,4 +187,10 @@ public class HybjReportServiceImpl implements IHybjReportService {
 	public List<HybjReport> findByFuzzy(HybjReport hybjReport) {
 		return hybjReportDao.findByFuzzy(hybjReport);
 	}
+
+
+	@Override
+	public List<HybjReport> findByCondition(HybjReport hybjReport) {
+		return hybjReportDao.findByFuzzy(hybjReport);
+	}
 }

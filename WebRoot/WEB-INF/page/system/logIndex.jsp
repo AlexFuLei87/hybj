@@ -11,7 +11,7 @@
   		return;
   	}
   	else{
-  		document.Form2.action="system/hybjLogAction_delete.do";
+  		document.Form2.action="system/jhLogAction_delete.do";
   		document.Form2.submit();
   	}
   }
@@ -25,7 +25,7 @@
 	</HEAD>
 		
 	<body >
-		<form id="Form1" name="Form1" action="${pageContext.request.contextPath }/system/hybjLogAction_home.do" method="post" cssStyle="margin:0px;"> 
+		<form id="Form1" name="Form1" action="${pageContext.request.contextPath }/system/jhLogAction_home.do" method="post" cssStyle="margin:0px;">
 			<table cellspacing="1" cellpadding="0" width="90%" align="center" bgcolor="#f5fafe" border="0">
 				<TR height=10><td></td></TR>
 				<tr>

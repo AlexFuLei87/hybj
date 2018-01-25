@@ -40,7 +40,7 @@
 		 }
 		 $.ajax({  
              type : "POST",  //提交方式  
-             url : "cp/hybjReportAction_batchUpdate.do",//路径  
+             url : "cp/jhReportAction_batchUpdate.do",//路径
              data : {  
                  "ids" : ids  
              },//数据，这里使用的是Json格式进行传输  
@@ -67,7 +67,7 @@
 		 if(choseValue=="normal"){
 		 $.ajax({  
              type : "POST",  //提交方式  
-             url : "cp/hybjReportAction_update.do",//路径  
+             url : "cp/jhReportAction_update.do",//路径
              data : {  
                  "ids" : id  
              },//数据，这里使用的是Json格式进行传输  

@@ -23,7 +23,7 @@
   <body>
 	<div style='width: 100%;z-index: 1'>
         <input style="font-size:12px; color:black; height=30;width=120"  type="button" value="需求上传" name="BT_Import"
-               onclick="openWindow('cp/hybjShowAction_demandAdd.do','700','400')">
+               onclick="openWindow('cp/jhShowAction_demandAdd.do','700','400')">
 		<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
 				<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
 					<tr>

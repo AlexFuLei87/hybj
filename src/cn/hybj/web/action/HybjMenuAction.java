@@ -181,6 +181,8 @@ public class HybjMenuAction extends BaseAction implements ModelDriven<HybjMenuFo
 	 */
 	public String alermGS(){
 		//List<HybjCommonMsgForm> findCommonMsgListByCurrentDate();
+		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
+		request.setAttribute("jctList", jctList);
 		List<HybjReport> gsList = hybjReportService.findPassOrFail();
 		request.setAttribute("gsList", gsList);
 		return "alermGS";
@@ -237,6 +239,8 @@ public class HybjMenuAction extends BaseAction implements ModelDriven<HybjMenuFo
 		return "logout";
 	}
 	public String alermZT(){
+		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
+		request.setAttribute("jctList", jctList);
 		List<HybjSpecial> list = hybjSpecialService.findPassAndFail();
 		request.setAttribute("ztList", list);
 		return "alermZT";

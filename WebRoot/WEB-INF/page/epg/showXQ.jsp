@@ -17,7 +17,7 @@
 		function showDetails(values) {
             $.ajax({
                 type : "POST",  //提交方式
-                url : "epg/hybjJhEpgAction_findById.do",//路径
+                url : "epg/jhJhEpgAction_findById.do",//路径
                 data : {
                     "demand.id" : values
                 },//数据，这里使用的是Json格式进行传输
@@ -66,7 +66,7 @@
         function ajaxChangeStatus(id,status) {
             $.ajax({
                 type : "POST",  //提交方式
-                url : "epg/hybjJhEpgAction_changeStatusById.do",//路径
+                url : "epg/jhJhEpgAction_changeStatusById.do",//路径
                 data : {
                     "demand.id" : id,
                     "demand.status" : status
@@ -83,7 +83,7 @@
         function findXQByFuzzy() {
             var itemName = $("#itemName1").val();
             var cp = $("#cp").val();
-            window.location.href = "epg/hybjJhEpgAction_findXQByFuzzy.do?demand.demandName="+itemName+"&demand.cp="+cp;
+            window.location.href = "epg/jhJhEpgAction_findXQByFuzzy.do?demand.demandName="+itemName+"&demand.cp="+cp;
         }
 
         function changeTowho(value) {
@@ -93,7 +93,7 @@
 			var id = $("#id").val();
 			$.ajax({
                 type : "POST",  //提交方式
-                url : "epg/hybjJhEpgAction_changeTowhoById.do",//路径
+                url : "epg/jhJhEpgAction_changeTowhoById.do",//路径
                 data : {
                     "demand.id" : id,
                     "demand.cp" : cp,

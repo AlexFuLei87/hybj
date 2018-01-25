@@ -23,7 +23,7 @@
 		             获取到的查询结果放到dictionaryEdit.jsp中，用dictionaryEdit.jsp的内容替换到
 		           dictionaryIndex.jsp中Form2中
 		     */
-		     Pub.submitActionWithForm('Form2','system/hybjSystemDDlAction_edit.do','Form1');
+		     Pub.submitActionWithForm('Form2','system/jhSystemDDlAction_edit.do','Form1');
 		    
 		  }else{
 		    
@@ -31,7 +31,7 @@
 		    document.getElementById("newtypename").innerHTML="";
 		    document.getElementById("newddlText").innerHTML=textStr;
 		     
-		    Pub.submitActionWithForm('Form2','system/hybjSystemDDlAction_edit.do','Form1');
+		    Pub.submitActionWithForm('Form2','system/jhSystemDDlAction_edit.do','Form1');
 		  }  
 	   }
 	   
@@ -84,7 +84,7 @@
 		        }	
 		    }
 		  }
-	      document.Form2.action="system/hybjSystemDDlAction_save.do";
+	      document.Form2.action="system/jhSystemDDlAction_save.do";
 	      document.Form2.submit();     
 	}
 	  

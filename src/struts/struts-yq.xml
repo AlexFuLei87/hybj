@@ -6,7 +6,7 @@
 <struts>
 	<!-- 服务器系统入口 -->
 	<package name="yq" namespace="/yq" extends="struts-default">
-		<action name="hybjYqAction_*" class="cn.hybj.web.action.HybjYqAction" method="{1}">
+		<action name="jhYqAction_*" class="cn.hybj.web.action.HybjYqAction" method="{1}">
 	    	<result name="dx">
 	    		/WEB-INF/page/yinqing/dxIndex.jsp
 	    	</result>

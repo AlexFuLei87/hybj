@@ -16,7 +16,7 @@
     function showDetails(values) {
         $.ajax({
             type : "POST",  //提交方式
-            url : "../epg/hybjJhEpgAction_findNoticeById.do",//路径
+            url : "../epg/jhJhEpgAction_findNoticeById.do",//路径
             data : {
                 "demand.id" : values
             },//数据，这里使用的是Json格式进行传输

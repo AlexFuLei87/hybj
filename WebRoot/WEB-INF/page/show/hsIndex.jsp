@@ -19,16 +19,16 @@
 <form name="Form1" method="post" action="name.aspx" id="Form1">
 	<div>
 		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="编辑上线申报" name="BT_Import"
-				 onclick="openWindow('cp/hybjShowAction_reportAdd.do?cpName=${department}','700','400')">
+				 onclick="openWindow('cp/jhShowAction_reportAdd.do?cpName=${department}','700','400')">
 		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="批量上线申报" name="BT_Import"
-				 onclick="openWindow('cp/hybjShowAction_importpage.do?cpName=${department}','700','400')">
+				 onclick="openWindow('cp/jhShowAction_importpage.do?cpName=${department}','700','400')">
 		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="模板下载" name="BT_Import"
 				 onclick="window.location.href='cp/dowTemplate.do?tempType=online'">
 		<span>||</span>
 		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="编辑下线申报" name="BT_Import"
-			   onclick="openWindow('cp/hybjShowAction_reportOffAdd.do?cpName=${department}','700','500')">
+			   onclick="openWindow('cp/jhShowAction_reportOffAdd.do?cpName=${department}','700','500')">
 		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="批量下线申报" name="BT_Import"
-			   onclick="openWindow('cp/hybjShowAction_importOffpage.do?cpName=${department}','700','500')">
+			   onclick="openWindow('cp/jhShowAction_importOffpage.do?cpName=${department}','700','500')">
 		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="模板下载" name="BT_Import"
 			   onclick="window.location.href='cp/dowTemplate.do?tempType=offline'">
 	</div>
@@ -43,7 +43,7 @@
 			<fieldset style="width: 95%; height: 630px; padding: 1 background:${pageContext.request.contextPath }/images/back1.JPG"><legend>
 			<font color="#0000FF">
 			<img border="0" src="${pageContext.request.contextPath }/images/zoom.gif" width="14" height="14"> 所有上报</font></legend>
-			<IFRAME src="${pageContext.request.contextPath }/system/hybjMenuAction_alermSB.do?cpName=${department}"  name="alarmx"  frameBorder=0 width=100% scrolling=auto height=610></IFRAME>
+			<IFRAME src="${pageContext.request.contextPath }/system/jhMenuAction_alermSB.do?cpName=${department}"  name="alarmx"  frameBorder=0 width=100% scrolling=auto height=610></IFRAME>
 		  	 
 		   </fieldset>
 			
@@ -53,7 +53,7 @@
 			<fieldset style="width: 95%; height: 200px; padding: 1 background:${pageContext.request.contextPath }/images/back1.JPG"><legend>
 			<font color="#0000FF">
 			<img border="0" src="${pageContext.request.contextPath }/images/zoom.gif" width="14" height="14"> 通过审核</font></legend>		
-			<IFRAME src="${pageContext.request.contextPath }/system/hybjMenuAction_alermTG.do?cpName=${department}"  name="alarmx"  frameBorder=0 width=100% scrolling=auto height=170></IFRAME>
+			<IFRAME src="${pageContext.request.contextPath }/system/jhMenuAction_alermTG.do?cpName=${department}"  name="alarmx"  frameBorder=0 width=100% scrolling=auto height=170></IFRAME>
 				
 			</fieldset>
 			
@@ -61,7 +61,7 @@
 			<font color="#0000FF">
 			<img border="0" src="${pageContext.request.contextPath }/images/zoom.gif" width="14" height="14"> 不通过审核</font></legend>
 			<!-- encodeURI(encodeURI(url)); 	 -->
-			<IFRAME src="${pageContext.request.contextPath }/system/hybjMenuAction_alermWTG.do?cpName=${department}"  name="alarmj"  frameBorder=0 width=100% scrolling=auto height=170></IFRAME>
+			<IFRAME src="${pageContext.request.contextPath }/system/jhMenuAction_alermWTG.do?cpName=${department}"  name="alarmj"  frameBorder=0 width=100% scrolling=auto height=170></IFRAME>
 				
 			</fieldset>
 			
@@ -69,7 +69,7 @@
 			<font color="#0000FF">
 			<img border="0" src="${pageContext.request.contextPath }/images/zoom.gif" width="14" height="14">草稿状态的节目</font></legend>
 			
-			<IFRAME src="${pageContext.request.contextPath }/system/hybjMenuAction_alermCG.do?cpName=${department}"  name="station"  frameBorder=0 width=100% scrolling=auto height=170></IFRAME>
+			<IFRAME src="${pageContext.request.contextPath }/system/jhMenuAction_alermCG.do?cpName=${department}"  name="station"  frameBorder=0 width=100% scrolling=auto height=170></IFRAME>
 				     
 		   </fieldset>
 			

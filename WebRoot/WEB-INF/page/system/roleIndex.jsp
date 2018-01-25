@@ -11,17 +11,17 @@
 		 function saveRole(){
 		 
            document.Form2.roleid.value=document.Form1.role.value;
-		   document.Form2.action="system/hybjRoleAction_save.do";
+		   document.Form2.action="system/jhRoleAction_save.do";
 		   document.Form2.submit();
 		}
 		
        
        function selectRole(){
           if(document.Form1.role.value=="0"){
-             document.Form1.action="system/hybjRoleAction_home.do";
+             document.Form1.action="system/jhRoleAction_home.do";
              document.Form1.submit();            
           }else{
-             Pub.submitActionWithForm('Form2','system/hybjRoleAction_edit.do','Form1');
+             Pub.submitActionWithForm('Form2','system/jhRoleAction_edit.do','Form1');
           }
        }
        function checkAllOper(oper){

@@ -34,7 +34,7 @@
   </head>
   
   <body>
-    <s:form action="/cp/hybjReportAction_importOffdata.do" method="post" enctype="multipart/form-data">
+    <s:form action="/cp/jhReportAction_importOffdata.do" method="post" enctype="multipart/form-data">
       <br>
       <table border="0" width="100%" cellspacing="0" cellpadding="0">
       	<tr>

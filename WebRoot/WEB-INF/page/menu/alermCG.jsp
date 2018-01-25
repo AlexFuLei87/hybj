@@ -21,7 +21,7 @@
 		</tr>
 	<s:if test="#request.cgList!=null">
 	<s:iterator value="%{#request.cgList}" var="list">
-		<tr style="cursor:pointer"  onclick="openWindow('../cp/hybjShowAction_showCG.do?id=${list.id }','700','400')">
+		<tr style="cursor:pointer"  onclick="openWindow('../cp/jhShowAction_showCG.do?id=${list.id }','700','400')">
 		<td style="width: 20%;">${list.item_name }</td>
 		<td style="width: 20%;">${list.create_time }</td>
 		<td style="width: 20%;">${list.programa_name }</td>

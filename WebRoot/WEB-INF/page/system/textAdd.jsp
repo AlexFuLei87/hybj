@@ -9,7 +9,7 @@
 
   <script language="javascript"> 
   function checkchar(){
-     document.Form1.action="system/hybjTextAction_save.do";
+     document.Form1.action="system/jhTextAction_save.do";
      document.Form1.submit();
   //alert(" 保存成功!");
   }

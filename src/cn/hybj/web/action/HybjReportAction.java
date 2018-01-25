@@ -1,6 +1,7 @@
 package cn.hybj.web.action;
 
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import cn.hybj.domain.HybjSpecial;
@@ -28,6 +29,15 @@ public class HybjReportAction extends BaseAction implements ModelDriven<HybjRepo
 	private String isSubmit;
 	private String ids;
 	private String submitStatus;
+	private HybjReport hybjReport;
+
+	public HybjReport getHybjReport() {
+		return hybjReport;
+	}
+
+	public void setHybjReport(HybjReport hybjReport) {
+		this.hybjReport = hybjReport;
+	}
 
 	public String getSubmitStatus() {
 		return submitStatus;
@@ -190,6 +200,21 @@ public class HybjReportAction extends BaseAction implements ModelDriven<HybjRepo
 
 	  }
 
+	  public String findByFuzzy() throws UnsupportedEncodingException {
+		  List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
+		  request.setAttribute("jctList", jctList);
+		  byte[] bytes =hybjReport.getCp().getBytes("iso-8859-1");
+		  String cp = new String(bytes, "utf-8");
+		  byte[] bytes1 =hybjReport.getItemName().getBytes("iso-8859-1");
+		  String itemName = new String(bytes1, "utf-8");
+		  HybjReport hybjReport = new HybjReport();
+		  hybjReport.setCp(cp);
+		  hybjReport.setItemName(itemName);
+		  hybjReport.setStatus("PassAndFail");
+		  List<HybjReport> list = hybjReportService.findByCondition(hybjReport);
+		  request.setAttribute("gsList", list);
+		return "alermGS";
+	  }
 
 
 	  

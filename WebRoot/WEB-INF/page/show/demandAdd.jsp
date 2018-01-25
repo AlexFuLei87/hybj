@@ -27,7 +27,7 @@
         function submitDemand() {
             $.ajax({
                 type : "POST",  //提交方式
-                url : "../cp/hybjDemandAction_save.do",//路径
+                url : "../cp/jhDemandAction_save.do",//路径
                 data :$("#Form1").serialize(),//数据，这里使用的是Json格式进行传输
                 dataType : "json",
                 async : true,
@@ -59,7 +59,7 @@
 		</script>
 </head>
 <body>
-<s:form action="../cp/hybjDemandAction_save.do" onsubmit="return checkData()" name="Form1" method="post" id="Form1" enctype="multipart/form-data">
+<s:form action="../cp/jhDemandAction_save.do" onsubmit="return checkData()" name="Form1" method="post" id="Form1" enctype="multipart/form-data">
 	<br>
 	<table cellSpacing="1" height="88" cellPadding="5" width="630" align="center" bgColor="#eeeeee" style="border:1px solid #8ba7e3" border="0">
 

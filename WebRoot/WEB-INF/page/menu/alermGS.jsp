@@ -47,6 +47,13 @@
             $("#details").val('');
             $("#details1").hide();
         }
+
+        function findByFuzzy() {
+            var itemName = $("#itemName").val();
+            var cpName = $("#cp").val();
+            window.location.href = "../cp/jhReportAction_findByFuzzy.do?hybjReport.itemName="+itemName+"&hybjReport.cp="+cpName;
+
+        }
     </SCRIPT>
 	  <style>
 		  .dialog_container1 {
@@ -69,25 +76,42 @@
 			<form id="form" name="form">
 				<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
 					<tr>
-						<th scope="col" class="rounded" style="width: 15%;">
+						<td colspan="4">
+							节目名：
+							<input type="text" size="25" name="itemName" id="itemName" value="" />
+							cp:
+							<s:select list="#request.jctList" name="cp" id="cp"
+									  listKey="ddlName" listValue="ddlName"
+									  headerKey="" headerValue=""
+									  cssStyle="width:155px"
+							>
+							</s:select>
+							<input onclick="findByFuzzy();" type="button" value="查询"/>
+						</td>
+					</tr>
+					<tr>
+						<th scope="col" class="rounded" style="width: 12.5%;">
 							节目名称
 						</th>
-						<th scope="col" class="rounded" style="width: 14%;">
+						<th scope="col" class="rounded" style="width: 15%;">
+							申报类型
+						</th>
+						<th scope="col" class="rounded" style="width: 12.5%;">
 							审核时间
 						</th>
-						<th scope="col" class="rounded" style="width: 14%;">
+						<th scope="col" class="rounded" style="width: 12.5%;">
 							上报状态
 						</th>
-						<th scope="col" class="rounded" style="width: 14%;">
+						<th scope="col" class="rounded" style="width: 12.5%;">
 							上线时间
 						</th>
-						<th scope="col" class="rounded" style="width: 14%;">
+						<th scope="col" class="rounded" style="width: 12.5%;">
 							预上线时间
 						</th>
-						<th scope="col" class="rounded" style="width: 14%;">
+						<th scope="col" class="rounded" style="width: 12.5%;">
 							反馈信息
 						</th>
-						<th scope="col" class="rounded" style="width: 14%;">
+						<th scope="col" class="rounded" style="width: 12.5%;">
 							所属CP
 						</th>
 					</tr>
@@ -96,6 +120,9 @@
 						<tr>
 							<td>
 									${list.item_name }
+							</td>
+							<td>
+									${list.report_status=='online'?'上线申报':'下线申报' }
 							</td>
 							<td>
 									${list.verify_time }

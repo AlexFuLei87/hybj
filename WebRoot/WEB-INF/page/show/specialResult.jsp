@@ -40,7 +40,7 @@ document.onkeydown = function(){
 		 }
 		 $.ajax({  
              type : "POST",  //提交方式  
-             url : "cp/hybjSpecialAction_batchUpdate.do",//路径
+             url : "cp/jhSpecialAction_batchUpdate.do",//路径
              data : {  
                  "ids" : ids  
              },//数据，这里使用的是Json格式进行传输  
@@ -67,7 +67,7 @@ document.onkeydown = function(){
 		 if(choseValue=="normal"){
 		 $.ajax({  
              type : "POST",  //提交方式  
-             url : "cp/hybjSpecialAction_update.do",//路径
+             url : "cp/jhSpecialAction_update.do",//路径
              data : {  
                  "ids" : id  
              },//数据，这里使用的是Json格式进行传输  

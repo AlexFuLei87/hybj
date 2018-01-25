@@ -18,7 +18,7 @@
      alert("设备运行情况字数不能超过500字");
      return;
   }
-  document.Form1.action="system/hybjCommonMsgAction_save.do";
+  document.Form1.action="system/jhCommonMsgAction_save.do";
   document.Form1.submit();
   loading();
   alert(" 待办事宜保存成功!");

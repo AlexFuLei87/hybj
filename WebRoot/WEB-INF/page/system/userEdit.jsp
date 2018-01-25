@@ -88,7 +88,7 @@
 	   if(password == defaultpassword ){
 	   		document.getElementById("md5flag").value = "1";
 	   }
-	   document.Form1.action="system/hybjUserAction_save.do";
+	   document.Form1.action="system/jhUserAction_save.do";
 	   document.Form1.submit();
 	   var roleflag = document.getElementById("roleflag").value;
 	   if(roleflag==null || roleflag==""){

@@ -167,12 +167,20 @@ public class HybjReportDaoImpl extends CommonDaoImpl<HybjReport> implements IHyb
 				parameter_map.put("cp", hybjReport.getCp());
 			}
 			if(!StringUtils.isBlank(hybjReport.getItemName())){
-				condition += " and t.item_name =:itemName";
-				parameter_map.put("itemName", hybjReport.getItemName());
+				condition += " and t.item_name like :itemName";
+				parameter_map.put("itemName", "%"+hybjReport.getItemName()+"%");
 			}
 			if(!StringUtils.isBlank(hybjReport.getReportStatus())){
 				condition += " and t.report_status =:reportStatus";
 				parameter_map.put("reportStatus", hybjReport.getReportStatus());
+			}
+			if(!StringUtils.isBlank(hybjReport.getStatus())){
+				if(hybjReport.getStatus().contains("And")){
+					condition += " and t.status in ('fail','pass')";
+				}else {
+					condition += " and t.status =:status";
+					parameter_map.put("status", hybjReport.getStatus());
+				}
 			}
 
 			list= DataBaseUtil.getDataList(session, sql + condition, parameter_map,
