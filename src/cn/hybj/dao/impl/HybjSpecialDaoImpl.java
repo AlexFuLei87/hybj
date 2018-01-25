@@ -64,13 +64,17 @@ public class HybjSpecialDaoImpl extends CommonDaoImpl<HybjSpecial> implements IH
         Session session = null;
         try {
             session = HibernateSessionFactory.getSession();
-            String sql = "UPDATE  hybj_special t set t.status=:status ";
+            String sql = "UPDATE  hybj_special t set t.status=:status , t.verify_time = now() ";
             String condition = "";
             Map<String, Object> parameter_map = new HashMap<String, Object>();
-            condition += "where id=:id";
+            if("pass".equals(hybjSpecial.getStatus()) && !StringUtils.isBlank(hybjSpecial.getCp())){
+                sql += " , t.draw_part =:drawPart ";
+                parameter_map.put("drawPart",hybjSpecial.getCp());
+            }
+            condition += " where id=:id";
             parameter_map.put("id", hybjSpecial.getId());
             parameter_map.put("status", hybjSpecial.getStatus());
-            DataBaseUtil.executeUpdateByMap(session, sql+condition, parameter_map);
+            DataBaseUtil.executeUpdateByMap(session, sql+condition , parameter_map);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -105,6 +109,26 @@ public class HybjSpecialDaoImpl extends CommonDaoImpl<HybjSpecial> implements IH
         }
     }
 
-
-
+    @Override
+    public List<HybjSpecial> findByPassAndFail() {
+        Session session = null;
+        List<HybjSpecial> list = null;
+        try {
+            session = HibernateSessionFactory.getSession();
+            String sql = "SELECT * from hybj_special t ";
+            String condition = " where t.status = 'pass' or t.status = 'fail' ";
+            Map<String, Object> parameter_map = new HashMap<String, Object>();
+            list = DataBaseUtil.getDataList(session, sql + condition + " order by t.verify_time,t.create_time", parameter_map,
+                    true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                session.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return list;
+    }
 }

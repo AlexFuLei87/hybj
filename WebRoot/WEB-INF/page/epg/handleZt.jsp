@@ -13,47 +13,48 @@
 		<script type="text/javascript" src="${pageContext.request.contextPath }/script/pub.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery.min.js"></script>
 		<script language="javascript">
-			function changeStatus(value,id){
-				var $this = $(value);
-   				var choseValue = $this.val();
-   				if(choseValue == '0'){
-   					$.ajax({  
-                    type : "POST",  //提交方式  
-                    url : "epg/hybjJhEpgAction_changSpecialStatus.do",//路径
-                    data : {  
-                        "hybjSpecial.status" : "pass",
-                        "hybjSpecial.id" : id
-                    },//数据，这里使用的是Json格式进行传输  
-                    dataType : "json",
+			function changeStatus(obj,value,id){
+				if(value){
+				$.ajax({
+					type : "POST",  //提交方式
+					url : "epg/hybjJhEpgAction_changSpecialStatus.do",//路径
+					data : {
+						"hybjSpecial.status" : "fail",
+						"hybjSpecial.id" : id
+					},//数据，这里使用的是Json格式进行传输
+					dataType : "json",
 					async : true,
-                    success : function(result) {//返回数据根据结果进行相应的处理  
-                        if(result.message){
-                         window.location.reload();
-                         alert(result.message);
-                         
+					success : function(result) {//返回数据根据结果进行相应的处理
+						if(result.message){
+						 alert(result.message);
+						  window.location.reload();
+						}
+					}
+					});
+   					}else{
+				    var $this = $(obj);
+				    var cp = $this.val();
+                    $.ajax({
+                        type : "POST",  //提交方式
+                        url : "epg/hybjJhEpgAction_changSpecialStatus.do",//路径
+                        data : {
+                            "hybjSpecial.status" : "pass",
+                            "hybjSpecial.cp" : cp,
+                            "hybjSpecial.id" : id
+                        },//数据，这里使用的是Json格式进行传输
+                        dataType : "json",
+                        async : true,
+                        success : function(result) {//返回数据根据结果进行相应的处理
+                            if(result.message){
+                                alert(result.message);
+                                window.location.reload();
+                            }
                         }
-                    }  
-                });  
-   				}else if(choseValue == '1'){
-   					$.ajax({  
-                    type : "POST",  //提交方式  
-                    url : "epg/hybjJhEpgAction_changSpecialStatus.do",//路径
-                    data : {  
-                        "hybjSpecial.status" : "fail",
-                        "hybjSpecial.id" : id
-                    },//数据，这里使用的是Json格式进行传输  
-                    dataType : "json",
-					async : true,
-                    success : function(result) {//返回数据根据结果进行相应的处理  
-                        if(result.message){
-                         alert(result.message);
-                          window.location.reload();
-                           alert(result.message);
-                        }
-                    }  
-                });  
-   				}
+                    });
+					}
 			}
+
+
 		function saveFeedback(value,id){
 			var $this = $(value);
    			var feedback = $this.val();
@@ -83,7 +84,7 @@
 			}
 		}
 		
-		function batchPass() {
+		function batchFail() {
             var ids = "";
             var count = 0;
             var chk = $("input[name='special_id']");
@@ -97,7 +98,7 @@
             }
             $.ajax({
                 type : "POST",  //提交方式
-                url : "epg/hybjJhEpgAction_batchSpecialPass.do",//路径
+                url : "epg/hybjJhEpgAction_batchSpecialFail.do",//路径
                 data : {
                     "ids" : ids
                 },//数据，这里使用的是Json格式进行传输
@@ -147,29 +148,35 @@
 						<input onclick="findByFuzzy();" type="button" value="查询"/>
 					</td>
 					<td></td>
-					<td><input type="button" value="批量通过" onclick="batchPass();"/></td>
+					<td><input type="button" value="批量不通过" onclick="batchFail();"/></td>
 				</tr>
 				<tr>
 					<th scope="col" class="rounded" style="width: 1%;">
 						<input type="checkbox" name="all" id="all" onClick="checkAll()" />
 					</th>
-					<th scope="col" class="rounded" style="width: 20%;">
+					<th scope="col" class="rounded" style="width: 12.5%;">
 						专题名
 					</th>
-					<th scope="col" class="rounded" style="width: 20%;">
+					<th scope="col" class="rounded" style="width: 12.5%;">
 						节目名
 					</th>
-					<th scope="col" class="rounded" style="width: 20%;">
+					<th scope="col" class="rounded" style="width: 12.5%;">
+						处理时间
+					</th>
+					<th scope="col" class="rounded" style="width: 12.5%;">
 						上报时间
 					</th>
-					<th scope="col" class="rounded" style="width: 10%;">
+					<th scope="col" class="rounded" style="width: 12.5%;">
 						内容方
 					</th>
-					<th scope="col" class="rounded" style="width: 20%;">
+					<th scope="col" class="rounded" style="width: 12.5%;">
 						反馈信息
 					</th>
-					<th scope="col" class="rounded" style="width: 15%;">
+					<th scope="col" class="rounded" style="width: 12.5%;">
 						操作
+					</th>
+					<th scope="col" class="rounded" style="width: 15%;">
+						作图方
 					</th>
 				</tr>
 				<c:forEach items="${special}" var="special" varStatus="vs">
@@ -184,6 +191,9 @@
 							${special.item_name}
 						</td>
 						<td>
+							${special.onDate}
+						</td>
+						<td>
 							${special.create_time}
 						</td>
 						<td>
@@ -193,11 +203,25 @@
 							<input  type="text" value="${report.feedback}" onblur="saveFeedback(this,${special.id})"/>
 						</td>
 						<td>
-							<select id="status" class="status1" onchange="changeStatus(this,${special.id});" type="text">
-				                <option value="">下拉操作</option>
-				                <option value="0">审核通过</option>
-				                <option value="1">审核不通过</option>
-				             </select>
+							<button onclick="changeStatus(this,true,${special.id});">审核不通过</button>
+						</td>
+						<td>
+							<%--<s:select list="#request.jctList" name="cp" id="cp"--%>
+									  <%--listKey="ddlName" listValue="ddlName"--%>
+									  <%--headerKey="" headerValue=""--%>
+									  <%--cssStyle="width:155px" onchange="changeStatus(false,${special.id})"--%>
+							<%--></s:select>--%>
+								<select id="cp" style="width:170px;height:25px" onchange="changeStatus(this,false,${special.id});">
+									<option value=""></option>
+									<option value="华数TV">华数TV</option>
+									<option value="芒果TV">芒果TV</option>
+									<option value="优酷">优酷</option>
+									<option value="优朋">优朋</option>
+									<option value="百视通">百视通</option>
+									<option value="爱奇艺">爱奇艺</option>
+									<option value="天翼视讯">天翼视讯</option>
+									<option value="腾讯">腾讯</option>
+								</select>
 						</td>
 					</tr>
 				</c:forEach>

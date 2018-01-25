@@ -165,10 +165,10 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 
 	}
 
-	public String batchSpecialPass(){
+	public String batchSpecialFail(){
 			String[] idss = ids.split(",");
 			HybjSpecial hybjSpecial = new HybjSpecial();
-			hybjSpecial.setStatus("pass");
+			hybjSpecial.setStatus("fail");
 			for (String string : idss) {
 				int id = Integer.parseInt(string);
 				hybjSpecial.setId(id);
@@ -355,4 +355,6 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 		return "showXQ";
 
 	}
+
+
 }

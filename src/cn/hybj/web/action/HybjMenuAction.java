@@ -5,15 +5,12 @@ import java.io.UnsupportedEncodingException;
 import java.util.Hashtable;
 import java.util.List;
 
-import cn.hybj.domain.HybjDemand;
-import cn.hybj.domain.HybjOutline;
+import cn.hybj.domain.*;
 import cn.hybj.service.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import cn.hybj.container.ServiceProvider;
-import cn.hybj.domain.HybjReport;
-import cn.hybj.domain.HybjUser;
 import cn.hybj.util.LogonUtils;
 import cn.hybj.util.MD5keyBean;
 import cn.hybj.web.form.HybjCommonMsgForm;
@@ -31,6 +28,8 @@ public class HybjMenuAction extends BaseAction implements ModelDriven<HybjMenuFo
 	private IHybjReportService hybjReportService = (IHybjReportService)ServiceProvider.getService(IHybjReportService.SERVICE_NAME);
 
 	private IHybjNoticeService hybjNoticeService = (IHybjNoticeService)ServiceProvider.getService(IHybjNoticeService.SERVICE_NAME);
+
+	private IHybjSpecialService hybjSpecialService = (IHybjSpecialService)ServiceProvider.getService(IHybjSpecialService.SERVICE_NAME);
 
 	private IHybjSystemDDlService hybjSystemDDlService = (IHybjSystemDDlService)ServiceProvider.getService(IHybjSystemDDlService.SERVICE_NAME);
 	//调用日志管理的业务层
@@ -236,5 +235,10 @@ public class HybjMenuAction extends BaseAction implements ModelDriven<HybjMenuFo
 		//清空session
 		request.getSession().invalidate();
 		return "logout";
+	}
+	public String alermZT(){
+		List<HybjSpecial> list = hybjSpecialService.findPassAndFail();
+		request.setAttribute("ztList", list);
+		return "alermZT";
 	}
 }

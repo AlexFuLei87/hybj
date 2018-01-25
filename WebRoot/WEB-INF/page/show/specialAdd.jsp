@@ -16,6 +16,7 @@
 			var specialName = $("#specialNama").val();
 			var itemName = $("#itemName").val();
 			var cp = $("#cp").val();
+			var onDate = $("#onDate").val();
             if(!verifyStringNotEmpty(specialName, "专题名", 32,true)){
                 return;
             }if(!verifyStringNotEmpty(itemName, "节目名", 32,true)){
@@ -29,6 +30,7 @@
                 data :{
                     "hybjSpecial.specialName":specialName,
                     "hybjSpecial.itemName":itemName,
+                    "hybjSpecial.onDate":onDate,
                     "hybjSpecial.cp":cp
 				},//数据，这里使用的是Json格式进行传输
                 dataType : "json",
@@ -70,6 +72,15 @@
 			<td class="ta_11" bgColor="#ffffff">
 				 <s:textfield name="itemName" id="itemName" maxlength="25" size="20" ></s:textfield>
 
+			</td>
+		</tr>
+		<tr>
+		    <td align="center" bgColor="#f5fafe" class="ta_11">申&nbsp;&nbsp;请&nbsp;&nbsp;时&nbsp;&nbsp;间：</td>
+			<td class="ta_11" bgColor="#ffffff">
+				<select name="onDate" id="onDate" style="width:170px;height:25px" onchange="change(this);">
+					<option value="周一">周一</option>
+					<option value="周五">周五</option>
+				</select>
 			</td>
 		</tr>
 		<tr>

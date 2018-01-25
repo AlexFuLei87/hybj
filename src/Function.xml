@@ -17,6 +17,24 @@
 <ElecData>
 
   <Function>
+     <FunctionCode>w</FunctionCode>
+     <FunctionName>内容公示</FunctionName>
+     <ParentCode>Publicity</ParentCode>
+     <ParentName>公示管理</ParentName>
+  </Function>
+    <Function>
+        <FunctionCode>x</FunctionCode>
+        <FunctionName>专题公示</FunctionName>
+        <ParentCode>Publicity</ParentCode>
+        <ParentName>公示管理</ParentName>
+    </Function>
+    <Function>
+        <FunctionCode>y</FunctionCode>
+        <FunctionName>处罚公示</FunctionName>
+        <ParentCode>Publicity</ParentCode>
+        <ParentName>公示管理</ParentName>
+    </Function>
+    <Function>
      <FunctionCode>a</FunctionCode>
      <FunctionName>内容申报</FunctionName>
      <ParentCode>CPUsers</ParentCode>

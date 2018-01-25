@@ -54,8 +54,8 @@
   
   <body>
 	<div style='width: 100%;z-index: 1'>
-		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="公示区" name="BT_Import"
-			   onclick="window.location.href='system/hybjMenuAction_alermGS.do'">
+		<%--<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="公示区" name="BT_Import"--%>
+			   <%--onclick="window.location.href='system/hybjMenuAction_alermGS.do'">--%>
 		<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
 				<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: center; border-collapse: collapse;">
 					<tr>
@@ -105,7 +105,7 @@
 
 			<tr>
 				<td class="ta_01" align="center" colSpan="4" background="${pageContext.request.contextPath }/images/b-info.gif">
-					<font face="宋体" size="2"><strong>公示内容</strong></font>
+					<font face="宋体" size="2"><strong>公告内容</strong></font>
 				</td>
 			</tr>
 			<tr>

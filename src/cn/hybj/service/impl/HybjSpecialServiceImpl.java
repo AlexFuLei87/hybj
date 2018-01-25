@@ -106,4 +106,10 @@ public class HybjSpecialServiceImpl implements IHybjSpecialService {
 	public void updateStatusById(HybjSpecial special) {
 		hybjSpecialDao.updateStatus(special);
 	}
+
+
+	@Override
+	public List<HybjSpecial> findPassAndFail() {
+		return hybjSpecialDao.findByPassAndFail();
+	}
 }

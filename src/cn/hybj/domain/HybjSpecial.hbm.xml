@@ -34,5 +34,11 @@
         <property name="verifyTime" type="string">
             <column name="verify_time" />
         </property>
+        <property name="onDate" type="string">
+            <column name="onDate" />
+        </property>
+        <property name="drawPart" type="string">
+            <column name="draw_part" />
+        </property>
     </class>
 </hibernate-mapping>

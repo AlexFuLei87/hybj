@@ -39,7 +39,7 @@
         function showDetails(value) {
             var len = getBLen(value);
             if (len < 6){return}
-			$("#details").html(value);
+            $("#details").html(value);
             $("#details1").show();
 
         }
@@ -47,6 +47,10 @@
             $("#details").val('');
             $("#details1").hide();
         }
+
+
+
+
     </SCRIPT>
 	  <style>
 		  .dialog_container1 {
@@ -69,45 +73,55 @@
 			<form id="form" name="form">
 				<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
 					<tr>
-						<th scope="col" class="rounded" style="width: 15%;">
-							节目名称
+						<th scope="col" class="rounded" style="width: 12.5%;">
+							专题名
 						</th>
-						<th scope="col" class="rounded" style="width: 14%;">
-							审核时间
+						<th scope="col" class="rounded" style="width: 12.5%;">
+							节目名
 						</th>
-						<th scope="col" class="rounded" style="width: 14%;">
-							上报状态
+						<th scope="col" class="rounded" style="width: 12.5%;">
+							处理时间
 						</th>
-						<th scope="col" class="rounded" style="width: 14%;">
-							上线时间
+						<th scope="col" class="rounded" style="width: 12.5%;">
+							专题状态
 						</th>
-						<th scope="col" class="rounded" style="width: 14%;">
-							预上线时间
+						<th scope="col" class="rounded" style="width: 12.5%;">
+							上报时间
 						</th>
-						<th scope="col" class="rounded" style="width: 14%;">
+						<th scope="col" class="rounded" style="width: 12.5%;">
+							内容方
+						</th>
+						<th scope="col" class="rounded" style="width: 12.5%;">
+							作图方
+						</th>
+						<th scope="col" class="rounded" style="width: 12.5%;">
 							反馈信息
 						</th>
-						<th scope="col" class="rounded" style="width: 14%;">
-							所属CP
-						</th>
+
 					</tr>
-					<s:if test="#request.gsList!=null">
-					<s:iterator value="%{#request.gsList}" var="list">
+					<s:if test="#request.ztList!=null">
+					<s:iterator value="%{#request.ztList}" var="list">
 						<tr>
+							<td>
+									${list.special_name }
+							</td>
 							<td>
 									${list.item_name }
 							</td>
 							<td>
-									${list.verify_time }
+									${list.onDate }
 							</td>
 							<td>
 									${list.status=="pass"?"通过审核":"未通过审核" }
 							</td>
 							<td>
-									${list.online_time }
+									${list.create_time }
 							</td>
 							<td>
-									${list.preonline_time}
+									${list.cp}
+							</td>
+							<td>
+									${list.draw_part}
 							</td>
 							<td onmouseover="overShow('${list.feedback}')" onmouseout="outHide()" onclick="showDetails('${list.feedback}')">
 								<c:choose>
@@ -118,9 +132,6 @@
 										${list.feedback}
 									</c:otherwise>
 								</c:choose>
-							</td>
-							<td>
-									${list.cp }
 							</td>
 						</tr>
 					</s:iterator>
@@ -135,7 +146,7 @@
 
 			<tr>
 				<td class="ta_01" align="center" colSpan="4" background="${pageContext.request.contextPath }/images/b-info.gif">
-					<font face="宋体" size="2"><strong>公示内容</strong></font>
+					<font face="宋体" size="2"><strong>专题公示</strong></font>
 				</td>
 			</tr>
 			<tr>

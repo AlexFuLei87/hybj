@@ -17,4 +17,5 @@ public interface IHybjSpecialDao extends ICommonDao<HybjSpecial> {
     void updataFeedback(HybjSpecial hybjSpecial);
 
 
+    List<HybjSpecial> findByPassAndFail();
 }

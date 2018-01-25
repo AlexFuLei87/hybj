@@ -50,6 +50,9 @@
 	    	<result name="updatePasswd">
 	    		/WEB-INF/page/menu/updatePwd.jsp
 	    	</result>
+			<result name="alermZT">
+				/WEB-INF/page/menu/alermZT.jsp
+			</result>
 	    </action>
 	    <!-- 代办事宜 -->
 	    <action name="hybjCommonMsgAction_*" class="cn.hybj.web.action.HybjCommonMsgAction" method="{1}">

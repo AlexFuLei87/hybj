@@ -21,8 +21,27 @@ public class HybjSpecial implements java.io.Serializable {
 	private String specialStatus;
 	private String verifyTime;
 	private String feedback;
+	private String onDate;
+	private String drawPart;
 
 	// Property accessors
+
+
+	public String getDrawPart() {
+		return drawPart;
+	}
+
+	public void setDrawPart(String drawPart) {
+		this.drawPart = drawPart;
+	}
+
+	public String getOnDate() {
+		return onDate;
+	}
+
+	public void setOnDate(String onDate) {
+		this.onDate = onDate;
+	}
 
 	public Integer getId() {
 		return this.id;

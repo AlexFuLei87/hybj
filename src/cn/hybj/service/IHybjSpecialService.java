@@ -24,4 +24,6 @@ public interface IHybjSpecialService {
     List<HybjSpecial> saveReportWithExcel(HybjSpecialForm hybjSpecial);
 
     void updateStatusById(HybjSpecial special);
+
+    List<HybjSpecial> findPassAndFail();
 }

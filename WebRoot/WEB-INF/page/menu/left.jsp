@@ -38,16 +38,57 @@ TH {
 	</HEAD>
 	<BODY scroll="no" MS_POSITIONING="GridLayout" scroll="auto" class="bodyscroll">
 
-				<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
-					<TBODY>
-					<TR height=50 >
-						<TD align="left" background="${pageContext.request.contextPath }/images/b-info.gif"  vAlign="middle">
-							&nbsp;&nbsp;&nbsp;<img src="" name="imgKB0" width="9" height="9" alt="" border="0" />
-							&nbsp; <A class="cl" onclick="expand('KB0') " href="${pageContext.request.contextPath }/system/hybjMenuAction_alermGG.do" target="mainFrame">&nbsp;公告公示</A>
-						</TD>
-					</TR>
-					</TBODY>
-				</TABLE>
+				<%--<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">--%>
+					<%--<TBODY>--%>
+					<%--<TR height=50 >--%>
+						<%--<TD align="left" background="${pageContext.request.contextPath }/images/b-info.gif"  vAlign="middle">--%>
+							<%--&nbsp;&nbsp;&nbsp;<img src="" name="imgKB0" width="9" height="9" alt="" border="0" />--%>
+							<%--&nbsp; <A class="cl" onclick="expand('KB0') " href="${pageContext.request.contextPath }/system/hybjMenuAction_alermGG.do" target="mainFrame">&nbsp;公告公示</A>--%>
+						<%--</TD>--%>
+					<%--</TR>--%>
+					<%--</TBODY>--%>
+				<%--</TABLE>--%>
+					<%if(popedom.contains("w")||popedom.contains("x")||popedom.contains("y")){ %>
+					<DIV class="parent" id="KB0Parent">
+						<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
+							<TBODY>
+							<TR height=25 >
+								<TD align="left" background="${pageContext.request.contextPath }/images/b-info.gif"  vAlign="middle">
+									&nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath }/images/add.gif" name="imgKB0" width="9" height="9" alt="" border="0" />
+									&nbsp; <A class="cl" onclick="showOrHid('gs');" href="#">&nbsp;公示管理</A>
+								</TD>
+							</TR>
+							</TBODY>
+						</TABLE>
+					</DIV>
+					<DIV class="child" id="KB0Child">
+						<TABLE cellSpacing="0" cellPadding="0" width="99%" border="0">
+							<TBODY name="gs">
+							<%if(popedom.contains("w")){ %>
+							<TR>
+								<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
+									<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/hybjMenuAction_alermGS.do" target="mainFrame">内容公示</A>
+								</TD>
+							</TR>
+							<%}if(popedom.contains("x")){ %>
+							<TR>
+								<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
+									<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/hybjMenuAction_alermZT.do" target="mainFrame">专题公示</A>
+								</TD>
+							</TR>
+							<%}if(popedom.contains("y")){ %>
+							<TR>
+								<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
+									<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/hybjMenuAction_alermGG.do" target="mainFrame">处罚公示</A>
+								</TD>
+							</TR>
+							<%}%>
+
+
+							</TBODY>
+						</TABLE>
+					</DIV>
+					<%} %>
                      
                         <%if(popedom.contains("a")||popedom.contains("b")){ %>
 						<DIV class="parent" id="KB0Parent">
