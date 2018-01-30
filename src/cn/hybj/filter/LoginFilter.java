@@ -22,7 +22,7 @@ public class LoginFilter implements Filter {
 	public void init(FilterConfig arg0) throws ServletException {
 		list.add("/index.jsp");
 		list.add("/image.jsp");
-		list.add("/system/hybjMenuAction_home.do");
+		list.add("/system/jhMenuAction_home.do");
 	}
 
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,

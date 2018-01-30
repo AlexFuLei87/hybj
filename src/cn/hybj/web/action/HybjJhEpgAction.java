@@ -102,6 +102,7 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 	public String jhhy(){
 		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
 		hybjReportForm.setReportStatus("online");
+		hybjReportForm.setStatus("normal");
 		List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
 		request.setAttribute("jctList", jctList);
 		request.setAttribute("report", list);
@@ -355,6 +356,45 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 		return "showXQ";
 
 	}
+
+	public String onlineResult() throws UnsupportedEncodingException {
+		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
+		request.setAttribute("jctList", jctList);
+		if (hybjReport != null){
+			byte[] bytes =hybjReport.getCp().getBytes("iso-8859-1");
+			String cp = new String(bytes, "utf-8");
+			byte[] bytes1 =hybjReport.getItemName().getBytes("iso-8859-1");
+			String itemName = new String(bytes1, "utf-8");
+			hybjReportForm.setCp(cp);
+			hybjReportForm.setItemName(itemName);
+		}
+		hybjReportForm.setStatus("onlineAndPass");
+		hybjReportForm.setReportStatus("online");
+		List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
+		request.setAttribute("report", list);
+		return "onlineResult";
+
+	}
+
+	public String offlineResult() throws UnsupportedEncodingException {
+		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
+		request.setAttribute("jctList", jctList);
+		if (hybjReport != null){
+			byte[] bytes =hybjReport.getCp().getBytes("iso-8859-1");
+			String cp = new String(bytes, "utf-8");
+			byte[] bytes1 =hybjReport.getItemName().getBytes("iso-8859-1");
+			String itemName = new String(bytes1, "utf-8");
+			hybjReportForm.setCp(cp);
+			hybjReportForm.setItemName(itemName);
+		}
+		hybjReportForm.setStatus("onlineAndPass");
+		hybjReportForm.setReportStatus("offline");
+		List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
+		request.setAttribute("report", list);
+		return "offlineResult";
+
+	}
+
 
 
 }

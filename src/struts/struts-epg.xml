@@ -19,11 +19,17 @@
 			  <result name="showYW">
 	    		/WEB-INF/page/epg/showYW.jsp
 	    	</result>
-			  <result name="showXQ">
+			<result name="showXQ">
 	    		/WEB-INF/page/epg/showXQ.jsp
 	    	</result>
-			  <result name="handleZt">
+			<result name="handleZt">
 	    		/WEB-INF/page/epg/handleZt.jsp
+	    	</result>
+			<result name="onlineResult">
+	    		/WEB-INF/page/epg/onlineResult.jsp
+	    	</result>
+ 			<result name="offlineResult">
+	    		/WEB-INF/page/epg/offlineResult.jsp
 	    	</result>
 
 	    	<result type="stream">

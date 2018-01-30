@@ -9,7 +9,7 @@
 		<script type="text/javascript" src="${pageContext.request.contextPath }/script/pub.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery.min.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath }/script/input_verify.js"></script>
-        <script type="text/javascript" src="${pageContext.request.contextPath }/script/kindeditor-4.1.10/kindeditor-min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath }/script/kindeditor-4.1.10/kindeditor.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath }/script/kindeditor-4.1.10/lang/zh_CN.js"></script>
 
         <script language="javascript">

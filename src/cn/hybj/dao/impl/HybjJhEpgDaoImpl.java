@@ -28,10 +28,17 @@ public class HybjJhEpgDaoImpl extends CommonDaoImpl<HybjReport> implements IHybj
 			String sql = "SELECT * from hybj_report t ";
 			String condition = "";
 			Map<String, Object> parameter_map = new HashMap<String, Object>();
-			condition += "where t.status =:status";
-			parameter_map.put("status", "normal");
+			condition += " where 1=1 ";
+			if (!StringUtils.isBlank(hybjReportForm.getStatus())) {
+				if(hybjReportForm.getStatus().contains("And")){
+					condition += " and t.status in ('fail','pass') ";
+				}else {
+					condition += " and t.status =:status ";
+					parameter_map.put("status", hybjReportForm.getStatus());
+				}
+			}
 			if (!StringUtils.isBlank(hybjReportForm.getCp())) {
-				condition += "and t.cp =:cp";
+				condition += " and t.cp =:cp ";
 				parameter_map.put("cp", hybjReportForm.getCp());
 			}
 			if (!StringUtils.isBlank(hybjReportForm.getItemName())) {

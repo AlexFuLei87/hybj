@@ -123,7 +123,7 @@
 			var itemName = $("#demandName").val();
 			var cpName = $("#cp").val();
             //"epg/hybjJhEpgAction_findByFuzzy.do"
-			window.location.href = "epg/jhJhEpgAction_findByFuzzy.do?hybjReport.itemName="+itemName+"&hybjReport.cp="+cpName+"&hybjReport.reportStatus=offline";
+			window.location.href = "epg/jhJhEpgAction_findOfflineByFuzzy.do?hybjReport.itemName="+itemName+"&hybjReport.cp="+cpName;
 
         }
 		</script>
@@ -134,7 +134,7 @@
 		<form id="form" name="form" >
 			<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
 				<tr>
-					<td colspan="6">
+					<td colspan="7">
 						节目名：
 						<input type="text" size="25" name="demandName" id="demandName" value="" />
 						cp:
@@ -151,6 +151,7 @@
 					<td></td>
 					<td></td>
 					<td><input type="button" value="批量通过" onclick="batchPass();"/></td>
+					<td><input type="button" value="已处理" onclick="window.location.href='epg/jhJhEpgAction_offlineResult.do'"/></td>
 				</tr>
 				<tr>
 					<th scope="col" class="rounded" style="width: 1%;">

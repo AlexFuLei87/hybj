@@ -1,6 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <HTML>
 	<HEAD>
 		<title>聚合EPG管理</title>		
@@ -151,6 +152,7 @@
 					<td></td>
 					<td></td>
 					<td><input type="button" value="批量通过" onclick="batchPass();"/></td>
+					<td><input type="button" value="已处理" onclick="window.location.href = 'epg/jhJhEpgAction_onlineResult.do'"/></td>
 				</tr>
 				<tr>
 					<th scope="col" class="rounded" style="width: 1%;">
@@ -211,10 +213,20 @@
 							${report.cp}
 						</td>
 						<td>
-							${report.online_time}
+							<c:if test="${fn:length(report.online_time)>10 }">
+								${fn:substring(report.online_time, 0, 10)}
+							</c:if>
+							<c:if test="${fn:length(report.online_time)<=10 }">
+								${report.online_time }
+							</c:if>
 						</td>
 						<td>
-							${report.preonline_time}
+							<c:if test="${fn:length(report.preonline_time)>10 }">
+								${fn:substring(report.preonline_time, 0, 10)}
+							</c:if>
+							<c:if test="${fn:length(report.preonline_time)<=10 }">
+								${report.preonline_time }
+							</c:if>
 						</td>
 						<td>
 							${report.isCharge==true?'是':'否'}
