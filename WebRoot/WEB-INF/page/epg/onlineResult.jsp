@@ -52,7 +52,7 @@
 						节目名称
 					</th>
 					<th scope="col" class="rounded" style="width: 11%;">
-						上报时间
+						申报时间
 					</th>
 					<th scope="col" class="rounded" style="width: 11%;">
 						所属分类

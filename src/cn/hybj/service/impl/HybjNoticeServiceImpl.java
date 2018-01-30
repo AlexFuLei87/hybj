@@ -55,4 +55,9 @@ class HybjNoticeServiceImpl implements IHybjNoticeService {
 		int idd =Integer.parseInt(id);
 		hybjNoticeDao.deleteObjectByIDs(idd);
 	}
+
+	@Override
+	public List<HybjOutline> findByCondition(HybjOutline outline) {
+		return hybjNoticeDao.findByCondition(outline);
+	}
 }

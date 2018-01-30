@@ -38,10 +38,10 @@
 							节目名称
 						</th>
 						<th scope="col" class="rounded" style="width: 14%;">
-							上报状态
+							申报状态
 						</th>
 						<th scope="col" class="rounded" style="width: 14%;">
-							上报时间
+							申报时间
 						</th>
 						<th scope="col" class="rounded" style="width: 14%;">
 							审核时间

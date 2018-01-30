@@ -13,99 +13,7 @@
 	  <script type="text/javascript" src="${pageContext.request.contextPath }/script/pub.js"></script>
 	  <script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery.min.js"></script>
     <SCRIPT language="javascript">
-		
-		function showDetails(values) {
-            $.ajax({
-                type : "POST",  //提交方式
-                url : "epg/jhJhEpgAction_findById.do",//路径
-                data : {
-                    "demand.id" : values
-                },//数据，这里使用的是Json格式进行传输
-                dataType : "json",
-                async : true,
-                success : function(result) {//返回数据根据结果进行相应的处理
-                   showResult(result.hybjDemand);
-                }
-            });
-        }
 
-        function showResult(data) {
-            $("#demandName").val(data.demandName);
-            $("#demandType").val(data.fenlei);
-            $("#details").val(data.xqDetails);
-            $("#status1").val(data.status);
-            $("#towho").val(data.towho);
-            $("#id").val(data.id);
-            $("#details1").show();
-        }
-
-        function closeWindow() {
-		    $("#demandName").val("");
-		    $("#demandType").val("");
-		    $("#details").val("");
-			$("#details1").hide();
-        }
-
-        function changeXQStatus(values) {
-			var $this = $(values);
-			var chosVal = $this.val();
-			var id = $("#id").val();
-			if ("" == chosVal){return}
-			if (chosVal == "0"){ajaxChangeStatus(id,0);}
-			if (chosVal == "1"){ajaxChangeStatus(id,1);}
-			if (chosVal == "2"){ajaxChangeStatus(id,2);}
-			if (chosVal == "3"){ajaxChangeStatus(id,3);}
-			if (chosVal == "4"){ajaxChangeStatus(id,4);}
-			if (chosVal == "5"){ajaxChangeStatus(id,5);}
-			if (chosVal == "6"){ajaxChangeStatus(id,6);}
-			if (chosVal == "7"){ajaxChangeStatus(id,7);}
-			if (chosVal == "8"){ajaxChangeStatus(id,8);}
-        }
-
-
-        function ajaxChangeStatus(id,status) {
-            $.ajax({
-                type : "POST",  //提交方式
-                url : "epg/jhJhEpgAction_changeStatusById.do",//路径
-                data : {
-                    "demand.id" : id,
-                    "demand.status" : status
-                },//数据，这里使用的是Json格式进行传输
-                dataType : "json",
-                async : true,
-                success : function(result) {//返回数据根据结果进行相应的处理
-					alert(result.message);
-                }
-            });
-
-
-        }
-        function findXQByFuzzy() {
-            var itemName = $("#itemName1").val();
-            var cp = $("#cp").val();
-            window.location.href = "epg/jhJhEpgAction_findXQByFuzzy.do?demand.demandName="+itemName;
-        }
-
-        function changeTowho(value) {
-			var $this = $(value);
-			var towho = $this.val();
-			var cp = $this.find('option:selected').text();
-			var id = $("#id").val();
-			$.ajax({
-                type : "POST",  //提交方式
-                url : "epg/jhJhEpgAction_changeTowhoById.do",//路径
-                data : {
-                    "demand.id" : id,
-                    "demand.cp" : cp,
-                    "demand.towho" : towho
-                },//数据，这里使用的是Json格式进行传输
-                dataType : "json",
-                async : true,
-                success : function(result) {//返回数据根据结果进行相应的处理
-                    alert(result.message);
-                }
-            });
-        }
     </SCRIPT>
    </head>
   
@@ -113,20 +21,6 @@
 	<div style='width: 100%;z-index: 1'>
 		<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
 				<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
-					<tr>
-						<td colspan="5">
-							需求名：
-							<input type="text" size="25" name="itemName1" id="itemName1" value="" />
-							<%--cp:--%>
-							<%--<s:select list="#request.jctList" name="cp" id="cp"--%>
-									  <%--listKey="ddlName" listValue="ddlName"--%>
-									  <%--headerKey="" headerValue=""--%>
-									  <%--cssStyle="width:155px"--%>
-							<%-->--%>
-							<%--</s:select>--%>
-							<input onclick="findXQByFuzzy();" type="button" value="查询"/>
-						</td>
-					</tr>
 					<tr>
 						<th scope="col" class="rounded" style="width: 12.5%;">
 							需求名称

@@ -30,7 +30,7 @@
     </Function>
     <Function>
         <FunctionCode>y</FunctionCode>
-        <FunctionName>处罚公示</FunctionName>
+        <FunctionName>问题公示</FunctionName>
         <ParentCode>Publicity</ParentCode>
         <ParentName>公示管理</ParentName>
     </Function>
@@ -69,7 +69,7 @@
   </Function>
   <Function>
       <FunctionCode>h</FunctionCode>
-      <FunctionName>公示管理</FunctionName>
+      <FunctionName>问题管理</FunctionName>
       <ParentCode>JHUsers</ParentCode>
       <ParentName>聚合管理</ParentName>
   </Function>
@@ -106,43 +106,9 @@
      <ParentName>系统管理</ParentName>
   </Function>
     <Function>
-     <FunctionCode>r</FunctionCode>
-     <FunctionName>待办事宜</FunctionName>
-     <ParentCode>sysmng</ParentCode>
-     <ParentName>系统管理</ParentName>
-  </Function>
-    <Function>
-        <FunctionCode>s</FunctionCode>
-        <FunctionName>数据字典维护</FunctionName>
-        <ParentCode>sysmng</ParentCode>
-        <ParentName>系统管理</ParentName>
-    </Function>
-    <Function>
         <FunctionCode>z</FunctionCode>
         <FunctionName>日志管理</FunctionName>
         <ParentCode>sysmng</ParentCode>
         <ParentName>系统管理</ParentName>
     </Function>
-
-
-
-<Function>
-     <FunctionCode>l</FunctionCode>
-     <FunctionName>新增功能</FunctionName>
-     <ParentCode>operate</ParentCode>
-     <ParentName>操作权限分配</ParentName>
-  </Function>
-  <Function>
-     <FunctionCode>m</FunctionCode>
-     <FunctionName>删除功能</FunctionName>
-     <ParentCode>operate</ParentCode>
-     <ParentName>操作权限分配</ParentName>
-  </Function>  
-  <Function>
-     <FunctionCode>n</FunctionCode>
-     <FunctionName>编辑功能</FunctionName>
-     <ParentCode>operate</ParentCode>
-     <ParentName>操作权限分配</ParentName>
-  </Function>
-
 </ElecData>

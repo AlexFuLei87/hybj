@@ -19,4 +19,6 @@ public interface IHybjNoticeService {
     HybjOutline findById(Integer id);
 
     void deleteById(String id);
+
+	List<HybjOutline> findByCondition(HybjOutline outline);
 }

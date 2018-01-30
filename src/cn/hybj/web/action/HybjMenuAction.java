@@ -188,7 +188,7 @@ public class HybjMenuAction extends BaseAction implements ModelDriven<HybjMenuFo
 		return "alermGS";
 	}
 	/**
-	 * 其余cp的上报情况
+	 * 其余cp的申报情况
 	 * @return
 	 * @throws Exception 
 	 */
@@ -202,7 +202,7 @@ public class HybjMenuAction extends BaseAction implements ModelDriven<HybjMenuFo
 	}
 	
 	/**
-	 * 草稿状态的上报内容
+	 * 草稿状态的申报内容
 	 * @return
 	 * @throws Exception
 	 */
@@ -221,7 +221,9 @@ public class HybjMenuAction extends BaseAction implements ModelDriven<HybjMenuFo
 	 * @return
 	 */
 	public String alermGG() {
-		List<HybjOutline> lists = hybjNoticeService.findGG();
+		HybjOutline outline = new HybjOutline();
+		outline.setStatus("2");
+		List<HybjOutline> lists = hybjNoticeService.findByCondition(outline);
 		request.setAttribute("ggList", lists);
 		return "alermGG";
 	}

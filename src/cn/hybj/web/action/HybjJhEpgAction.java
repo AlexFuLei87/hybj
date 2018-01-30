@@ -201,6 +201,21 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
         return "showYW";
 
     }
+
+    public String handleTZ(){
+		HybjOutline outline = new HybjOutline();
+		outline.setStatus("1");
+		List<HybjOutline> lists = hybjNoticeService.findByCondition(outline);
+		request.setAttribute("tzList", lists);
+        return "handleTZ";
+    }
+    public String tzResult(){
+		HybjOutline outline = new HybjOutline();
+		outline.setStatus("23");
+		List<HybjOutline> lists = hybjNoticeService.findByCondition(outline);
+		request.setAttribute("tzList", lists);
+        return "completeTZ";
+    }
 	public String showXQ(){
 		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
 		request.setAttribute("jctList", jctList);
@@ -322,8 +337,6 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 	public String findXQByFuzzy() throws UnsupportedEncodingException {
         List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
         request.setAttribute("jctList", jctList);
-		byte[] bytes =demand.getCp().getBytes("iso-8859-1");
-		String cp = new String(bytes, "utf-8");
 		byte[] bytes1 =demand.getDemandName().getBytes("iso-8859-1");
 		String demandName = new String(bytes1, "utf-8");
 		HybjUser user = (HybjUser)request.getSession().getAttribute("globle_user");
@@ -348,7 +361,6 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 		}else if("聚合".equals(user.getDepartment())){
 			demand.setTowho("jh");
 		}
-		demand.setCp(cp);
 		demand.setDemandName(demandName);
 		List<HybjDemand> report = hybjDemandService.findByFuzzy(demand);
 		request.setAttribute("xqList", report);

@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <HTML>
 <HEAD>
-<TITLE>聚合上报平台首页</TITLE>
+<TITLE>聚合申报平台首页</TITLE>
 <link href="../css/Font.css" type="text/css" rel="stylesheet"/>
 <STYLE>BODY {
 	SCROLLBAR-ARROW-COLOR: #ffffff; SCROLLBAR-BASE-COLOR: #dee3f7

@@ -57,23 +57,23 @@
 
                         <tr>
                             <td class="ta_01" align="center" colSpan="4" background="${pageContext.request.contextPath }/images/b-info.gif">
-                                <font face="宋体" size="2"><strong>公示内容</strong></font>
+                                <font face="宋体" size="2"><strong>通知内容</strong></font>
                             </td>
                         </tr>
                         <tr>
-                            <td align="center" bgColor="#f5fafe" class="ta_11">节&nbsp;&nbsp;目&nbsp;&nbsp;名：<font color="#FF0000">*</font></td>
+                            <td align="center" bgColor="#f5fafe" class="ta_11">通&nbsp;&nbsp;知&nbsp;&nbsp;名：<font color="#FF0000">*</font></td>
                             <td class="ta_11" bgColor="#ffffff">
                                 <s:textfield name="outlineName" id="outlineName" maxlength="25" size="20" ></s:textfield>
                             </td>
                         </tr>
                         <tr>
-                            <td align="center" bgColor="#f5fafe" class="ta_11">公&nbsp;&nbsp;示&nbsp;&nbsp;概&nbsp;&nbsp;要：</td>
+                            <td align="center" bgColor="#f5fafe" class="ta_11">通&nbsp;&nbsp;知&nbsp;&nbsp;概&nbsp;&nbsp;要：</td>
                             <td class="ta_11" bgColor="#ffffff">
                                 <s:textfield name="outline" id="outline" maxlength="25" size="20" ></s:textfield>
                             </td>
                         </tr>
                         <tr>
-                            <td align="center" bgColor="#f5fafe" class="ta_21">公&nbsp;&nbsp;示&nbsp;&nbsp;详&nbsp;&nbsp;情：</td>
+                            <td align="center" bgColor="#f5fafe" class="ta_21">通&nbsp;&nbsp;知&nbsp;&nbsp;详&nbsp;&nbsp;情：</td>
                             <td class="ta_21" bgColor="#ffffff">
                                 <textarea name="details" id="details" style="height: 400px" rows="4" cols="52"></textarea>
                             </td>

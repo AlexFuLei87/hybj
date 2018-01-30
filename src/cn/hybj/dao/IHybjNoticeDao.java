@@ -13,4 +13,6 @@ public interface IHybjNoticeDao extends ICommonDao<HybjOutline> {
 	List<HybjOutline> findGG();
 
 	void changeStatus(HybjOutlineForm hybjOutlineForm);
+
+    List<HybjOutline> findByCondition(HybjOutline outline);
 }

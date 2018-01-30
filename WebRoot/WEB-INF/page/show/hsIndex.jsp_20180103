@@ -148,7 +148,7 @@
 			
 			<fieldset style="width: 610px; height: 630px; padding: 1 background:${pageContext.request.contextPath }/images/back1.JPG"><legend>
 			<font color="#0000FF">
-			<img border="0" src="${pageContext.request.contextPath }/images/zoom.gif" width="14" height="14"> 上报内容</font></legend>		
+			<img border="0" src="${pageContext.request.contextPath }/images/zoom.gif" width="14" height="14"> 申报内容</font></legend>
 <%-- 			<IFRAME src="${pageContext.request.contextPath }/system/hybjMenuAction_alermAdd.do"  name="alarmx" id="alarmx" frameBorder=0 width=610 scrolling=auto height=610></IFRAME>--%>	
 		   <s:form name="Form1" method="post">
 	 	<br>
@@ -156,7 +156,7 @@
 
 	    <tr>
 			<td class="ta_01" align="center" colSpan="4" background="${pageContext.request.contextPath }/images/b-info.gif">
-			 <font face="宋体" size="2"><strong>上报条目</strong></font>
+			 <font face="宋体" size="2"><strong>申报条目</strong></font>
 			</td>
 	    </tr>
 	     <tr>

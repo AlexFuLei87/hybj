@@ -138,6 +138,10 @@ public class HybjShowAction extends BaseAction implements ModelDriven<HybjMenuFo
 		initSelect();
 		return "showCG";
 	}
+	public String drawing() throws Exception{
+
+		return "drawing";
+		}
 
 
 }

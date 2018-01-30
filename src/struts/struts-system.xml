@@ -121,7 +121,7 @@
 	    		/WEB-INF/page/system/roleEdit.jsp
 	    	</result>
 	    	<result name="save" type="redirectAction">
-	    		<param name="actionName">hybjRoleAction_home</param>
+	    		<param name="actionName">jhRoleAction_home</param>
 	    		<param name="namespace">/system</param>
 	    	</result>
 	    </action>
@@ -131,7 +131,7 @@
 	    		/WEB-INF/page/system/logIndex.jsp
 	    	</result>
 	    	<result name="delete" type="redirectAction">
-	    		<param name="actionName">hybjLogAction_home</param>
+	    		<param name="actionName">jhLogAction_home</param>
 	    		<param name="namespace">/system</param>
 	    	</result>
 	    </action>

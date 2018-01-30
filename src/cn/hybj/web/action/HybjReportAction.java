@@ -125,7 +125,7 @@ public class HybjReportAction extends BaseAction implements ModelDriven<HybjRepo
 		  	int count = hybjReportService.findReportByItemName(hybjReportForm.getItemName());
 	        JSONObject json = getSuccessJsonTemplate();
 	        if(count>0){
-	        json.put("message", "该节目可能已被上报");
+	        json.put("message", "该节目可能已被申报");
 	        }
 	        writeStream(json);
 	        return SUCCESS;

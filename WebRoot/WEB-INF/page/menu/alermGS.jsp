@@ -100,7 +100,7 @@
 							审核时间
 						</th>
 						<th scope="col" class="rounded" style="width: 12.5%;">
-							上报状态
+							申报状态
 						</th>
 						<th scope="col" class="rounded" style="width: 12.5%;">
 							上线时间

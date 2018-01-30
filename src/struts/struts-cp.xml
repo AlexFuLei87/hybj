@@ -10,6 +10,9 @@
 	    	<result name="hs">
 	    		/WEB-INF/page/show/hsIndex.jsp
 	    	</result>
+			  <result name="drawing">
+	    		/WEB-INF/page/show/drawing.jsp
+	    	</result>
 			  <result name="zt">
 	    		/WEB-INF/page/show/specialReport.jsp
 	    	</result>

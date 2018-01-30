@@ -55,7 +55,7 @@
 									<s:property value="%{#user.logonName}"/>
 								</td>
 								<td style="HEIGHT:22px" align="center" width="20%">
-									<a href="#" onclick="openWindow('system/hybjUserAction_edit.do?userID=<s:property value="%{#user.userID}"/>&viewflag=1','700','400');">
+									<a href="#" onclick="openWindow('system/jhUserAction_edit.do?userID=<s:property value="%{#user.userID}"/>&viewflag=1','700','400');">
 										<s:property value="%{#user.userName}"/>
 									</a>
 								</td>
@@ -71,14 +71,14 @@
 								
 								<td align="center" style="HEIGHT: 22px" align="center" width="10%">																	
 								   <%if(popedom.contains("n")){ %>
-								   <a href="#" onclick="openWindow('system/hybjUserAction_edit.do?userID=<s:property value="%{#user.userID}"/>','700','400');">
+								   <a href="#" onclick="openWindow('system/jhUserAction_edit.do?userID=<s:property value="%{#user.userID}"/>','700','400');">
 								   <img src="${pageContext.request.contextPath }/images/edit.gif" border="0" style="CURSOR:hand"></a>													
 								   <%} %>
 								</td>
 								
 								<td align="center" style="HEIGHT: 22px" align="center" width="10%">
 									<%if(popedom.contains("m")){ %>
-									<a href="system/hybjUserAction_delete.do?userID=<s:property value='%{#user.userID}'/>" onclick="return confirm('你确定要删除  <s:property value="%{#user.userName}"/>？')">
+									<a href="system/jhUserAction_delete.do?userID=<s:property value='%{#user.userID}'/>" onclick="return confirm('你确定要删除  <s:property value="%{#user.userName}"/>？')">
 									<img src="${pageContext.request.contextPath }/images/delete.gif" width="16" height="16" border="0" style="CURSOR:hand"></a>												
 									<%} %>
 								</td>
@@ -100,21 +100,21 @@
 	             <td width="8%" align="center">首页&nbsp;&nbsp;|</td>
 	             <td width="10%" align="center">上一页&nbsp;&nbsp;&nbsp;|</td>
 	             <%}else{ %>
-	             <td width="8%" align="center"><u><a href="#" onClick="gotopage('system/hybjUserAction_home.do','start')">首页&nbsp;&nbsp;|</a></u></td>
-	             <td width="10%" align="center"><u><a href="#" onClick="gotopage('system/hybjUserAction_home.do','prev')">上一页&nbsp;&nbsp;&nbsp;|</a></u></td>
+	             <td width="8%" align="center"><u><a href="#" onClick="gotopage('system/jhUserAction_home.do','start')">首页&nbsp;&nbsp;|</a></u></td>
+	             <td width="10%" align="center"><u><a href="#" onClick="gotopage('system/jhUserAction_home.do','prev')">上一页&nbsp;&nbsp;&nbsp;|</a></u></td>
 	             <%} %>
 	             <%if(pagebean.getLastPage()){ %>
 				 <td width="10%" align="center">下一页&nbsp;&nbsp;&nbsp;|</td>
 	             <td width="8%" align="center">末页</td>
 	             <%}else{ %>
-	             <td width="10%" align="center"><u><a href="#" onClick="gotopage('system/hybjUserAction_home.do','next')">下一页&nbsp;&nbsp;&nbsp;|</a></u></td>
-	             <td width="8%" align="center"><u><a href="#" onClick="gotopage('system/hybjUserAction_home.do','end')">末页</a></u></td>
+	             <td width="10%" align="center"><u><a href="#" onClick="gotopage('system/jhUserAction_home.do','next')">下一页&nbsp;&nbsp;&nbsp;|</a></u></td>
+	             <td width="8%" align="center"><u><a href="#" onClick="gotopage('system/jhUserAction_home.do','end')">末页</a></u></td>
 	             <%} %>
 	             <td width="6%" align="center">第<%=pagebean.getPageNo() %>页</td>
 	             <td width="6%" align="center">共<%=pagebean.getSumPage() %>页</td>
 	             <td width="21%" align="right">至第<input size="1" type="text" name="goPage" >页
 	
-	             <u><a href="#" onClick="gotopage('system/hybjUserAction_home.do','go')">确定</a></u></td>
+	             <u><a href="#" onClick="gotopage('system/jhUserAction_home.do','go')">确定</a></u></td>
 	             
 	             <td><input type="hidden" name="pageNO" value="<%=pagebean.getPageNo()%>" ></td> 
 	             <td><input type="hidden" name="prevpageNO" value="<%=(pagebean.getPageNo()-1)%>"></td>

@@ -74,24 +74,22 @@
 		<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
 				<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
 					<tr>
-						<th scope="col" class="rounded" style="width: 15%;" hidden>
 
-						</th>
-						<th scope="col" class="rounded" style="width: 15%;">
+						<th scope="col" class="rounded" style="width: 25%;">
 							公告名称
 						</th>
-						<th scope="col" class="rounded" style="width: 14%;">
+						<th scope="col" class="rounded" style="width: 25%;">
 							公告概括
 						</th>
-						<th scope="col" class="rounded" style="width: 14%;">
+						<th scope="col" class="rounded" style="width: 25%;">
 							公告时间
 						</th>
-						<th scope="col" class="rounded" style="width: 14%;">
+						<th scope="col" class="rounded" style="width: 25%;">
 							公告状态
 						</th>
-						<th scope="col" class="rounded" style="width: 14%;">
-							操作
-						</th>
+						<%--<th scope="col" class="rounded" style="width: 14%;">--%>
+							<%--操作--%>
+						<%--</th>--%>
 					</tr>
 					<s:if test="#request.ggList!=null">
 					<s:iterator value="%{#request.ggList}" var="list" status="vs">
@@ -109,16 +107,18 @@
 									${list.create_time }
 							</td>
 							<td>
-									${list.status=="1"?"正在公示":"未公示" }
+								<s:if test="%{#list.status == 1}">审核中</s:if>
+								<s:if test="%{#list.status == 2}">审核通过</s:if>
+								<s:if test="%{#list.status == 3}">审核不通过</s:if>
 							</td>
-							<td>
-								<select id="sele" class="status1" onchange="changeStatus(this,${list.id});" type="text">
-									<option value="">选择操作</option>
-									<s:if test="%{#list.status != 1}"><option value="0">公示</option></s:if>
-									<s:if test="%{#list.status == 1}"><option value="1">撤销公示</option></s:if>
-									<option value="2">删除</option>
-								</select>
-							</td>
+							<%--<td>--%>
+								<%--<select id="sele" class="status1" onchange="changeStatus(this,${list.id});" type="text">--%>
+									<%--<option value="">选择操作</option>--%>
+									<%--<s:if test="%{#list.status != 1}"><option value="0">公示</option></s:if>--%>
+									<%--<s:if test="%{#list.status == 1}"><option value="1">撤销公示</option></s:if>--%>
+									<%--<option value="2">删除</option>--%>
+								<%--</select>--%>
+							<%--</td>--%>
 						</tr>
 					</s:iterator>
 					</s:if>

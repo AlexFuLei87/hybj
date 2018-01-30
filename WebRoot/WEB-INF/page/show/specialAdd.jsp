@@ -2,7 +2,7 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <html>
   <head>
-   <title>专题上报</title>
+   <title>专题申报</title>
    <LINK href="${pageContext.request.contextPath }/css/Style.css"  type="text/css" rel="stylesheet">
 		<LINK href="${pageContext.request.contextPath }/css/jquery-ui.min.css"  type="text/css" rel="stylesheet">
 		<script language="javascript"  src="${pageContext.request.contextPath }/script/function.js"></script>
@@ -58,7 +58,7 @@
 
 	    <tr>
 			<td class="ta_01" align="center" colSpan="4" background="${pageContext.request.contextPath }/images/b-info.gif">
-			 <font face="宋体" size="2"><strong>专题上报</strong></font>
+			 <font face="宋体" size="2"><strong>专题申报</strong></font>
 			</td>
 	    </tr>
 	     <tr>

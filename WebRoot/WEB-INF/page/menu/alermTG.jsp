@@ -39,9 +39,9 @@
     	<tr>
 	<th scope="col" class="rounded" style="width: 20%;">节目名字</th>
 	<th scope="col" class="rounded" style="width: 20%;">审核时间</th>
-	<th scope="col" class="rounded" style="width: 20%;">上报状态</th>
+	<th scope="col" class="rounded" style="width: 20%;">申报状态</th>
 	<th scope="col" class="rounded" style="width: 20%;">反馈</th>
-	<th scope="col" class="rounded" style="width: 20%;">上报类型</th>
+	<th scope="col" class="rounded" style="width: 20%;">申报类型</th>
 	</tr>
 	<s:if test="#request.reportList!=null">
 	<s:iterator value="%{#request.reportList}" var="list">
@@ -59,7 +59,7 @@
 			</c:otherwise>
 		</c:choose>
 	</td>
-		<td style="width: 20%;">${list.report_status == 'online'?'上线上报':'下线上报' }</td>
+		<td style="width: 20%;">${list.report_status == 'online'?'上线申报':'下线申报' }</td>
 		</tr>
 	</s:iterator>	
  	</s:if>

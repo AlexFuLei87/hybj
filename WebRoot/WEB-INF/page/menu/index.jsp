@@ -58,7 +58,7 @@ FORM {
 	MARGIN: 0px; BACKGROUND-COLOR: #ffffff
 } 
 </STYLE>
-<title>聚合上报平台</title>
+<title>聚合申报平台</title>
 </head>
 <body onload="ini()">
 <form action="${pageContext.request.contextPath}/system/jhMenuAction_home.do" method="post" onsubmit="return check();">

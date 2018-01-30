@@ -42,7 +42,7 @@
 			
 			<fieldset style="width: 95%; height: 630px; padding: 1 background:${pageContext.request.contextPath }/images/back1.JPG"><legend>
 			<font color="#0000FF">
-			<img border="0" src="${pageContext.request.contextPath }/images/zoom.gif" width="14" height="14"> 所有上报</font></legend>
+			<img border="0" src="${pageContext.request.contextPath }/images/zoom.gif" width="14" height="14"> 所有申报</font></legend>
 			<IFRAME src="${pageContext.request.contextPath }/system/jhMenuAction_alermSB.do?cpName=${department}"  name="alarmx"  frameBorder=0 width=100% scrolling=auto height=610></IFRAME>
 		  	 
 		   </fieldset>

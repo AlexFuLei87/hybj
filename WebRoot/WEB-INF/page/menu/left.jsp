@@ -79,7 +79,7 @@ TH {
 							<%}if(popedom.contains("y")){ %>
 							<TR>
 								<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-									<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/jhMenuAction_alermGG.do" target="mainFrame">处罚公示</A>
+									<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/jhMenuAction_alermGG.do" target="mainFrame">通知</A>
 								</TD>
 							</TR>
 							<%}%>
@@ -118,6 +118,12 @@ TH {
 											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/jhShowAction_zt.do" target="mainFrame">专题申报</A>
 										</TD>
 									</TR>
+									<%--<%}if(popedom.contains("b")){ %>--%>
+									<%--<TR>--%>
+										<%--<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">--%>
+											<%--<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/jhShowAction_drawing.do" target="mainFrame">作图任务</A>--%>
+										<%--</TD>--%>
+									<%--</TR>--%>
                                     <%}%>
 
 									
@@ -203,7 +209,7 @@ TH {
 									<%}if(popedom.contains("h")){ %>
 									<TR>
 										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/epg/jhJhEpgAction_showGS.do" target="mainFrame">公示管理</A>
+											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/epg/jhJhEpgAction_showGS.do" target="mainFrame">通知</A>
 										</TD>
 									</TR>
 									<%}%>
@@ -211,6 +217,36 @@ TH {
 							</TABLE>
 						</DIV>
                        <%} %>
+
+
+				<%if(popedom.contains("g") ){ %>
+				<DIV class="parent" id="KB2Parent">
+					<TABLE cellSpacing="0" cellPadding="0" width="99%" border="0">
+						<TBODY>
+						<TR>
+						<TR height=25>
+							<TD background="${pageContext.request.contextPath }/images/b-info.gif" align="left" vAlign="middle">
+								&nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath }/images/add.gif" name="imgKB2" width="9" height="9" alt="" border="0" />
+								&nbsp; <A class="cl" onclick="showOrHid('dx')" href="#">&nbsp;电信管理</A>
+							</TD>
+						</TR>
+						</TBODY>
+					</TABLE>
+				</DIV>
+				<DIV class="child" id="KB2Child">
+					<TABLE cellSpacing="0" cellPadding="0" width="99%" border="0">
+						<TBODY name="dx">
+						<%if(popedom.contains("g")){ %>
+						<TR>
+							<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
+								<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/epg/jhJhEpgAction_handleTZ.do" target="mainFrame">通知处理</A>
+							</TD>
+						</TR>
+						<%}%>
+						</TBODY>
+					</TABLE>
+				</DIV>
+				<%} %>
 
 
 					<%if(popedom.contains("t") || popedom.contains("p")|| popedom.contains("q")|| popedom.contains("r")|| popedom.contains("s")|| popedom.contains("z")){ %>
@@ -253,22 +289,22 @@ TH {
 											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/jhRoleAction_home.do" target="mainFrame">权限管理</A>
 										</TD>
 									</TR>
-									<%}if(popedom.contains("r")){ %>
-									
-									
-									<TR>
-										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/jhCommonMsgAction_home.do" target="mainFrame">待办事宜</A>
-										</TD>
-									</TR>
-									<%}if(popedom.contains("s")){ %>
-									
-									
-									<TR>
-										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/jhSystemDDlAction_home.do" target="mainFrame">数据字典维护</A>
-										</TD>
-									</TR>
+									<%--<%}if(popedom.contains("r")){ %>--%>
+									<%----%>
+									<%----%>
+									<%--<TR>--%>
+										<%--<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">--%>
+											<%--<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/jhCommonMsgAction_home.do" target="mainFrame">待办事宜</A>--%>
+										<%--</TD>--%>
+									<%--</TR>--%>
+									<%--<%}if(popedom.contains("s")){ %>--%>
+									<%----%>
+									<%----%>
+									<%--<TR>--%>
+										<%--<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">--%>
+											<%--<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/jhSystemDDlAction_home.do" target="mainFrame">数据字典维护</A>--%>
+										<%--</TD>--%>
+									<%--</TR>--%>
 
 									<%}if(popedom.contains("z")){ %>
 									<TR>

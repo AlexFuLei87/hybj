@@ -49,7 +49,7 @@ public class HybjTemplateDownloadAction extends BaseAction {
 			tempName = "上线报备模板.xls";
 		}else if("zt".equals(tempType)){
 			url += "/WEB-INF/classes/template/simple/专题上报模板.xls";
-			tempName = "专题上报模板.xls";
+			tempName = "专题申报模板.xls";
 		}
 		this.tempName = new String(tempName.getBytes(),"ISO8859-1");
 		try {

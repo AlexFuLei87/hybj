@@ -169,7 +169,7 @@
 
 	    <tr>
 			<td class="ta_01" align="center" colSpan="4" background="${pageContext.request.contextPath }/images/b-info.gif">
-			 <font face="宋体" size="2"><strong>上报条目</strong></font>
+			 <font face="宋体" size="2"><strong>申报条目</strong></font>
 			</td>
 	    </tr>
 	     <tr>

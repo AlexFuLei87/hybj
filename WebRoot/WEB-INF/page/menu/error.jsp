@@ -3,7 +3,7 @@
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 
-<HTML><HEAD><TITLE>聚合上报平台管理系统</TITLE>
+<HTML><HEAD><TITLE>聚合申报平台管理系统</TITLE>
 <LINK href="${pageContext.request.contextPath }/css/MainPage.css" type="text/css" rel="stylesheet">
 <LINK href="${pageContext.request.contextPath }/css/buttonstyle.css" type="text/css" rel="stylesheet">
 

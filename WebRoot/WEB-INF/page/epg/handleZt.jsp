@@ -164,7 +164,7 @@
 						处理时间
 					</th>
 					<th scope="col" class="rounded" style="width: 12.5%;">
-						上报时间
+						申报时间
 					</th>
 					<th scope="col" class="rounded" style="width: 12.5%;">
 						内容方

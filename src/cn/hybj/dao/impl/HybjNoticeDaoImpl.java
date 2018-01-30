@@ -5,6 +5,7 @@ import cn.hybj.data.DataBaseUtil;
 import cn.hybj.data.HibernateSessionFactory;
 import cn.hybj.domain.HybjOutline;
 import cn.hybj.web.form.HybjOutlineForm;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @Repository(IHybjNoticeDao.SERVICE_NAME)
 public class HybjNoticeDaoImpl extends CommonDaoImpl<HybjOutline> implements IHybjNoticeDao {
@@ -87,5 +89,43 @@ public class HybjNoticeDaoImpl extends CommonDaoImpl<HybjOutline> implements IHy
             }
         }
 
+    }
+
+
+    @Override
+    public List<HybjOutline> findByCondition(HybjOutline outline) {
+        Session session = null;
+        List<HybjOutline> list = null;
+        try {
+            session = HibernateSessionFactory.getSession();
+            String sql = "SELECT * from hybj_outline t ";
+            String condition = "";
+            Map<String, Object> parameter_map = new HashMap<String, Object>();
+            condition += "where 1=1 ";
+            if(!StringUtils.isBlank(outline.getStatus())){
+                if (Objects.equals("23",outline.getStatus())){
+                    condition += " and t.status in ('2','3')";
+                }else {
+                    condition += " and t.status =:status";
+                    parameter_map.put("status", outline.getStatus());
+                }
+            }
+            if(!StringUtils.isBlank(outline.getGgName())){
+                condition += " and t.gg_name like :GgName";
+                parameter_map.put("GgName", "%"+outline.getGgName()+"%");
+            }
+
+            list= DataBaseUtil.getDataList(session, sql + condition, parameter_map,
+                    true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                session.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return list;
     }
 }
