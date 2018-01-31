@@ -18,7 +18,7 @@
 			var itemName = $("#demandName").val();
 			var cpName = $("#cp").val();
             //"epg/hybjJhEpgAction_findByFuzzy.do"
-			window.location.href = "epg/jhJhEpgAction_onlineResult.do?hybjReport.itemName="+itemName+"&hybjReport.cp="+cpName;
+			window.location.href = "epg/jhJhEpgAction_dxFindResultByFuzzy.do?hybjReport.itemName="+itemName+"&hybjReport.cp="+cpName;
 
         }
 		</script>

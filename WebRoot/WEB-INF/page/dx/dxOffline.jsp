@@ -124,7 +124,7 @@
 			var itemName = $("#demandName").val();
 			var cpName = $("#cp").val();
             //"epg/hybjJhEpgAction_findByFuzzy.do"
-			window.location.href = "epg/jhJhEpgAction_findOfflineByFuzzy.do?hybjReport.itemName="+itemName+"&hybjReport.cp="+cpName;
+			window.location.href = "epg/jhJhEpgAction_findDXByFuzzy.do?hybjReport.itemName="+itemName+"&hybjReport.cp="+cpName+"&hybjReport.status=offline";
 
         }
 		</script>

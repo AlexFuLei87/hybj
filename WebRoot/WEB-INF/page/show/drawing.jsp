@@ -23,28 +23,28 @@
 				<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
 					<tr>
 						<th scope="col" class="rounded" style="width: 12.5%;">
-							需求名称
+							专题名
 						</th>
 						<th scope="col" class="rounded" style="width: 12.5%;">
-							所属内容方
+							节目名
 						</th>
 						<th scope="col" class="rounded" style="width: 12.5%;">
-							需求分类
+							专题内容方
 						</th>
 						<th scope="col" class="rounded" style="width: 12.5%;">
-							需求状态
+							专题状态
 						</th>
 						<th scope="col" class="rounded" style="width: 12.5%;">
-							完成时间
+							申请完成时间
 						</th>
 						<th scope="col" class="rounded" style="width: 12.5%;">
 							创建时间
 						</th>
 						<th scope="col" class="rounded" style="width: 12.5%;">
-							附件下载
+							审核时间
 						</th>
 						<th scope="col" class="rounded" style="width: 12.5%;">
-							详情
+							附件上传
 						</th>
 					</tr>
 					<s:if test="#request.xqList!=null">

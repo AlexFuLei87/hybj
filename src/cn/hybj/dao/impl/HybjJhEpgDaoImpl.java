@@ -1,10 +1,7 @@
 package cn.hybj.dao.impl;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Session;
@@ -30,9 +27,11 @@ public class HybjJhEpgDaoImpl extends CommonDaoImpl<HybjReport> implements IHybj
 			Map<String, Object> parameter_map = new HashMap<String, Object>();
 			condition += " where 1=1 ";
 			if (!StringUtils.isBlank(hybjReportForm.getStatus())) {
-				if(hybjReportForm.getStatus().contains("And")){
+				if(Objects.equals("failAndPass",hybjReportForm.getStatus())){
 					condition += " and t.status in ('fail','pass') ";
-				}else {
+				}else if(Objects.equals("dxfailAnddxpass",hybjReportForm.getStatus())){
+					condition += " and t.status in ('dxfail','dxpass') ";
+				} else {
 					condition += " and t.status =:status ";
 					parameter_map.put("status", hybjReportForm.getStatus());
 				}

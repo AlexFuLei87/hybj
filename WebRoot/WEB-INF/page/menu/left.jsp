@@ -90,7 +90,7 @@ TH {
 					</DIV>
 					<%} %>
                      
-                        <%if(popedom.contains("a")||popedom.contains("b")){ %>
+                        <%if(popedom.contains("a")||popedom.contains("b")||popedom.contains("c")){ %>
 						<DIV class="parent" id="KB0Parent">
 							<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
 								<TBODY>
@@ -118,12 +118,12 @@ TH {
 											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/jhShowAction_zt.do" target="mainFrame">专题申报</A>
 										</TD>
 									</TR>
-									<%--<%}if(popedom.contains("b")){ %>--%>
-									<%--<TR>--%>
-										<%--<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">--%>
-											<%--<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/jhShowAction_drawing.do" target="mainFrame">作图任务</A>--%>
-										<%--</TD>--%>
-									<%--</TR>--%>
+									<%}if(popedom.contains("c")){ %>
+									<TR>
+										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
+											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/cp/jhShowAction_drawing.do" target="mainFrame">作图任务</A>
+										</TD>
+									</TR>
                                     <%}%>
 
 									

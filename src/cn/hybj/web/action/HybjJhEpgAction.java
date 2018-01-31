@@ -4,6 +4,7 @@ package cn.hybj.web.action;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Objects;
 
 import cn.hybj.domain.*;
 import cn.hybj.service.*;
@@ -380,7 +381,7 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 			hybjReportForm.setCp(cp);
 			hybjReportForm.setItemName(itemName);
 		}
-		hybjReportForm.setStatus("onlineAndPass");
+		hybjReportForm.setStatus("failAndPass");
 		hybjReportForm.setReportStatus("online");
 		List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
 		request.setAttribute("report", list);
@@ -399,7 +400,7 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 			hybjReportForm.setCp(cp);
 			hybjReportForm.setItemName(itemName);
 		}
-		hybjReportForm.setStatus("onlineAndPass");
+		hybjReportForm.setStatus("failAndPass");
 		hybjReportForm.setReportStatus("offline");
 		List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
 		request.setAttribute("report", list);
@@ -429,7 +430,7 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 	public String dxonlineResult()  {
 		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
 		request.setAttribute("jctList", jctList);
-		hybjReportForm.setStatus("dxpass");
+		hybjReportForm.setStatus("dxfailAnddxpass");
 		hybjReportForm.setReportStatus("online");
 		List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
 		request.setAttribute("report", list);
@@ -438,13 +439,61 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 	public String dxofflineResult()  {
 		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
 		request.setAttribute("jctList", jctList);
-		hybjReportForm.setStatus("dxfail");
+		hybjReportForm.setStatus("dxfailAnddxpass");
 		hybjReportForm.setReportStatus("offline");
 		List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
 		request.setAttribute("report", list);
 		return "dxofflineResult";
 	}
 
+	public String findDXByFuzzy() throws UnsupportedEncodingException {
+		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
+		request.setAttribute("jctList", jctList);
+		byte[] bytes =hybjReport.getCp().getBytes("iso-8859-1");
+		String cp = new String(bytes, "utf-8");
+		byte[] bytes1 =hybjReport.getItemName().getBytes("iso-8859-1");
+		String itemName = new String(bytes1, "utf-8");
+		hybjReportForm.setCp(cp);
+		hybjReportForm.setItemName(itemName);
+		if("offline".equals(hybjReport.getStatus())){
+			hybjReportForm.setStatus("pass");
+			hybjReportForm.setReportStatus("offline");
+			List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
+			request.setAttribute("report", list);
+			return "dxOffline";
+		}else {
+			hybjReportForm.setStatus("pass");
+			hybjReportForm.setReportStatus("online");
+			List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
+			request.setAttribute("report", list);
+			return "dxOnline";
+		}
+
+	}
+	public String dxFindResultByFuzzy() throws UnsupportedEncodingException {
+		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
+		request.setAttribute("jctList", jctList);
+		byte[] bytes =hybjReport.getCp().getBytes("iso-8859-1");
+		String cp = new String(bytes, "utf-8");
+		byte[] bytes1 =hybjReport.getItemName().getBytes("iso-8859-1");
+		String itemName = new String(bytes1, "utf-8");
+		hybjReportForm.setCp(cp);
+		hybjReportForm.setItemName(itemName);
+		hybjReportForm.setStatus("dxfailAnddxpass");
+		if (Objects.equals("offline",hybjReport.getStatus())){
+			hybjReportForm.setReportStatus("offline");
+			List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
+			request.setAttribute("report", list);
+			return "dxofflineResult";
+		}else {
+			hybjReportForm.setReportStatus("online");
+			List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
+			request.setAttribute("report", list);
+			return "dxonlineResult";
+		}
+
+
+	}
 
 
 }

@@ -46,6 +46,12 @@
      <ParentCode>CPUsers</ParentCode>
      <ParentName>内容方申报</ParentName>
   </Function>
+    <Function>
+     <FunctionCode>c</FunctionCode>
+     <FunctionName>作图任务</FunctionName>
+     <ParentCode>CPUsers</ParentCode>
+     <ParentName>内容方申报</ParentName>
+  </Function>
 
   <Function>
     <FunctionCode>d</FunctionCode>
