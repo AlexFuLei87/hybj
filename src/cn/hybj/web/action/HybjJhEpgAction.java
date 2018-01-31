@@ -34,7 +34,7 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 	private HybjReportForm hybjReportForm = new HybjReportForm();
 	private HybjOutlineForm hybjOutlineForm = new HybjOutlineForm();
 	private HybjDemand demand;
-	private  HybjReport hybjReport;
+	private HybjReport hybjReport;
 	private HybjSpecial hybjSpecial;
 
 	public HybjSpecial getHybjSpecial() {
@@ -154,7 +154,7 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 	}
 	public String batchPass(){
 		String[] idss = ids.split(",");
-		String status = "pass";
+		String status = hybjReportForm.getStatus();
 		for (String string : idss) {
 			int id = Integer.parseInt(string);
 			hybjReportService.updateById(id,status);
@@ -405,6 +405,44 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 		request.setAttribute("report", list);
 		return "offlineResult";
 
+	}
+	public String dxOnline()  {
+		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
+		request.setAttribute("jctList", jctList);
+		hybjReportForm.setStatus("pass");
+		hybjReportForm.setReportStatus("online");
+		List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
+		request.setAttribute("report", list);
+		return "dxOnline";
+	}
+
+	public String dxOffline()  {
+		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
+		request.setAttribute("jctList", jctList);
+		hybjReportForm.setStatus("pass");
+		hybjReportForm.setReportStatus("offline");
+		List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
+		request.setAttribute("report", list);
+		return "dxOffline";
+	}
+
+	public String dxonlineResult()  {
+		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
+		request.setAttribute("jctList", jctList);
+		hybjReportForm.setStatus("dxpass");
+		hybjReportForm.setReportStatus("online");
+		List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
+		request.setAttribute("report", list);
+		return "dxonlineResult";
+	}
+	public String dxofflineResult()  {
+		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
+		request.setAttribute("jctList", jctList);
+		hybjReportForm.setStatus("dxfail");
+		hybjReportForm.setReportStatus("offline");
+		List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
+		request.setAttribute("report", list);
+		return "dxofflineResult";
 	}
 
 

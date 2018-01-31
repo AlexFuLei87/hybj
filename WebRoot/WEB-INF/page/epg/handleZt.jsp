@@ -135,7 +135,7 @@
 		<form id="form" name="form" >
 			<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
 				<tr>
-					<td colspan="5">
+					<td colspan="8">
 						专题名：
 						<input type="text" size="25" name="specialName" id="specialName" value="" />
 						cp:
@@ -147,7 +147,6 @@
 						</s:select>
 						<input onclick="findByFuzzy();" type="button" value="查询"/>
 					</td>
-					<td></td>
 					<td><input type="button" value="批量不通过" onclick="batchFail();"/></td>
 				</tr>
 				<tr>

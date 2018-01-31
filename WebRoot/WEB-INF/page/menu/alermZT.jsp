@@ -55,7 +55,66 @@
             window.location.href = "../cp/jhSpecialAction_findByFuzzy.do?hybjSpecial.specialName="+specialName+"&hybjSpecial.cp="+cpName;
 
         }
+        function saveFeedback(value,id){
+            var $this = $(value);
+            var feedback = $this.val();
+            if(feedback=="")return;
+            $.ajax({
+                type : "POST",  //提交方式
+                url : "../epg/jhJhEpgAction_saveSpecialFeedback.do",//路径
+                data : {
+                    "hybjSpecial.feedback" : feedback,
+                    "hybjSpecial.id" : id
+                },//数据，这里使用的是Json格式进行传输
+                dataType : "json",
+                async : true,
+                success : function(result) {//返回数据根据结果进行相应的处理
 
+                }
+            });
+
+        }
+
+        function changeStatus(obj,value,id){
+            if(value){
+                $.ajax({
+                    type : "POST",  //提交方式
+                    url : "../epg/jhJhEpgAction_changSpecialStatus.do",//路径
+                    data : {
+                        "hybjSpecial.status" : "fail",
+                        "hybjSpecial.id" : id
+                    },//数据，这里使用的是Json格式进行传输
+                    dataType : "json",
+                    async : true,
+                    success : function(result) {//返回数据根据结果进行相应的处理
+                        if(result.message){
+                            alert(result.message);
+                            window.location.reload();
+                        }
+                    }
+                });
+            }else{
+                var $this = $(obj);
+                var cp = $this.val();
+                $.ajax({
+                    type : "POST",  //提交方式
+                    url : "../epg/jhJhEpgAction_changSpecialStatus.do",//路径
+                    data : {
+                        "hybjSpecial.status" : "pass",
+                        "hybjSpecial.cp" : cp,
+                        "hybjSpecial.id" : id
+                    },//数据，这里使用的是Json格式进行传输
+                    dataType : "json",
+                    async : true,
+                    success : function(result) {//返回数据根据结果进行相应的处理
+                        if(result.message){
+                            alert(result.message);
+                            window.location.reload();
+                        }
+                    }
+                });
+            }
+        }
 
     </SCRIPT>
 	  <style>
@@ -132,27 +191,49 @@
 									${list.onDate }
 							</td>
 							<td>
-									${list.status=="pass"?"通过审核":"未通过审核" }
-							</td>
+								${list.status=="pass"?"通过审核":"未通过审核" }
 							<td>
-									${list.create_time }
+								${list.create_time }
 							</td>
 							<td>
 									${list.cp}
 							</td>
-							<td>
-									${list.draw_part}
-							</td>
-							<td onmouseover="overShow('${list.feedback}')" onmouseout="outHide()" onclick="showDetails('${list.feedback}')">
-								<c:choose>
-									<c:when test="${fn:length(list.feedback)>6}">
-										${fn:substring(list.feedback, 0, 6)}...
-									</c:when>
-									<c:otherwise>
-										${list.feedback}
-									</c:otherwise>
-								</c:choose>
-							</td>
+							<s:if test="#request.permission=='dx' ||#request.permission=='jh'">
+								<td>
+									<select id="cp1" style="width:170px;height:25px" onchange="changeStatus(this,false,${list.id});">
+										<option value=""></option>
+										<option value="华数TV" <s:if test="%{#list.draw_part == '华数TV'}"> selected="selected"</s:if>>华数TV</option>
+										<option value="芒果TV" <s:if test="%{#list.draw_part == '芒果TV'}"> selected="selected"</s:if>>芒果TV</option>
+										<option value="优酷" <s:if test="%{#list.draw_part == '优酷'}"> selected="selected"</s:if>>优酷</option>
+										<option value="优朋" <s:if test="%{#list.draw_part == '优朋'}"> selected="selected"</s:if>>优朋</option>
+										<option value="百视通" <s:if test="%{#list.draw_part == '百视通'}"> selected="selected"</s:if>>百视通</option>
+										<option value="爱奇艺" <s:if test="%{#list.draw_part == '爱奇艺'}"> selected="selected"</s:if>>爱奇艺</option>
+										<option value="天翼视讯" <s:if test="%{#list.draw_part == '天翼视讯'}"> selected="selected"</s:if>>天翼视讯</option>
+										<option value="腾讯" <s:if test="%{#list.draw_part == '腾讯'}"> selected="selected"</s:if>>腾讯</option>
+									</select>
+								</td>
+							</s:if>
+							<s:if test="#request.permission =='cp'">
+								<td>${list.draw_part}</td>
+
+							</s:if>
+							<s:if test="#request.permission=='dx' ||#request.permission=='jh'">
+								<td>
+									<input  type="text" value="${list.feedback}" onblur="saveFeedback(this,${list.id})"/>
+								</td>
+							</s:if>
+							<s:if test="#request.permission =='cp'">
+								<td onmouseover="overShow('${list.feedback}')" onmouseout="outHide()" onclick="showDetails('${list.feedback}')">
+									<c:choose>
+										<c:when test="${fn:length(list.feedback)>6}">
+											${fn:substring(list.feedback, 0, 6)}...
+										</c:when>
+										<c:otherwise>
+											${list.feedback}
+										</c:otherwise>
+									</c:choose>
+								</td>
+							</s:if>
 						</tr>
 					</s:iterator>
 					</s:if>

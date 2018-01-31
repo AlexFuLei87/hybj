@@ -111,4 +111,31 @@
         <ParentCode>sysmng</ParentCode>
         <ParentName>系统管理</ParentName>
     </Function>
+
+    <Function>
+        <FunctionCode>u</FunctionCode>
+        <FunctionName>通知处理</FunctionName>
+        <ParentCode>notice</ParentCode>
+        <ParentName>通知管理</ParentName>
+    </Function>
+
+<Function>
+     <FunctionCode>l</FunctionCode>
+     <FunctionName>新增功能</FunctionName>
+     <ParentCode>operate</ParentCode>
+     <ParentName>操作权限分配</ParentName>
+  </Function>
+  <Function>
+     <FunctionCode>m</FunctionCode>
+     <FunctionName>删除功能</FunctionName>
+     <ParentCode>operate</ParentCode>
+     <ParentName>操作权限分配</ParentName>
+  </Function>
+  <Function>
+     <FunctionCode>n</FunctionCode>
+     <FunctionName>编辑功能</FunctionName>
+     <ParentCode>operate</ParentCode>
+     <ParentName>操作权限分配</ParentName>
+  </Function>
+
 </ElecData>

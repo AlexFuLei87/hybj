@@ -21,7 +21,7 @@
                     type : "POST",  //提交方式  
                     url : "epg/jhJhEpgAction_checkStatus.do",//路径
                     data : {  
-                        "hybjReportForm.status" : "pass",
+                        "hybjReportForm.status" : "dxpass",
                         "hybjReportForm.id" : id
                     },//数据，这里使用的是Json格式进行传输  
                     dataType : "json",
@@ -39,7 +39,7 @@
                     type : "POST",  //提交方式  
                     url : "epg/jhJhEpgAction_checkStatus.do",//路径
                     data : {  
-                        "hybjReportForm.status" : "fail",
+                        "hybjReportForm.status" : "dxfail",
                         "hybjReportForm.id" : id  
                     },//数据，这里使用的是Json格式进行传输  
                     dataType : "json",
@@ -100,7 +100,7 @@
                 url : "epg/jhJhEpgAction_batchPass.do",//路径
                 data : {
                     "ids" : ids,
-                    "hybjReportForm.status" : "pass"
+                    "hybjReportForm.status" : "dxpass"
                 },//数据，这里使用的是Json格式进行传输
                 dataType : "json",
                 async : false,
@@ -152,7 +152,7 @@
 					<td></td>
 					<td></td>
 					<td><input type="button" value="批量通过" onclick="batchPass();"/></td>
-					<td><input type="button" value="已处理" onclick="window.location.href='epg/jhJhEpgAction_offlineResult.do'"/></td>
+					<td><input type="button" value="已处理" onclick="window.location.href='epg/jhJhEpgAction_dxofflineResult.do'"/></td>
 				</tr>
 				<tr>
 					<th scope="col" class="rounded" style="width: 1%;">

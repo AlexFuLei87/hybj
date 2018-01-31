@@ -4,6 +4,7 @@ package cn.hybj.web.action;
 import java.io.UnsupportedEncodingException;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Objects;
 
 import cn.hybj.domain.*;
 import cn.hybj.service.*;
@@ -175,18 +176,7 @@ public class HybjMenuAction extends BaseAction implements ModelDriven<HybjMenuFo
 		request.setAttribute("reportList", list);
 		return "alermTG";
 	}
-	/**
-	 * 公示区的内容
-	 * @return
-	 */
-	public String alermGS(){
-		//List<HybjCommonMsgForm> findCommonMsgListByCurrentDate();
-		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
-		request.setAttribute("jctList", jctList);
-		List<HybjReport> gsList = hybjReportService.findPassOrFail();
-		request.setAttribute("gsList", gsList);
-		return "alermGS";
-	}
+
 	/**
 	 * 其余cp的申报情况
 	 * @return
@@ -216,17 +206,7 @@ public class HybjMenuAction extends BaseAction implements ModelDriven<HybjMenuFo
 		return "alermCG";
 	}
 
-	/**
-	 * 公示区展示
-	 * @return
-	 */
-	public String alermGG() {
-		HybjOutline outline = new HybjOutline();
-		outline.setStatus("2");
-		List<HybjOutline> lists = hybjNoticeService.findByCondition(outline);
-		request.setAttribute("ggList", lists);
-		return "alermGG";
-	}
+
 	/**  
 	* @Name: logout
 	* @Description: 重新回退到登录页面
@@ -240,11 +220,54 @@ public class HybjMenuAction extends BaseAction implements ModelDriven<HybjMenuFo
 		request.getSession().invalidate();
 		return "logout";
 	}
+
+
+
+
+
 	public String alermZT(){
 		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
 		request.setAttribute("jctList", jctList);
 		List<HybjSpecial> list = hybjSpecialService.findPassAndFail();
+		showPermission();
 		request.setAttribute("ztList", list);
 		return "alermZT";
+	}
+	/**
+	 * 公示区展示
+	 * @return
+	 */
+	public String alermGG() {
+		HybjOutline outline = new HybjOutline();
+		outline.setStatus("2");
+		List<HybjOutline> lists = hybjNoticeService.findByCondition(outline);
+		request.setAttribute("ggList", lists);
+		showPermission();
+		return "alermGG";
+	}
+	/**
+	 * 公示区的内容
+	 * @return
+	 */
+	public String alermGS(){
+		//List<HybjCommonMsgForm> findCommonMsgListByCurrentDate();
+		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
+		request.setAttribute("jctList", jctList);
+		List<HybjReport> gsList = hybjReportService.findPassOrFail();
+		showPermission();
+		request.setAttribute("gsList", gsList);
+		return "alermGS";
+	}
+
+
+	public void showPermission(){
+		HybjUser user = (HybjUser)request.getSession().getAttribute("globle_user");
+		if(Objects.equals("电信",user.getDepartment())){
+			request.setAttribute("permission", "dx");
+		}else if(Objects.equals("聚合",user.getDepartment())){
+			request.setAttribute("permission", "jh");
+		}else {
+			request.setAttribute("permission", "cp");
+		}
 	}
 }

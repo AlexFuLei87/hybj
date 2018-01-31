@@ -43,7 +43,7 @@ public class HybjReportDaoImpl extends CommonDaoImpl<HybjReport> implements IHyb
 			String sql = "SELECT * from hybj_report t ";
 			String condition = "";
 			Map<String, Object> parameter_map = new HashMap<String, Object>();
-			condition += "where t.status IN ('pass','fail')";
+			condition += "where t.status IN ('dxpass','dxfail')";
 			list= DataBaseUtil.getDataList(session, sql + condition + " order by t.create_time", parameter_map, 
 					true);
 		} catch (Exception e) {
@@ -91,7 +91,7 @@ public class HybjReportDaoImpl extends CommonDaoImpl<HybjReport> implements IHyb
 			String sql = "SELECT * from hybj_report t ";
 			String condition = "";
 			Map<String, Object> parameter_map = new HashMap<String, Object>();
-			condition += "where t.status = 'pass' and cp=:cp";
+			condition += "where t.status != 'draft' and cp=:cp";
 			parameter_map.put("cp", name);
 			list= DataBaseUtil.getDataList(session, sql + condition + " order by t.verify_time", parameter_map, 
 					true);

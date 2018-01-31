@@ -43,7 +43,7 @@
 					</td>
 					<td></td>
 					<td></td>
-					<td><input type="button" value="未处理" onclick="window.location.href='epg/jhJhEpgAction_jhhy.do'"/></td>
+					<td><input type="button" value="未处理" onclick="window.location.href='epg/jhJhEpgAction_dxOnline.do'"/></td>
 				</tr>
 				<tr>
 					<th scope="col" class="rounded" style="width: 11%;">

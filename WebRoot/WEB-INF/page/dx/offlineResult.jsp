@@ -1,7 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <HTML>
 	<HEAD>
 		<title>聚合EPG管理</title>		
@@ -18,7 +17,7 @@
 			var itemName = $("#demandName").val();
 			var cpName = $("#cp").val();
             //"epg/hybjJhEpgAction_findByFuzzy.do"
-			window.location.href = "epg/jhJhEpgAction_onlineResult.do?hybjReport.itemName="+itemName+"&hybjReport.cp="+cpName;
+			window.location.href = "epg/jhJhEpgAction_offlineResult.do?hybjReport.itemName="+itemName+"&hybjReport.cp="+cpName+"&hybjReport.reportStatus=offline";
 
         }
 		</script>
@@ -43,35 +42,39 @@
 					</td>
 					<td></td>
 					<td></td>
-					<td><input type="button" value="未处理" onclick="window.location.href='epg/jhJhEpgAction_jhhy.do'"/></td>
+					<td></td>
+					<td><input type="button" value="未处理" onclick="window.location.href='epg/jhJhEpgAction_dxOffline.do'"/></td>
 				</tr>
 				<tr>
-					<th scope="col" class="rounded" style="width: 11%;">
+					<th scope="col" class="rounded" style="width: 9%;">
 						节目名称
 					</th>
-					<th scope="col" class="rounded" style="width: 11%;">
+					<th scope="col" class="rounded" style="width: 9%;">
 						申报时间
 					</th>
-					<th scope="col" class="rounded" style="width: 11%;">
+					<th scope="col" class="rounded" style="width: 9%;">
 						所属分类
 					</th>
-					<th scope="col" class="rounded" style="width: 11%;">
+					<th scope="col" class="rounded" style="width: 9%;">
 						所属类型
 					</th>
-					<th scope="col" class="rounded" style="width: 11%;">
+					<th scope="col" class="rounded" style="width: 9%;">
 						内容方
 					</th>
-					<th scope="col" class="rounded" style="width: 11%;">
+					<th scope="col" class="rounded" style="width: 9%;">
 						上线时间
 					</th>
-					<th scope="col" class="rounded" style="width: 11%;">
+					<th scope="col" class="rounded" style="width: 9%;">
 						预上线时间
 					</th>
-					<th scope="col" class="rounded" style="width: 11%;">
+					<th scope="col" class="rounded" style="width: 9%;">
 						是否收费
 					</th>
-					<th scope="col" class="rounded" style="width: 11%;">
+					<th scope="col" class="rounded" style="width: 9%;">
 						是否同步到聚合
+					</th>
+					<th scope="col" class="rounded" style="width: 9%;">
+						下线原因
 					</th>
 				</tr>
 				<c:forEach items="${report}" var="report" varStatus="vs">
@@ -92,13 +95,7 @@
 							${report.cp}
 						</td>
 						<td>
-							<%--<s:if test="%{#report.online_time == 5}"></s:if>  ${fn:substring(c.description, 0, 12)}... --%>
-								<c:if test="${fn:length(report.online_time)>10 }">
-									${fn:substring(report.online_time, 0, 10)}
-								</c:if>
-								<c:if test="${fn:length(report.online_time)<=10 }">
-									${report.online_time }
-								</c:if>
+							${report.online_time}
 						</td>
 						<td>
 							${report.preonline_time}
@@ -108,6 +105,9 @@
 						</td>
 						<td>
 							${report.is_jh==true?'是':'否'}
+						</td>
+						<td>
+							${report.offline_reason}
 						</td>
 					</tr>
 				</c:forEach>

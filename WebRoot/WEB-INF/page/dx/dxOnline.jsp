@@ -1,14 +1,15 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <HTML>
 	<HEAD>
 		<title>聚合EPG管理</title>		
-		<LINK href="${pageContext.request.contextPath }/css/Style.css" type="text/css" rel="stylesheet">
-		<LINK href="${pageContext.request.contextPath }/css/niceforms-default.css" type="text/css" rel="stylesheet">
-		<LINK href="${pageContext.request.contextPath }/css/form.css" type="text/css" rel="stylesheet">
-		<LINK href="${pageContext.request.contextPath }/css/frame.css" type="text/css" rel="stylesheet">
-		<LINK href="${pageContext.request.contextPath }/css/style_1.css" type="text/css" rel="stylesheet">
+		<LINK href="${pageContext.request.contextPath }/css/Style.css"  type="text/css" rel="stylesheet">
+		<LINK href="${pageContext.request.contextPath }/css/niceforms-default.css"  type="text/css" rel="stylesheet">
+		<LINK href="${pageContext.request.contextPath }/css/form.css"  type="text/css" rel="stylesheet">
+		<LINK href="${pageContext.request.contextPath }/css/frame.css"  type="text/css" rel="stylesheet">
+		<LINK href="${pageContext.request.contextPath }/css/style_1.css"  type="text/css" rel="stylesheet">
 		<script language="javascript"  src="${pageContext.request.contextPath }/script/function.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath }/script/pub.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery.min.js"></script>
@@ -21,7 +22,7 @@
                     type : "POST",  //提交方式  
                     url : "epg/jhJhEpgAction_checkStatus.do",//路径
                     data : {  
-                        "hybjReportForm.status" : "pass",
+                        "hybjReportForm.status" : "dxpass",
                         "hybjReportForm.id" : id
                     },//数据，这里使用的是Json格式进行传输  
                     dataType : "json",
@@ -39,7 +40,7 @@
                     type : "POST",  //提交方式  
                     url : "epg/jhJhEpgAction_checkStatus.do",//路径
                     data : {  
-                        "hybjReportForm.status" : "fail",
+                        "hybjReportForm.status" : "dxfail",
                         "hybjReportForm.id" : id  
                     },//数据，这里使用的是Json格式进行传输  
                     dataType : "json",
@@ -100,7 +101,7 @@
                 url : "epg/jhJhEpgAction_batchPass.do",//路径
                 data : {
                     "ids" : ids,
-                    "hybjReportForm.status" : "pass"
+                    "hybjReportForm.status" : "dxpass",
                 },//数据，这里使用的是Json格式进行传输
                 dataType : "json",
                 async : false,
@@ -124,7 +125,7 @@
 			var itemName = $("#demandName").val();
 			var cpName = $("#cp").val();
             //"epg/hybjJhEpgAction_findByFuzzy.do"
-			window.location.href = "epg/jhJhEpgAction_findOfflineByFuzzy.do?hybjReport.itemName="+itemName+"&hybjReport.cp="+cpName;
+			window.location.href = "epg/jhJhEpgAction_findByFuzzy.do?hybjReport.itemName="+itemName+"&hybjReport.cp="+cpName;
 
         }
 		</script>
@@ -135,7 +136,7 @@
 		<form id="form" name="form" >
 			<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
 				<tr>
-					<td colspan="7">
+					<td colspan="6">
 						节目名：
 						<input type="text" size="25" name="demandName" id="demandName" value="" />
 						cp:
@@ -152,7 +153,7 @@
 					<td></td>
 					<td></td>
 					<td><input type="button" value="批量通过" onclick="batchPass();"/></td>
-					<td><input type="button" value="已处理" onclick="window.location.href='epg/jhJhEpgAction_offlineResult.do'"/></td>
+					<td><input type="button" value="已处理" onclick="window.location.href = 'epg/jhJhEpgAction_dxonlineResult.do'"/></td>
 				</tr>
 				<tr>
 					<th scope="col" class="rounded" style="width: 1%;">
@@ -186,10 +187,7 @@
 						是否同步到聚合
 					</th>
 					<th scope="col" class="rounded" style="width: 9%;">
-						下线原因
-					</th>
-					<th scope="col" class="rounded" style="width: 9%;">
-						备注
+						反馈
 					</th>
 					<th scope="col" class="rounded" style="width: 9%;">
 						操作
@@ -216,19 +214,26 @@
 							${report.cp}
 						</td>
 						<td>
-							${report.online_time}
+							<c:if test="${fn:length(report.online_time)>10 }">
+								${fn:substring(report.online_time, 0, 10)}
+							</c:if>
+							<c:if test="${fn:length(report.online_time)<=10 }">
+								${report.online_time }
+							</c:if>
 						</td>
 						<td>
-							${report.preonline_time}
+							<c:if test="${fn:length(report.preonline_time)>10 }">
+								${fn:substring(report.preonline_time, 0, 10)}
+							</c:if>
+							<c:if test="${fn:length(report.preonline_time)<=10 }">
+								${report.preonline_time }
+							</c:if>
 						</td>
 						<td>
 							${report.isCharge==true?'是':'否'}
 						</td>
 						<td>
 							${report.is_jh==true?'是':'否'}
-						</td>
-						<td>
-							${report.offline_reason}
 						</td>
 						<td>
 							<input  type="text" value="${report.feedback}" onblur="saveFeedback(this,${report.id})"/>
