@@ -8,6 +8,8 @@ import cn.hybj.web.form.HybjOutlineForm;
 import cn.hybj.web.form.HybjReportForm;
 import cn.hybj.web.form.HybjTextForm;
 
+import javax.servlet.http.HttpServletRequest;
+
 public interface IHybjJhEpgService {
 	public final static String SERVICE_NAME = "cn.hybj.service.impl.HybjJhEpgServiceImpl";
 	List<HybjReport> findByCondition(HybjReportForm hybjReportForm);
@@ -15,4 +17,6 @@ public interface IHybjJhEpgService {
 	void saveFeedback(HybjReportForm hybjReportForm);
 
     void saveGG(HybjOutlineForm hybjOutlineForm);
+
+    List<HybjReport> findByConditionWithPage(HybjReportForm hybjReportForm, HttpServletRequest request);
 }

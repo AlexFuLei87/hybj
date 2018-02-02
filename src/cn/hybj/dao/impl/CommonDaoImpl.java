@@ -193,7 +193,7 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<
 	public List<T> findCollectionByConditionWithPage(String hqlWhere,
 			final Object[] params, LinkedHashMap<String, String> orderby,
 			final PageInfo pageInfo) {
-		String hql = "from " + entity.getSimpleName() + " o where 1=1";
+		String hql = "from " + entity.getSimpleName() + " t where 1=1";
 		//组织排序条件
 		String hqlOrderBy = this.orderByCondition(orderby);
 		hql = hql + hqlWhere + hqlOrderBy;

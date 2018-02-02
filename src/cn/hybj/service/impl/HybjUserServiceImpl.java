@@ -46,13 +46,13 @@ public class HybjUserServiceImpl implements IHybjUserService {
 		String hqlWhere = "";
 		List<String> paramsList = new ArrayList<String>();
 		if(elecUserForm!=null && elecUserForm.getUserName()!=null && !elecUserForm.getUserName().equals("")){
-			hqlWhere += " and o.userName like ?";
+			hqlWhere += " and t.userName like ?";
 			paramsList.add("%" + elecUserForm.getUserName() + "%");
 		}
 		Object [] params = paramsList.toArray();
 		//组织排序
 		LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
-		orderby.put("o.onDutyDate", "desc");
+		orderby.put("t.onDutyDate", "desc");
 		//修改，添加分页功能 begin
 		PageInfo pageInfo = new PageInfo(request);
 //		List<ElecUser> list = elecUserDao.findCollectionByConditionNoPage(hqlWhere, params, orderby);

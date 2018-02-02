@@ -104,7 +104,8 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
 		hybjReportForm.setReportStatus("online");
 		hybjReportForm.setStatus("normal");
-		List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
+		//List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
+		List<HybjReport> list = hybjJhEpgService.findByConditionWithPage(hybjReportForm,request);
 		request.setAttribute("jctList", jctList);
 		request.setAttribute("report", list);
 		return "jhhy";
@@ -491,9 +492,15 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 			request.setAttribute("report", list);
 			return "dxonlineResult";
 		}
-
-
 	}
 
+	public String completeDraw(){
+		HybjSpecial special = new HybjSpecial();
+		special.setAttachmentName("isNotNull");
+		special.setStatus("pass");
+		List<HybjSpecial> list = hybjSpecialService.findDrawPart(special);
+		request.setAttribute("ztList",list);
+		return "completeDraw";
+	}
 
 }

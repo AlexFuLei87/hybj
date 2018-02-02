@@ -164,11 +164,11 @@
 			
 			             <u><a href="#" onClick="gotopage('system/jhUserAction_home.do','go')">确定</a></u></td>
 			             
-			             <td><input type="hidden" name="pageNO" value="<%=pagebean.getPageNo()%>" ></td> 
+			             <td><input type="hidden" name="pageNO" value="<%=pagebean.getPageNo()%>" ></td>
 			             <td><input type="hidden" name="prevpageNO" value="<%=(pagebean.getPageNo()-1)%>"></td>
 			             <td><input type="hidden" name="nextpageNO" value="<%=(pagebean.getPageNo()+1)%>"></td>
 			             <td><input type="hidden" name="sumPage" value="<%=pagebean.getSumPage() %>" ></td>
-			             <td><input type="hidden" name="pageSize" value="" ></td> 
+			             <td><input type="hidden" name="pageSize" value="" ></td>
 			           </tr>
 			         </table>       
 			       </td>

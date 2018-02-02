@@ -91,7 +91,32 @@
         <ParentCode>JHUsers</ParentCode>
         <ParentName>聚合管理</ParentName>
     </Function>
+    <Function>
+        <FunctionCode>k</FunctionCode>
+        <FunctionName>已完成作图</FunctionName>
+        <ParentCode>JHUsers</ParentCode>
+        <ParentName>聚合管理</ParentName>
+    </Function>
 
+
+    <Function>
+        <FunctionCode>u</FunctionCode>
+        <FunctionName>通知处理</FunctionName>
+        <ParentCode>notice</ParentCode>
+        <ParentName>电信管理</ParentName>
+    </Function>
+    <Function>
+        <FunctionCode>r</FunctionCode>
+        <FunctionName>上线内容处理</FunctionName>
+        <ParentCode>notice</ParentCode>
+        <ParentName>电信管理</ParentName>
+    </Function>
+    <Function>
+        <FunctionCode>z</FunctionCode>
+        <FunctionName>下线内容处理</FunctionName>
+        <ParentCode>notice</ParentCode>
+        <ParentName>电信管理</ParentName>
+    </Function>
 
   <Function>
      <FunctionCode>t</FunctionCode>
@@ -116,13 +141,6 @@
         <FunctionName>日志管理</FunctionName>
         <ParentCode>sysmng</ParentCode>
         <ParentName>系统管理</ParentName>
-    </Function>
-
-    <Function>
-        <FunctionCode>u</FunctionCode>
-        <FunctionName>通知处理</FunctionName>
-        <ParentCode>notice</ParentCode>
-        <ParentName>通知管理</ParentName>
     </Function>
 
 <Function>

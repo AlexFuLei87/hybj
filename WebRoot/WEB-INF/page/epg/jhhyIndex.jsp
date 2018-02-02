@@ -2,6 +2,7 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ page import="cn.hybj.util.PageBean"%>
 <HTML>
 	<HEAD>
 		<title>聚合EPG管理</title>		
@@ -12,6 +13,7 @@
 		<LINK href="${pageContext.request.contextPath }/css/style_1.css"  type="text/css" rel="stylesheet">
 		<script language="javascript"  src="${pageContext.request.contextPath }/script/function.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath }/script/pub.js"></script>
+		<script language="javascript" src="${pageContext.request.contextPath }/script/page.js?vs=1"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery.min.js"></script>
 		<script language="javascript">
 			function changeStatus(value,id){
@@ -131,9 +133,14 @@
 		</script>
 	</HEAD>
 	<body>
-		<div style='width: 100%'>
+	<div style='width: 100%'>
 	<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
-		<form id="form" name="form" >
+		<s:form id="Form1" name="Form1" >
+			<input type="hidden" name="initflag" id="initflag" value="1"/>
+			<input type="hidden" name="pageNO" id="pageNO" value="1"/>
+			<input type="hidden" name="pageSize" id="pageSize" value=""/>
+		</s:form>
+		<s:form id="Form2" name="Form2" >
 			<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
 				<tr>
 					<td colspan="6">
@@ -199,41 +206,41 @@
 							<input type="checkbox" id="report_id" name="report_id" value="${report.id}" />
 						</td>
 						<td>
-							${report.item_name}
+							${report.itemName}
 						</td>
 						<td>
-							${report.create_time}
+							${report.createTime}
 						</td>
 						<td>
-							${report.programa_name}
+							${report.programaName}
 						</td>
 						<td>
-							${report.report_type}
+							${report.type}
 						</td>
 						<td>
 							${report.cp}
 						</td>
 						<td>
-							<c:if test="${fn:length(report.online_time)>10 }">
-								${fn:substring(report.online_time, 0, 10)}
+							<c:if test="${fn:length(report.onlineTime)>10 }">
+								${fn:substring(report.onlineTime, 0, 10)}
 							</c:if>
-							<c:if test="${fn:length(report.online_time)<=10 }">
-								${report.online_time }
+							<c:if test="${fn:length(report.onlineTime)<=10 }">
+								${report.onlineTime }
 							</c:if>
 						</td>
 						<td>
-							<c:if test="${fn:length(report.preonline_time)>10 }">
-								${fn:substring(report.preonline_time, 0, 10)}
+							<c:if test="${fn:length(report.preonlineTime)>10 }">
+								${fn:substring(report.preonlineTime, 0, 10)}
 							</c:if>
-							<c:if test="${fn:length(report.preonline_time)<=10 }">
-								${report.preonline_time }
+							<c:if test="${fn:length(report.preonlineTime)<=10 }">
+								${report.preonlineTime }
 							</c:if>
 						</td>
 						<td>
 							${report.isCharge==true?'是':'否'}
 						</td>
 						<td>
-							${report.is_jh==true?'是':'否'}
+							${report.isJh==true?'是':'否'}
 						</td>
 						<td>
 							<input  type="text" value="${report.feedback}" onblur="saveFeedback(this,${report.id})"/>
@@ -248,8 +255,41 @@
 						</td>
 					</tr>
 				</c:forEach>
+				<tr>
+					<td width="100%" height="1"  colspan="12">
+						<table border="0" width="100%" cellspacing="0" cellpadding="0">
+							<%PageBean pagebean=(PageBean)request.getAttribute("page");%>
+							<tr>
+								<td width="15%" align="left">总记录数：<%=pagebean.getTotalResult() %>条</td>
+								<td width="14%" align="right"></td>
+								<%if(pagebean.getFirstPage()){ %>
+								<td width="8%" align="center">首页&nbsp;&nbsp;|</td>
+								<td width="10%" align="center">上一页&nbsp;&nbsp;&nbsp;|</td>
+								<%}else{ %>
+								<td width="8%" align="center"><u><a href="#" onClick="gotopage('epg/jhJhEpgAction_jhhy.do','start')">首页&nbsp;&nbsp;|</a></u></td>
+								<td width="10%" align="center"><u><a href="#" onClick="gotopage('epg/jhJhEpgAction_jhhy.do','prev')">上一页&nbsp;&nbsp;&nbsp;|</a></u></td>
+								<%} %>
+								<%if(pagebean.getLastPage()){ %>
+								<td width="10%" align="center">下一页&nbsp;&nbsp;&nbsp;|</td>
+								<td width="8%" align="center">末页</td>
+								<%}else{ %>
+								<td width="10%" align="center"><u><a href="#" onClick="gotopage('epg/jhJhEpgAction_jhhy.do','next')">下一页&nbsp;&nbsp;&nbsp;|</a></u></td>
+								<td width="8%" align="center"><u><a href="#" onClick="gotopage('epg/jhJhEpgAction_jhhy.do','end')">末页</a></u></td>
+								<%} %>
+								<td width="6%" align="center">第<%=pagebean.getPageNo() %>页</td>
+								<td width="6%" align="center">共<%=pagebean.getSumPage() %>页</td>
+
+								<td><input type="hidden" id="pageNO2" name="pageNO" value="<%=pagebean.getPageNo()%>" ></td>
+								<td><input type="hidden" id="prevpageNO2" name="prevpageNO" value="<%=(pagebean.getPageNo()-1)%>"></td>
+								<td><input type="hidden" id="nextpageNO2" name="nextpageNO" value="<%=(pagebean.getPageNo()+1)%>"></td>
+								<td><input type="hidden" id="sumPage2" name="sumPage" value="<%=pagebean.getSumPage() %>" ></td>
+								<td><input type="hidden" id="pageSize2" name="pageSize" value="" ></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
 			</table>
-		</form>
+		</s:form>
 		</div>
 		</div>
 	</body>

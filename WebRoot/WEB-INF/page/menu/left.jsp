@@ -170,7 +170,7 @@ TH {
 						<%} %>
 
                       
-                      <%if(popedom.contains("g") || popedom.contains("h")|| popedom.contains("i")){ %>
+                      <%if(popedom.contains("g") || popedom.contains("h")|| popedom.contains("i")|| popedom.contains("j")|| popedom.contains("k")){ %>
 						<DIV class="parent" id="KB2Parent">
 							<TABLE cellSpacing="0" cellPadding="0" width="99%" border="0">
 								<TBODY>
@@ -206,6 +206,12 @@ TH {
 											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/epg/jhJhEpgAction_handleZt.do" target="mainFrame">专题处理</A>
 										</TD>
 									</TR>
+									<%}if(popedom.contains("k")){ %>
+									<TR>
+										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
+											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/epg/jhJhEpgAction_completeDraw.do" target="mainFrame">已完成作图</A>
+										</TD>
+									</TR>
 									<%}if(popedom.contains("h")){ %>
 									<TR>
 										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
@@ -219,7 +225,7 @@ TH {
                        <%} %>
 
 
-				<%if(popedom.contains("u") ){ %>
+				<%if(popedom.contains("u")||popedom.contains("r")||popedom.contains("s")){ %>
 				<DIV class="parent" id="KB2Parent">
 					<TABLE cellSpacing="0" cellPadding="0" width="99%" border="0">
 						<TBODY>
@@ -242,13 +248,13 @@ TH {
 								<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/epg/jhJhEpgAction_handleTZ.do" target="mainFrame">通知处理</A>
 							</TD>
 						</TR>
-						<%}if(popedom.contains("u")){ %>
+						<%}if(popedom.contains("r")){ %>
 						<TR>
 							<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
 								<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/epg/jhJhEpgAction_dxOnline.do" target="mainFrame">上线内容处理</A>
 							</TD>
 						</TR>
-						<%}if(popedom.contains("u")){ %>
+						<%}if(popedom.contains("z")){ %>
 						<TR>
 							<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
 								<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/epg/jhJhEpgAction_dxOffline.do" target="mainFrame">下线内容处理</A>
@@ -261,7 +267,7 @@ TH {
 				<%} %>
 
 
-					<%if(popedom.contains("t") || popedom.contains("p")|| popedom.contains("q")|| popedom.contains("r")|| popedom.contains("s")|| popedom.contains("z")){ %>
+					<%if(popedom.contains("t") || popedom.contains("p")|| popedom.contains("q")|| popedom.contains("z")){ %>
 						<DIV class="parent" id="KB4Parent">
 							<TABLE cellSpacing="0" cellPadding="0" width="99%" border="0">
 								<TBODY>
