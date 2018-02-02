@@ -30,22 +30,11 @@
             }
         }
     </SCRIPT>
-	  <style>
-		  .dialog_container1 {
-			  position: fixed;
-			  left: 50%;
-			  top: 40%;
-			  margin: -225px 0 0 -389px;
-			  width: 588px;
-			  height: 580px;
-			  border-radius: 5px;
-		  }
-	  </style>
    </head>
   <body>
 	<div style='width: 100%;z-index: 1'>
-		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="已完成" name="BT_Import"
-			   onclick="window.location.href='cp/jhSpecialAction_completeDraw.do'">
+		<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="未完成" name="BT_Import"
+			   onclick="window.location.href='cp/jhShowAction_drawing.do'">
 		<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
 				<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
 					<tr>
@@ -68,7 +57,7 @@
 							审核时间
 						</th>
 						<th scope="col" class="rounded" style="width: 12.5%;">
-							附件上传
+							附件名
 						</th>
 					</tr>
 					<s:if test="#request.ztList!=null">
@@ -93,7 +82,7 @@
 									${list.verify_time }
 							</td>
 							<td>
-								<button onclick="uploadFile(${list.id })">附件上传</button>
+								<a href="${pageContext.request.contextPath }/cp/dowZTFile.do?specialId=${list.id }">${list.attachment_name }</a>
 							</td>
 						</tr>
 					</s:iterator>
@@ -101,42 +90,7 @@
 				</table>
 		</div>
 	</div>
-	<div class="dialog_container1" id="details1" hidden >
-		<s:form action="/cp/jhSpecialAction_uploadImages.do" method="post" enctype="multipart/form-data">
-			<br>
-			<table  cellSpacing="1" height="88" cellPadding="5" width="580" align="center" bgColor="#eeeeee" style="border:1px solid #8ba7e3" border="0" >
-				<tr>
-					<td class="ta_01" align="center" background="${pageContext.request.contextPath }/images/b-info.gif" colspan="4">
-						<font face="宋体" size="2"><strong>Excel文件数据导入</strong></font>
-					</td>
-				</tr>
-				<tr>
-					<td width="1%" height=30></td>
-					<td width="20%"></td>
-					<td width="78%"></td>
-					<td width="1%"></td>
-				</tr>
-				<tr>
-					<td width="1%"></td>
-					<td width="15%" align="center">请选择文件:</td>
-					<td width="83%" align="left">
-						<s:file onchange="checkFile(this);" name="file" cssStyle="width:365px"></s:file>
-						<input name = "id" id="id" hidden>
-					</td>
-					<td width="1%"></td>
-				</tr>
-				<tr height=50><td colspan=4 ></td></tr>
-				<tr height=2><td colspan=4 background="${pageContext.request.contextPath }/images/b-info.gif"></td></tr>
-				<tr height=10><td colspan=4 ></td></tr>
-				<tr>
-					<td align="center" colspan=4>
-						<s:submit name="import" value="上传" cssStyle="width: 60px; font-size:12px; color:black; height:22"></s:submit>
-						<INPUT type="button"  name="Reset1" id="save"  value="关闭"  onClick="closeWindow();" style="width: 60px; font-size:12px; color:black; height=22">
-					</td>
-				</tr>
-			</table>
-		</s:form>
-	</div>
+
 
   </body>
 </html>

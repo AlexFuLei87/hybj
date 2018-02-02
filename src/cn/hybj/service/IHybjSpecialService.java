@@ -26,4 +26,10 @@ public interface IHybjSpecialService {
     void updateStatusById(HybjSpecial special);
 
     List<HybjSpecial> findPassAndFail();
+
+    List<HybjSpecial> findDrawPart(HybjSpecial special);
+
+    void updateById(HybjSpecial hybjSpecial);
+
+    HybjSpecial findById(int specialId);
 }

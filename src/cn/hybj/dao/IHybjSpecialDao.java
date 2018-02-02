@@ -18,4 +18,8 @@ public interface IHybjSpecialDao extends ICommonDao<HybjSpecial> {
 
 
     List<HybjSpecial> findByPassAndFail();
+
+    List<HybjSpecial> findDrawPart(HybjSpecial special);
+
+    void updateById(HybjSpecial hybjSpecial);
 }

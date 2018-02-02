@@ -23,9 +23,27 @@ public class HybjSpecial implements java.io.Serializable {
 	private String feedback;
 	private String onDate;
 	private String drawPart;
+	private String attachmentName;
+	private String attachmnetUrl;
 
 	// Property accessors
 
+
+	public String getAttachmentName() {
+		return attachmentName;
+	}
+
+	public void setAttachmentName(String attachmentName) {
+		this.attachmentName = attachmentName;
+	}
+
+	public String getAttachmnetUrl() {
+		return attachmnetUrl;
+	}
+
+	public void setAttachmnetUrl(String attachmnetUrl) {
+		this.attachmnetUrl = attachmnetUrl;
+	}
 
 	public String getDrawPart() {
 		return drawPart;

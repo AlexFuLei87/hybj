@@ -112,4 +112,20 @@ public class HybjSpecialServiceImpl implements IHybjSpecialService {
 	public List<HybjSpecial> findPassAndFail() {
 		return hybjSpecialDao.findByPassAndFail();
 	}
+
+
+	@Override
+	public List<HybjSpecial> findDrawPart(HybjSpecial special) {
+		return hybjSpecialDao.findDrawPart(special);
+	}
+
+	@Override
+	public void updateById(HybjSpecial hybjSpecial) {
+		hybjSpecialDao.updateById(hybjSpecial);
+	}
+
+	@Override
+	public HybjSpecial findById(int specialId) {
+		return hybjSpecialDao.findObjectByID(specialId);
+	}
 }

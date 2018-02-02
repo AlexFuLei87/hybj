@@ -60,7 +60,7 @@
 	    		/WEB-INF/page/system/actingIndex.jsp
 	    	</result>	 
 	    	<result name="save" type="redirectAction">
-	    		<param name="actionName">hybjCommonMsgAction_home</param>
+	    		<param name="actionName">jhCommonMsgAction_home</param>
 	    		<param name="namespace">/system</param>
 	    	</result>   
 	    </action>
@@ -73,7 +73,7 @@
 	    		/WEB-INF/page/system/dictionaryEdit.jsp
 	    	</result>
 	    	<result name="save" type="redirectAction">
-	    		<param name="actionName">hybjSystemDDlAction_home</param>
+	    		<param name="actionName">jhSystemDDlAction_home</param>
 	    		<param name="namespace">/system</param>
 	    	</result>
 	    </action>
@@ -108,7 +108,7 @@
 	    		/WEB-INF/page/system/userEdit.jsp
 	    	</result>
 	    	<result name="list" type="redirectAction">
-	    		<param name="actionName">hybjUserAction_home</param>
+	    		<param name="actionName">jhUserAction_home</param>
 	    		<param name="namespace">/system</param>
 	    	</result>
 	    </action>

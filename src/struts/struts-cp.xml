@@ -84,6 +84,15 @@
 			</result>
 		</action>
 
+		<action name="dowZTFile" class="cn.hybj.web.action.HybjDownloadZTAction">
+			<result type="stream" name="success">
+				<!-- 为contentDisposition指定参数值,浏览器收到响应头为attachment时，
+					会打开文件下载对话框-->
+				<param name="contentDisposition">attachment;filename=${dowFileName}</param>
+				<!-- 指定文件下载时要调用的方法 ,默认调用getInputStream方法-->
+				<param name="inputName">fileInputStream</param>
+			</result>
+		</action>
 
 		<action name="dowTemplate" class="cn.hybj.web.action.HybjTemplateDownloadAction">
 			<result type="stream" name="success">
@@ -105,6 +114,14 @@
 			</result>
 			<result name="alermZT">
 				/WEB-INF/page/menu/alermZT.jsp
+			</result>
+
+			<result name="drawing" type="redirectAction">
+				<param name="actionName">jhShowAction_drawing</param>
+				<param name="namespace">/cp</param>
+			</result>
+			<result name="completeDraw">
+				/WEB-INF/page/show/completeDraw.jsp
 			</result>
 		</action>
 	</package>

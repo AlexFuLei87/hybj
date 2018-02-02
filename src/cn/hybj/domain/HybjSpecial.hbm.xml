@@ -40,5 +40,11 @@
         <property name="drawPart" type="string">
             <column name="draw_part" />
         </property>
+        <property name="attachmentName" type="string">
+            <column name="attachment_name" />
+        </property>
+        <property name="attachmnetUrl" type="string">
+            <column name="attachment_url" />
+        </property>
     </class>
 </hibernate-mapping>

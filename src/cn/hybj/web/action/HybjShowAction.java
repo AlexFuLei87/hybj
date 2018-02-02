@@ -139,7 +139,13 @@ public class HybjShowAction extends BaseAction implements ModelDriven<HybjMenuFo
 		return "showCG";
 	}
 	public String drawing() throws Exception{
-
+		HybjUser user = (HybjUser)request.getSession().getAttribute("globle_user");
+		HybjSpecial special = new HybjSpecial();
+		special.setDrawPart(user.getDepartment());
+		special.setAttachmentName("isNull");
+		special.setStatus("pass");
+		List<HybjSpecial> list = hybjSpecialService.findDrawPart(special);
+		request.setAttribute("ztList",list);
 		return "drawing";
 		}
 

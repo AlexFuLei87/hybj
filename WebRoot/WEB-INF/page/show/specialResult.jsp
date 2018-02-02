@@ -139,11 +139,17 @@ document.onkeydown = function(){
 						</td>
 					</tr>	
 				</c:forEach>
+				<s:if test="#request.cpList.size != 0">
 					<tr>
 						<td colspan="8" align="center" valign="middle" border="1px">
-						<input  style="font-size:12px; color:black; height=22;width=55;right:100px"  type="button" value="批量提交"  name="Reset1"  onClick="batchSubmit()">
+							<input  style="font-size:12px; color:black; height=22;width=55;right:100px"  type="button" value="批量提交"  name="Reset1"  onClick="batchSubmit()">
 						</td>
 					</tr>
+				</s:if>
+				<s:if test="#request.cpList.size == 0">
+					<h1 style="text-align:center;color:red;" >请检查上传文件是否有误</h1>
+				</s:if>
+
 			</table>
 		</form>
   </body>

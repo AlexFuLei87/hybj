@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @Repository(IHybjSpecialDao.SERVICE_NAME)
 public class HybjSpecialDaoImpl extends CommonDaoImpl<HybjSpecial> implements IHybjSpecialDao {
@@ -134,5 +135,68 @@ public class HybjSpecialDaoImpl extends CommonDaoImpl<HybjSpecial> implements IH
             }
         }
         return list;
+    }
+
+
+    @Override
+    public List<HybjSpecial> findDrawPart(HybjSpecial special) {
+        Session session = null;
+        List<HybjSpecial> list = null;
+        try {
+            session = HibernateSessionFactory.getSession();
+            String sql = "SELECT * from hybj_special t ";
+            String condition = " where 1=1 ";
+            Map<String, Object> parameter_map = new HashMap<String, Object>();
+            if(!StringUtils.isBlank(special.getDrawPart())){
+                condition += " and t.draw_part =:drawPart ";
+                parameter_map.put("drawPart",special.getDrawPart());
+            }if(!StringUtils.isBlank(special.getStatus())){
+                condition += " and t.status =:status ";
+                parameter_map.put("status",special.getStatus());
+            }if(!StringUtils.isBlank(special.getAttachmentName())){
+                if(Objects.equals("isNull",special.getAttachmentName())){
+                    condition += " and t.attachment_name  is null";
+                }if(Objects.equals("isNotNull",special.getAttachmentName())){
+                    condition += " and t.attachment_name  is not null";
+                }
+            }
+
+            list = DataBaseUtil.getDataList(session, sql + condition + " order by t.create_time", parameter_map,
+                    true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                session.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return list;
+    }
+
+
+    @Override
+    public void updateById(HybjSpecial hybjSpecial) {
+        Session session = null;
+        try {
+            session = HibernateSessionFactory.getSession();
+            String sql = "UPDATE  hybj_special t set t.attachment_url=:url,t.attachment_name=:name ";
+            String condition = "";
+            Map<String, Object> parameter_map = new HashMap<String, Object>();
+            condition += "where id=:id";
+            parameter_map.put("id", hybjSpecial.getId());
+            parameter_map.put("url", hybjSpecial.getAttachmnetUrl());
+            parameter_map.put("name", hybjSpecial.getAttachmentName());
+            DataBaseUtil.executeUpdateByMap(session, sql+condition, parameter_map);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                session.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

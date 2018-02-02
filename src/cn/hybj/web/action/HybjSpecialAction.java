@@ -3,6 +3,7 @@ package cn.hybj.web.action;
 
 import cn.hybj.container.ServiceProvider;
 import cn.hybj.domain.HybjSpecial;
+import cn.hybj.domain.HybjUser;
 import cn.hybj.service.IHybjLogService;
 import cn.hybj.service.IHybjSpecialService;
 import cn.hybj.service.IHybjSystemDDlService;
@@ -10,10 +11,11 @@ import cn.hybj.web.form.HybjSpecialForm;
 import cn.hybj.web.form.HybjSystemDDlForm;
 import com.alibaba.fastjson.JSONObject;
 import com.opensymphony.xwork2.ModelDriven;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -127,4 +129,41 @@ public class HybjSpecialAction extends BaseAction implements ModelDriven<HybjSpe
 	}
 
 
+	public String uploadImages() throws Exception{
+	 	File file = hybjSpecialForm.getFile();
+	 	if(file != null){
+			InputStream in = new FileInputStream(file);
+			String path = request.getSession().getServletContext().getRealPath("ztImages");
+			File file1 = new File(path);
+			if(!file1.exists()){
+				file1.mkdirs();
+			}
+			String saveFileName = System.currentTimeMillis() + hybjSpecialForm.getFileFileName().substring(hybjSpecialForm.getFileFileName().indexOf("."));
+			File realFile = new File(path,saveFileName);
+			try {
+				FileUtils.copyFile(file, realFile);
+				HybjSpecial special = new HybjSpecial();
+				special.setAttachmnetUrl(path+"/"+saveFileName);
+				special.setAttachmentName(hybjSpecialForm.getFileFileName());
+				special.setId(hybjSpecialForm.getId());
+				hybjSpecialService.updateById(special);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+	 	}
+		return "drawing";
+	}
+
+
+	public String completeDraw(){
+		HybjUser user = (HybjUser)request.getSession().getAttribute("globle_user");
+		HybjSpecial special = new HybjSpecial();
+		special.setDrawPart(user.getDepartment());
+		special.setAttachmentName("isNotNull");
+		special.setStatus("pass");
+		List<HybjSpecial> list = hybjSpecialService.findDrawPart(special);
+		request.setAttribute("ztList",list);
+		return "completeDraw";
+	}
 }
