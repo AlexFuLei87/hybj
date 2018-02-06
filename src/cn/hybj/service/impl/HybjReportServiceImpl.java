@@ -5,12 +5,12 @@ package cn.hybj.service.impl;
 import java.io.File;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
+import cn.hybj.util.PageInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -192,5 +192,50 @@ public class HybjReportServiceImpl implements IHybjReportService {
 	@Override
 	public List<HybjReport> findByCondition(HybjReport hybjReport) {
 		return hybjReportDao.findByFuzzy(hybjReport);
+	}
+
+
+	@Override
+	public List<HybjReport> findOtherCpPsssWithPage(String name, HttpServletRequest request) {
+
+		String hqlWhere = "";
+		List<String> paramsList = new ArrayList<String>();
+
+		hqlWhere += " and t.status != 'draft' and cp= ? ";
+		paramsList.add(name);
+
+		Object [] params = paramsList.toArray();
+		//组织排序
+		LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
+		orderby.put("t.createTime,t.verifyTime", "asc");
+		//修改，添加分页功能 begin
+		PageInfo pageInfo = new PageInfo(request);
+//      List<ElecUser> list = elecUserDao.findCollectionByConditionNoPage(hqlWhere, params, orderby);
+		List<HybjReport> list = hybjReportDao.findCollectionByConditionWithPage(hqlWhere, params, orderby ,pageInfo);
+		request.setAttribute("page", pageInfo.getPageBean());
+		//end
+		//List<HybjReport> formList = this.elecUserPOListToVOList(list);
+		return list;
+	}
+
+
+	@Override
+	public List<HybjReport> findPassOrFailWithPage(HttpServletRequest request) {
+		String hqlWhere = "";
+		List<String> paramsList = new ArrayList<String>();
+
+		hqlWhere += " and t.status IN ('dxpass','dxfail') ";
+
+
+		Object [] params = paramsList.toArray();
+		//组织排序
+		LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
+		orderby.put("t.createTime,t.verifyTime", "desc");
+		//修改，添加分页功能 begin
+		PageInfo pageInfo = new PageInfo(request);
+		List<HybjReport> list = hybjReportDao.findCollectionByConditionWithPage(hqlWhere, params, orderby ,pageInfo);
+		request.setAttribute("page", pageInfo.getPageBean());
+		//end
+		return list;
 	}
 }

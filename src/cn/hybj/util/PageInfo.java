@@ -13,7 +13,7 @@ public class PageInfo {
     //HTTP请求
     private HttpServletRequest req;
     //每页的记录数
-    private int pageSize = 10;
+    private int pageSize = 200;
     //当前页
     private int currentPageNo = 1;
     //开始记录数
@@ -34,24 +34,24 @@ public class PageInfo {
      */
     public PageInfo(HttpServletRequest req) {
        this.currentPageNo = req.getParameter("pageNO")!=null && !req.getParameter("pageNO").equals("")?new Integer(req.getParameter("pageNO")).intValue():1;
-       this.pageSize = req.getParameter("pagesize")!=null && !req.getParameter("pagesize").equals("")?new Integer(req.getParameter("pagesize")).intValue():10;
+       this.pageSize = req.getParameter("pagesize")!=null && !req.getParameter("pagesize").equals("")?new Integer(req.getParameter("pagesize")).intValue():200;
        if(this.pageSize<=0){
     	   
-    	   this.pageSize=10;
+    	   this.pageSize=200;
     	   
        }
-       this.req = req;      
+       this.req = req;
     }
     
     public PageInfo(){
     	this.currentPageNo=1;
-    	this.pageSize=10;
+    	this.pageSize=200;
     	
     }
     public PageInfo(int currentPageNo){
     	
     	this.currentPageNo=currentPageNo;
-    	this.pageSize=10;
+    	this.pageSize=200;
     	
     }
     /**

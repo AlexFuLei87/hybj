@@ -2,6 +2,7 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ page import="cn.hybj.util.PageBean"%>
 <html>
   <head>
     <title></title>
@@ -14,6 +15,7 @@
 	  <script language="javascript"  src="${pageContext.request.contextPath }/script/function.js"></script>
 	  <script type="text/javascript" src="${pageContext.request.contextPath }/script/pub.js"></script>
 	  <script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery.min.js"></script>
+	  <script language="javascript" src="${pageContext.request.contextPath }/script/page.js?vs=1"></script>
     <SCRIPT language="javascript">
         getBLen = function(str) {
             if (str == null) return 0;
@@ -133,7 +135,12 @@
 		<%--<input style="font-size:12px; color:black; height=30;width=120"  type="button" value="公告区" name="BT_Import"--%>
 			   <%--onclick="window.location.href='system/hybjMenuAction_alermGG.do'">--%>
 		<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
-			<form id="form" name="form">
+			<s:form id="Form1" name="Form1" >
+				<input type="hidden" name="initflag" id="initflag" value="1"/>
+				<input type="hidden" name="pageNO" id="pageNO" value="1"/>
+				<input type="hidden" name="pageSize" id="pageSize" value=""/>
+			</s:form>
+			<s:form id="Form2" name="Form2">
 				<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
 				<s:if test="#request.permission=='dx'">
 					<tr>
@@ -182,13 +189,13 @@
 					<s:iterator value="%{#request.gsList}" var="list">
 						<tr>
 							<td>
-									${list.item_name }
+									${list.itemName }
 							</td>
 							<td>
-									${list.report_status=='online'?'上线申报':'下线申报' }
+									${list.reportStatus=='online'?'上线申报':'下线申报' }
 							</td>
 							<td>
-									${list.verify_time }
+									${list.verifyTime }
 							</td>
 
 							<s:if test="#request.permission=='dx' ">
@@ -204,10 +211,10 @@
 							</s:if>
 
 							<td>
-									${list.online_time }
+									${list.onlineTime }
 							</td>
 							<td>
-									${list.preonline_time}
+									${list.preonlineTime}
 							</td>
 							<td>
 									${list.cp }
@@ -233,8 +240,43 @@
 						</tr>
 					</s:iterator>
 					</s:if>
+					<s:if test="#request.gsList.size > 199">
+					<tr>
+						<td width="100%" height="1"  colspan="8">
+							<table border="0" width="100%" cellspacing="0" cellpadding="0">
+								<%PageBean pagebean=(PageBean)request.getAttribute("page");%>
+								<tr>
+									<td width="15%" align="left">总记录数：<%=pagebean.getTotalResult() %>条</td>
+									<td width="14%" align="right"></td>
+									<%if(pagebean.getFirstPage()){ %>
+									<td width="8%" align="center">首页&nbsp;&nbsp;|</td>
+									<td width="10%" align="center">上一页&nbsp;&nbsp;&nbsp;|</td>
+									<%}else{ %>
+									<td width="8%" align="center"><u><a href="#" onClick="gotopage('system/jhMenuAction_alermGS.do','start')">首页&nbsp;&nbsp;|</a></u></td>
+									<td width="10%" align="center"><u><a href="#" onClick="gotopage('system/jhMenuAction_alermGS.do','prev')">上一页&nbsp;&nbsp;&nbsp;|</a></u></td>
+									<%} %>
+									<%if(pagebean.getLastPage()){ %>
+									<td width="10%" align="center">下一页&nbsp;&nbsp;&nbsp;|</td>
+									<td width="8%" align="center">末页</td>
+									<%}else{ %>
+									<td width="10%" align="center"><u><a href="#" onClick="gotopage('system/jhMenuAction_alermGS.do','next')">下一页&nbsp;&nbsp;&nbsp;|</a></u></td>
+									<td width="8%" align="center"><u><a href="#" onClick="gotopage('system/jhMenuAction_alermGS.do','end')">末页</a></u></td>
+									<%} %>
+									<td width="6%" align="center">第<%=pagebean.getPageNo() %>页</td>
+									<td width="6%" align="center">共<%=pagebean.getSumPage() %>页</td>
+
+									<td><input type="hidden" id="pageNO2" name="pageNO" value="<%=pagebean.getPageNo()%>" ></td>
+									<td><input type="hidden" id="prevpageNO2" name="prevpageNO" value="<%=(pagebean.getPageNo()-1)%>"></td>
+									<td><input type="hidden" id="nextpageNO2" name="nextpageNO" value="<%=(pagebean.getPageNo()+1)%>"></td>
+									<td><input type="hidden" id="sumPage2" name="sumPage" value="<%=pagebean.getSumPage() %>" ></td>
+									<td><input type="hidden" id="pageSize2" name="pageSize" value="" ></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					</s:if>
 				</table>
-			</form>
+			</s:form>
 			<div id="showDiv" style="position: absolute; background-color: white; border: 1px solid black;"></div>
 		</div>
 	</div>

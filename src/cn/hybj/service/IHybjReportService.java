@@ -5,6 +5,8 @@ import java.util.List;
 import cn.hybj.domain.HybjReport;
 import cn.hybj.web.form.HybjReportForm;
 
+import javax.servlet.http.HttpServletRequest;
+
 
 
 
@@ -40,4 +42,9 @@ public interface IHybjReportService {
 	List<HybjReport> findByFuzzy(HybjReport hybjReport);
 
     List<HybjReport> findByCondition(HybjReport hybjReport);
+
+
+	List<HybjReport> findOtherCpPsssWithPage(String name, HttpServletRequest request);
+
+	List<HybjReport> findPassOrFailWithPage(HttpServletRequest request);
 }

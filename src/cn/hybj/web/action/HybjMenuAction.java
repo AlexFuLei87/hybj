@@ -186,8 +186,11 @@ public class HybjMenuAction extends BaseAction implements ModelDriven<HybjMenuFo
 		String name=request.getParameter("cpName"); 
 		byte[] bytes =name.getBytes("iso-8859-1");
 		name = new String(bytes, "utf-8");
-		List<HybjReport> others = hybjReportService.findOtherCpPsss(name);
+		//List<HybjReport> others = hybjReportService.findOtherCpPsss(name);
+		List<HybjReport> others = hybjReportService.findOtherCpPsssWithPage(name,request);
+
 		request.setAttribute("others", others);
+		request.setAttribute("department", name);
 		return "alermSB";
 	}
 	
@@ -253,7 +256,8 @@ public class HybjMenuAction extends BaseAction implements ModelDriven<HybjMenuFo
 		//List<HybjCommonMsgForm> findCommonMsgListByCurrentDate();
 		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
 		request.setAttribute("jctList", jctList);
-		List<HybjReport> gsList = hybjReportService.findPassOrFail();
+		//List<HybjReport> gsList = hybjReportService.findPassOrFail();
+		List<HybjReport> gsList = hybjReportService.findPassOrFailWithPage(request);
 		showPermission();
 		request.setAttribute("gsList", gsList);
 		return "alermGS";
