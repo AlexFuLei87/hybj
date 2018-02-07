@@ -124,7 +124,7 @@
 			var itemName = $("#demandName").val();
 			var cpName = $("#cp").val();
             //"epg/hybjJhEpgAction_findByFuzzy.do"
-			window.location.href = "epg/jhJhEpgAction_findOfflineByFuzzy.do?hybjReport.itemName="+itemName+"&hybjReport.cp="+cpName;
+			window.location.href = "epg/jhJhEpgAction_findByFuzzy.do?hybjReport.itemName="+itemName+"&hybjReport.cp="+cpName+"&hybjReport.reportStatus=offline";
 
         }
 		</script>
@@ -201,34 +201,34 @@
 							<input type="checkbox" id="report_id" name="report_id" value="${report.id}" />
 						</td>
 						<td>
-							${report.item_name}
+							${report.itemName}
 						</td>
 						<td>
-							${report.create_time}
+							${report.createTime}
 						</td>
 						<td>
-							${report.programa_name}
+							${report.programaName}
 						</td>
 						<td>
-							${report.report_type}
+							${report.type}
 						</td>
 						<td>
 							${report.cp}
 						</td>
 						<td>
-							${report.online_time}
+							${report.onlineTime}
 						</td>
 						<td>
-							${report.preonline_time}
+							${report.preonlineTime}
 						</td>
 						<td>
 							${report.isCharge==true?'是':'否'}
 						</td>
 						<td>
-							${report.is_jh==true?'是':'否'}
+							${report.isJh==true?'是':'否'}
 						</td>
 						<td>
-							${report.offline_reason}
+							${report.offlineReason}
 						</td>
 						<td>
 							<input  type="text" value="${report.feedback}" onblur="saveFeedback(this,${report.id})"/>

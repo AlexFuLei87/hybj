@@ -47,4 +47,6 @@ public interface IHybjReportService {
 	List<HybjReport> findOtherCpPsssWithPage(String name, HttpServletRequest request);
 
 	List<HybjReport> findPassOrFailWithPage(HttpServletRequest request);
+
+	List<HybjReport> findByFuzzyWithPage(HybjReport hybjReport, HttpServletRequest request);
 }

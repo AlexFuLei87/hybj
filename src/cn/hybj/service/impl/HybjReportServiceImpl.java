@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import cn.hybj.util.PageInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -238,4 +239,41 @@ public class HybjReportServiceImpl implements IHybjReportService {
 		//end
 		return list;
 	}
+
+    @Override
+    public List<HybjReport> findByFuzzyWithPage(HybjReport hybjReport, HttpServletRequest request) {
+        String hqlWhere = "";
+        List<String> paramsList = new ArrayList<String>();
+        if(!StringUtils.isBlank(hybjReport.getCp())){
+            hqlWhere += " and t.cp = ? ";
+            paramsList.add(hybjReport.getCp());
+        }
+        if(!StringUtils.isBlank(hybjReport.getItemName())){
+            hqlWhere += " and t.itemName like ? ";
+            paramsList.add( "%"+hybjReport.getItemName()+"%");
+        }
+        if(!StringUtils.isBlank(hybjReport.getReportStatus())){
+            hqlWhere += " and t.reportStatus = ? ";
+            paramsList.add( hybjReport.getReportStatus());
+        }
+        if(!StringUtils.isBlank(hybjReport.getStatus())){
+            if(hybjReport.getStatus().contains("And")){
+                hqlWhere += " and t.status in ('fail','pass')";
+            }else {
+                hqlWhere += " and t.status =:status";
+                paramsList.add( hybjReport.getStatus());
+            }
+        }
+
+        Object [] params = paramsList.toArray();
+        //组织排序
+        LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
+        orderby.put("t.createTime,t.verifyTime", "desc");
+        //修改，添加分页功能 begin
+        PageInfo pageInfo = new PageInfo(request);
+        List<HybjReport> list = hybjReportDao.findCollectionByConditionWithPage(hqlWhere, params, orderby ,pageInfo);
+        request.setAttribute("page", pageInfo.getPageBean());
+        //end
+        return list;
+    }
 }

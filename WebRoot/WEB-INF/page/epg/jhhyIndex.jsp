@@ -135,7 +135,7 @@
 	<body>
 	<div style='width: 100%'>
 	<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
-		<s:form id="Form1" name="Form1" >
+		<s:form id="Form1" name="Form1" disabled="true">
 			<input type="hidden" name="initflag" id="initflag" value="1"/>
 			<input type="hidden" name="pageNO" id="pageNO" value="1"/>
 			<input type="hidden" name="pageSize" id="pageSize" value=""/>
@@ -255,6 +255,7 @@
 						</td>
 					</tr>
 				</c:forEach>
+				<s:if test="#request.report.size > 199">
 				<tr>
 					<td width="100%" height="1"  colspan="12">
 						<table border="0" width="100%" cellspacing="0" cellpadding="0">
@@ -288,6 +289,7 @@
 						</table>
 					</td>
 				</tr>
+				</s:if>
 			</table>
 		</s:form>
 		</div>

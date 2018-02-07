@@ -113,7 +113,8 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 	public String showOffline(){
 		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
 		hybjReportForm.setReportStatus("offline");
-		List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
+		//List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
+		List<HybjReport> list = hybjJhEpgService.findByConditionWithPage(hybjReportForm,request);
 		request.setAttribute("jctList", jctList);
 		request.setAttribute("report", list);
 		return "showOffline";
@@ -244,6 +245,7 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 		}else if("聚合".equals(user.getDepartment())){
 			hybjDemand.setTowho("jh");
 		}
+		//List<HybjDemand> lists = hybjDemandService.findByFuzzy(hybjDemand);
 		List<HybjDemand> lists = hybjDemandService.findByFuzzy(hybjDemand);
 		request.setAttribute("xqList", lists);
 		return "showXQ";
@@ -311,12 +313,15 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 		hybjReport.setCp(cp);
 		hybjReport.setItemName(itemName);
 		if(!StringUtils.isBlank(hybjReport.getReportStatus())){
-			List<HybjReport> report = hybjReportService.findByFuzzy(hybjReport);
+			//List<HybjReport> report = hybjReportService.findByFuzzy(hybjReport);
+			//增加分页功能
+			List<HybjReport> report = hybjReportService.findByFuzzyWithPage(hybjReport,request);
 			request.setAttribute("report", report);
 			return "showOffline";
 		}else {
-		List<HybjReport> report = hybjReportService.findByFuzzy(hybjReport);
-		request.setAttribute("report", report);
+			//List<HybjReport> report = hybjReportService.findByFuzzy(hybjReport);
+			List<HybjReport> report = hybjReportService.findByFuzzyWithPage(hybjReport,request);
+			request.setAttribute("report", report);
 		return "jhhy";
 		}
 
