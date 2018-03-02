@@ -18,13 +18,13 @@
 <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 	<property name="driverClass" value="com.mysql.jdbc.Driver" />
 
-	<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/hybj_hs?useUnicode=true&amp;characterEncoding=UTF-8"/>
-	<property name="user" value="root" />
-	<property name="password" value="root" />
-
-	<!--<property name="jdbcUrl" value="jdbc:mysql://117.71.46.6:3366/hybj_hs?useUnicode=true&amp;characterEncoding=UTF-8"/>-->
+	<!--<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/hybj_hs?useUnicode=true&amp;characterEncoding=UTF-8"/>-->
 	<!--<property name="user" value="root" />-->
-	<!--<property name="password" value="hybj2013ABC" />-->
+	<!--<property name="password" value="root" />-->
+
+	<property name="jdbcUrl" value="jdbc:mysql://117.71.46.6:3366/hybj_hs?useUnicode=true&amp;characterEncoding=UTF-8"/>
+	<property name="user" value="root" />
+	<property name="password" value="hybj2013ABC" />
 	
 	
 	<!--连接池中保留的最小连接数。-->
