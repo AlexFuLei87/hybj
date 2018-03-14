@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/WebRoot/css/buttonstyle.css" />
     <file url="file://$PROJECT_DIR$/WebRoot/css/Style.css" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="false" project-jdk-name="1.7" project-jdk-type="JavaSDK">

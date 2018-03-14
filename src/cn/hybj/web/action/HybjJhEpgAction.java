@@ -114,6 +114,7 @@ public class HybjJhEpgAction extends BaseAction implements ModelDriven<HybjOutli
 		List<HybjSystemDDlForm> jctList = hybjSystemDDlService.findElecSystemDDlListByKeyword("所属单位");
 		hybjReportForm.setReportStatus("offline");
 		//List<HybjReport> list = hybjJhEpgService.findByCondition(hybjReportForm);
+		hybjReportForm.setStatus("normal");
 		List<HybjReport> list = hybjJhEpgService.findByConditionWithPage(hybjReportForm,request);
 		request.setAttribute("jctList", jctList);
 		request.setAttribute("report", list);

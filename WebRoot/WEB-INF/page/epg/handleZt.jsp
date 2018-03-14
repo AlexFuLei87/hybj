@@ -27,7 +27,7 @@
 					success : function(result) {//返回数据根据结果进行相应的处理
 						if(result.message){
 						 alert(result.message);
-						  window.location.reload();
+                            window.location.href = "epg/jhJhEpgAction_handleZt.do";
 						}
 					}
 					});
@@ -47,7 +47,7 @@
                         success : function(result) {//返回数据根据结果进行相应的处理
                             if(result.message){
                                 alert(result.message);
-                                window.location.reload();
+                                window.location.href = "epg/jhJhEpgAction_handleZt.do";
                             }
                         }
                     });
