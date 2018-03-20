@@ -28,7 +28,7 @@ public class HybjJhEpgDaoImpl extends CommonDaoImpl<HybjReport> implements IHybj
 			condition += " where 1=1 ";
 			if (!StringUtils.isBlank(hybjReportForm.getStatus())) {
 				if(Objects.equals("failAndPass",hybjReportForm.getStatus())){
-					condition += " and t.status in ('fail','pass') ";
+					condition += " and t.status in ('fail','pass','dxfail','dxpass') ";
 				}else if(Objects.equals("dxfailAnddxpass",hybjReportForm.getStatus())){
 					condition += " and t.status in ('dxfail','dxpass') ";
 				} else {

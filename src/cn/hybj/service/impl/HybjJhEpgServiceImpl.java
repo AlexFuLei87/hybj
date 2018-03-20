@@ -75,7 +75,7 @@ public class HybjJhEpgServiceImpl implements IHybjJhEpgService {
 //		}
 		if (!org.apache.commons.lang3.StringUtils.isBlank(hybjReportForm.getStatus())) {
 			if(Objects.equals("failAndPass",hybjReportForm.getStatus())){
-				hqlWhere += " and t.status in ('fail','pass') ";
+				hqlWhere += " and t.status in ('fail','pass','dxfail','dxpass') ";
 			}else if(Objects.equals("dxfailAnddxpass",hybjReportForm.getStatus())){
 				hqlWhere += " and t.status in ('dxfail','dxpass') ";
 			} else {
