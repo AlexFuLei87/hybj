@@ -12,6 +12,13 @@
 		<script type="text/javascript" src="${pageContext.request.contextPath }/script/datepicker_cn.js"></script>
 	   <script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-ui.min.js"></script>
 		<script language="javascript">
+            $(function() {
+
+                initdatepicker_cn();
+                $("#onDate").datepicker({
+                    dateFormat : "yy-mm-dd"
+                });
+            });
 		function checkAndSave() {
 			var specialName = $("#specialNama").val();
 			var itemName = $("#itemName").val();
@@ -77,10 +84,11 @@
 		<tr>
 		    <td align="center" bgColor="#f5fafe" class="ta_11">申&nbsp;&nbsp;请&nbsp;&nbsp;时&nbsp;&nbsp;间：</td>
 			<td class="ta_11" bgColor="#ffffff">
-				<select name="onDate" id="onDate" style="width:170px;height:25px" onchange="change(this);">
-					<option value="周一">周一</option>
-					<option value="周五">周五</option>
-				</select>
+				<%--<select name="onDate" id="onDate" style="width:170px;height:25px" onchange="change(this);">--%>
+					<%--<option value="周一">周一</option>--%>
+					<%--<option value="周五">周五</option>--%>
+				<%--</select>--%>
+				<s:textfield name="onDate" id="onDate" maxlength="50" size="20" ></s:textfield>
 			</td>
 		</tr>
 		<tr>

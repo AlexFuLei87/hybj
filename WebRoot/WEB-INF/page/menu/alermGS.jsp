@@ -53,7 +53,12 @@
         function findByFuzzy() {
             var itemName = $("#itemName").val();
             var cpName = $("#cp").val();
-            window.location.href = "../cp/jhReportAction_findByFuzzy.do?hybjReport.itemName="+itemName+"&hybjReport.cp="+cpName;
+            var pType = $("#ptype").val();
+            var idCharge = $("#isCharge").val();
+            var status = $("#pstatus").val();
+            alert(status);
+            alert(idCharge)
+            window.location.href = "../cp/jhReportAction_findByFuzzy.do?hybjReport.itemName="+itemName+"&hybjReport.cp="+cpName+"&hybjReport.programaName="+pType+"&hybjReport.status="+status+"&hybjReport.isCharge="+idCharge;
 
         }
         function saveFeedback(value,id){
@@ -127,6 +132,22 @@
 			  height: 580px;
 			  border-radius: 5px;
 		  }
+		  table tbody {
+			  display:block;
+			  height:700px;
+			  overflow-y:scroll;
+		  }
+
+		  table thead, tbody tr {
+			  display:table;
+			  width:100%;
+			  table-layout:fixed;
+		  }
+
+		  table thead {
+			  width: calc( 100% - 1em )
+		  }
+		  table thead th{ background:#ccc;}
 	  </style>
    </head>
   
@@ -141,10 +162,12 @@
 				<input type="hidden" name="pageSize" id="pageSize" value=""/>
 			</s:form>
 			<s:form id="Form2" name="Form2">
+
 				<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
-				<s:if test="#request.permission=='dx'">
+				<thead>
+				<%--<s:if test="#request.permission=='dx'">--%>
 					<tr>
-						<td colspan="4">
+						<td colspan="9">
 							节目名：
 							<input type="text" size="25" name="itemName" id="itemName" value="" />
 							内容方:
@@ -154,37 +177,65 @@
 									  cssStyle="width:155px"
 							>
 							</s:select>
+							节目类别：
+							<select style="width:155px" id="ptype">
+								<option value=""></option>
+								<option value="电视剧">电视剧</option>
+								<option value="电影">电影</option>
+								<option value="动画">动画</option>
+								<option value="综艺">综艺</option>
+								<option value="纪实">纪实</option>
+							</select>
+							审核状态：
+							<select style="width:155px" id="pstatus">
+								<option value=""></option>
+								<option value="dxpass">通过</option>
+								<option value="dxfail">不通过</option>
+							</select>
+							<%--是否收费：--%>
+							<%--<select style="width:155px" id="isCharge">--%>
+								<%--<option value=""></option>--%>
+								<%--<option value="true">收费</option>--%>
+								<%--<option value="flase">免费</option>--%>
+							<%--</select>--%>
 							<input onclick="findByFuzzy();" type="button" value="查询"/>
 						</td>
 					</tr>
-				</s:if>
+				<%--</s:if>--%>
 					<tr>
-						<th scope="col" class="rounded" style="width: 12.5%;">
+						<th scope="col" class="rounded" style="width: 10%;">
 							节目名称
 						</th>
-						<th scope="col" class="rounded" style="width: 15%;">
+						<th scope="col" class="rounded" style="width: 10%;">
 							申报类型
 						</th>
-						<th scope="col" class="rounded" style="width: 12.5%;">
+						<th scope="col" class="rounded" style="width: 10%;">
+							节目类别
+						</th>
+						<th scope="col" class="rounded" style="width: 10%;">
 							审核时间
 						</th>
-						<th scope="col" class="rounded" style="width: 12.5%;">
+						<th scope="col" class="rounded" style="width: 10%;">
 							申报状态
 						</th>
-						<th scope="col" class="rounded" style="width: 12.5%;">
+						<th scope="col" class="rounded" style="width: 10%;">
+							是否收费
+						</th>
+						<th scope="col" class="rounded" style="width: 10%;">
 							上线时间
 						</th>
-						<th scope="col" class="rounded" style="width: 12.5%;">
+						<th scope="col" class="rounded" style="width: 10%;">
 							预上线时间
 						</th>
-						<th scope="col" class="rounded" style="width: 12.5%;">
+						<th scope="col" class="rounded" style="width: 10%;">
 							所属CP
 						</th>
-						<th scope="col" class="rounded" style="width: 12.5%;">
+						<th scope="col" class="rounded" style="width: 10%;">
 							反馈信息
 						</th>
 
 					</tr>
+				</thead>
 					<s:if test="#request.gsList!=null">
 					<s:iterator value="%{#request.gsList}" var="list">
 						<tr>
@@ -193,6 +244,9 @@
 							</td>
 							<td>
 									${list.reportStatus=='online'?'上线申报':'下线申报' }
+							</td>
+							<td>
+									${list.programaName }
 							</td>
 							<td>
 									${list.verifyTime }
@@ -209,7 +263,9 @@
 							<s:if test="#request.permission =='cp'||#request.permission=='jh'">
 								<td>${list.status=="dxpass"?"通过审核":"未通过审核" }</td>
 							</s:if>
-
+							<td>
+									${list.isCharge==true?"收费":"免费" }
+							</td>
 							<td>
 									${list.onlineTime }
 							</td>

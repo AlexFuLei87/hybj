@@ -114,7 +114,7 @@
 		<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
 				<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
 					<tr>
-						<td colspan="5">
+						<td colspan="5" style="text-align: left;">
 							需求名：
 							<input type="text" size="25" name="itemName1" id="itemName1" value="" />
 							<%--cp:--%>

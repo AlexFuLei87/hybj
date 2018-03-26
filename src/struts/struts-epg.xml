@@ -8,8 +8,8 @@
 	<package name="epg" namespace="/epg" extends="struts-default">
 		  <action name="jhJhEpgAction_*" class="cn.hybj.web.action.HybjJhEpgAction" method="{1}">
 	    	<result name="jhhy">
-	    		/WEB-INF/page/epg/jhhyIndex.jsp
-	    	</result>
+				/WEB-INF/page/epg/jhhyIndex.jsp
+			</result>
 			<result name="showOffline">
 				  /WEB-INF/page/epg/showOffline.jsp
 		  </result>

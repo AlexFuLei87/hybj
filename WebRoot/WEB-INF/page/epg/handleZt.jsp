@@ -128,14 +128,34 @@
 
         }
 		</script>
+		<style>
+			table tbody {
+				display:block;
+				height:700px;
+				overflow-y:scroll;
+			}
+
+			table thead, tbody tr {
+				display:table;
+				width:100%;
+				table-layout:fixed;
+			}
+
+			table thead {
+				width: calc( 100% - 1em )
+			}
+			table thead th{ background:#ccc;}
+		</style>
 	</HEAD>
 	<body>
 		<div style='width: 100%'>
 	<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
 		<form id="form" name="form" >
 			<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
+				<thead>
 				<tr>
-					<td colspan="8">
+					<td style="width: 1%;"></td>
+					<td colspan="7" style="text-align: left;">
 						专题名：
 						<input type="text" size="25" name="specialName" id="specialName" value="" />
 						cp:
@@ -178,9 +198,10 @@
 						作图方
 					</th>
 				</tr>
+				</thead>
 				<c:forEach items="${special}" var="special" varStatus="vs">
 					<tr>
-						<td>
+						<td style="width: 1%;">
 							<input type="checkbox" id="special_id" name="special_id" value="${special.id}" />
 						</td>
 						<td>

@@ -135,7 +135,7 @@
 		<form id="form" name="form" >
 			<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
 				<tr>
-					<td colspan="7">
+					<td colspan="7" style="text-align: left;">
 						节目名：
 						<input type="text" size="25" name="demandName" id="demandName" value="" />
 						cp:
@@ -192,6 +192,9 @@
 						备注
 					</th>
 					<th scope="col" class="rounded" style="width: 9%;">
+						反馈
+					</th>
+					<th scope="col" class="rounded" style="width: 9%;">
 						操作
 					</th>
 				</tr>
@@ -229,6 +232,9 @@
 						</td>
 						<td>
 							${report.offlineReason}
+						</td>
+						<td>
+							${report.remarks}
 						</td>
 						<td>
 							<input  type="text" value="${report.feedback}" onblur="saveFeedback(this,${report.id})"/>

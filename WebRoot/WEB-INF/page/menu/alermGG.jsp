@@ -58,6 +58,7 @@
 			   <%--onclick="window.location.href='system/hybjMenuAction_alermGS.do'">--%>
 		<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
 				<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: center; border-collapse: collapse;">
+					<thead>
 					<tr>
 						<th scope="col" class="rounded" style="width: 15%;" hidden>
 
@@ -75,6 +76,7 @@
 							详情
 						</th>
 					</tr>
+					</thead>
 					<s:if test="#request.ggList!=null">
 					<s:iterator value="%{#request.ggList}" var="list" status="statusa">
 						<tr>

@@ -3,10 +3,13 @@ package cn.hybj.web.action;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Objects;
 
 import cn.hybj.domain.HybjSpecial;
+import cn.hybj.domain.HybjUser;
 import cn.hybj.service.*;
 import cn.hybj.web.form.HybjSpecialForm;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -207,15 +210,33 @@ public class HybjReportAction extends BaseAction implements ModelDriven<HybjRepo
 		  String cp = new String(bytes, "utf-8");
 		  byte[] bytes1 =hybjReport.getItemName().getBytes("iso-8859-1");
 		  String itemName = new String(bytes1, "utf-8");
-		  HybjReport hybjReport = new HybjReport();
-		  hybjReport.setCp(cp);
-		  hybjReport.setItemName(itemName);
-		  hybjReport.setStatus("PassAndFail");
-		  List<HybjReport> list = hybjReportService.findByCondition(hybjReport);
+		  byte[] bytes2 =hybjReport.getProgramaName().getBytes("iso-8859-1");
+		  String programName = new String(bytes2, "utf-8");
+
+		  HybjReport hybjReport1 = new HybjReport();
+		  hybjReport1.setCp(cp);
+		  hybjReport1.setItemName(itemName);
+		  hybjReport1.setProgramaName(programName);
+		  hybjReport1.setIsCharge(hybjReport.getIsCharge());
+		  hybjReport1.setStatus(hybjReport.getStatus());
+		  if(StringUtils.isBlank(hybjReport1.getStatus())){
+			  hybjReport1.setStatus("dxPassAnddxFail");
+		  }
+		  showPermission();
+		  List<HybjReport> list = hybjReportService.findByFuzzyWithPage(hybjReport1,request);
 		  request.setAttribute("gsList", list);
 		return "alermGS";
 	  }
 
-
+	public void showPermission(){
+		HybjUser user = (HybjUser)request.getSession().getAttribute("globle_user");
+		if(Objects.equals("电信",user.getDepartment())){
+			request.setAttribute("permission", "dx");
+		}else if(Objects.equals("聚合",user.getDepartment())){
+			request.setAttribute("permission", "jh");
+		}else {
+			request.setAttribute("permission", "cp");
+		}
+	}
 	  
 }

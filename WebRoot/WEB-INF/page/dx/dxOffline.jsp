@@ -135,7 +135,7 @@
 		<form id="form" name="form" >
 			<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
 				<tr>
-					<td colspan="7">
+					<td colspan="7" style="text-align: left;">
 						节目名：
 						<input type="text" size="25" name="demandName" id="demandName" value="" />
 						cp:

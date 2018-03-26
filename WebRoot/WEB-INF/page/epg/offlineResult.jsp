@@ -22,13 +22,32 @@
         }
 		</script>
 	</HEAD>
+	<style>
+		table tbody {
+			display:block;
+			height:700px;
+			overflow-y:scroll;
+		}
+
+		table thead, tbody tr {
+			display:table;
+			width:100%;
+			table-layout:fixed;
+		}
+
+		table thead {
+			width: calc( 100% - 1em )
+		}
+		table thead th{ background:#ccc;}
+	</style>
 	<body>
 		<div style='width: 100%'>
 	<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
 		<form id="form" name="form" >
 			<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
+				<thead>
 				<tr>
-					<td colspan="6">
+					<td colspan="6" style="text-align: left;">
 						节目名：
 						<input type="text" size="25" name="demandName" id="demandName" value="" />
 						cp:
@@ -77,6 +96,7 @@
 						下线原因
 					</th>
 				</tr>
+				</thead>
 				<c:forEach items="${report}" var="report" varStatus="vs">
 					<tr>
 						<td>

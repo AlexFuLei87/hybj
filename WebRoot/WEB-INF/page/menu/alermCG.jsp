@@ -10,8 +10,27 @@
   <SCRIPT language="javascript">
 
   </SCRIPT>
+  <style>
+	  table tbody {
+		  display:block;
+		  height:700px;
+		  overflow-y:scroll;
+	  }
+
+	  table thead, tbody tr {
+		  display:table;
+		  width:100%;
+		  table-layout:fixed;
+	  }
+
+	  table thead {
+		  width: calc( 100% - 1em )
+	  }
+	  table thead th{ background:#ccc;}
+  </style>
   <body>
     <table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
+		<thead>
 	    <tr>
 		<th scope="col" class="rounded" style="width: 20%;">节目名字</th>
 		<th scope="col" class="rounded" style="width: 20%;">创建时间</th>
@@ -19,6 +38,7 @@
 		<th scope="col" class="rounded" style="width: 20%;">类型</td>
 		<th scope="col" class="rounded" style="width: 20%;">备注</th>
 		</tr>
+		</thead>
 	<s:if test="#request.cgList!=null">
 	<s:iterator value="%{#request.cgList}" var="list">
 		<tr style="cursor:pointer"  onclick="openWindow('../cp/jhShowAction_showCG.do?id=${list.id }','700','400')">

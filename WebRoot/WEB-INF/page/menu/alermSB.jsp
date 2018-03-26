@@ -9,7 +9,26 @@
 	  <script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery.min.js"></script>
 	  <script type="text/javascript" src="${pageContext.request.contextPath }/script/pub.js"></script>
 	  <script language="javascript" src="${pageContext.request.contextPath }/script/page.js?vs=1"></script>
+	  <style>
+		  table tbody {
+			  display:block;
+			  height:700px;
+			  overflow-y:scroll;
+		  }
+
+		  table thead, tbody tr {
+			  display:table;
+			  width:100%;
+			  table-layout:fixed;
+		  }
+
+		  table thead {
+			  width: calc( 100% - 1em )
+		  }
+		  table thead th{ background:#ccc;}
+	  </style>
    </head>
+
   
   <body>
   <s:form id="Form1" name="Form1" >
@@ -19,6 +38,7 @@
   </s:form>
   <s:form id="Form2" name="Form2" >
     <table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
+		<thead>
     <tr>
 		<th scope="col" class="rounded"  style="word-break: break-all">
 		节目名字
@@ -41,7 +61,8 @@
 		<th scope="col" class="rounded"  style="word-break: break-all">
 		申报类型
 		</th>
-	</tr>	
+	</tr>
+		</thead>
     	   <s:if test="#request.others!=null">
 			<s:iterator value="%{#request.others}" var="other">
 				<tr>

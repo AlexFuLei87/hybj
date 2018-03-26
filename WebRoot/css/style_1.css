@@ -303,7 +303,7 @@ font-weight: normal;
 font-size: 13px;
 color: #039;
 background: #60c8f2;
-text-align:left;
+text-align:center;
 }
 #rounded-corner td
 {
@@ -312,7 +312,7 @@ background: #e8f6fe;
 border-top: 1px solid #fff;
 color: #669;
 height:22px;
-text-align: left;
+text-align: center;
 }
 #rounded-corner tfoot td.rounded-foot-left
 {

@@ -59,7 +59,7 @@
 		<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
 				<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: center; border-collapse: collapse;">
 					<tr>
-						<td colspan="5">
+						<td colspan="5" style="text-align: left;">
 							<input onclick="window.location.href='epg/jhJhEpgAction_handleTZ.do'" type="button" value="未处理"/>
 						</td>
 					</tr>

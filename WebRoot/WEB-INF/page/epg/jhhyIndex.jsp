@@ -5,7 +5,7 @@
 <%@ page import="cn.hybj.util.PageBean"%>
 <HTML>
 	<HEAD>
-		<title>聚合EPG管理</title>		
+		<title>聚合EPG管理</title>
 		<LINK href="${pageContext.request.contextPath }/css/Style.css"  type="text/css" rel="stylesheet">
 		<LINK href="${pageContext.request.contextPath }/css/niceforms-default.css"  type="text/css" rel="stylesheet">
 		<LINK href="${pageContext.request.contextPath }/css/form.css"  type="text/css" rel="stylesheet">
@@ -15,7 +15,51 @@
 		<script type="text/javascript" src="${pageContext.request.contextPath }/script/pub.js"></script>
 		<script language="javascript" src="${pageContext.request.contextPath }/script/page.js?vs=1"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery.min.js"></script>
+		<style>
+			table tbody {
+				display:block;
+				height:700px;
+				overflow-y:scroll;
+			}
+
+			table thead, tbody tr {
+				display:table;
+				width:100%;
+				table-layout:fixed;
+			}
+
+			/*table thead {*/
+				/*width: calc( 100% - 1em )*/
+			/*}*/
+			/*table thead th{ background:#ccc;}*/
+		</style>
 		<script language="javascript">
+
+            $(document).ready(function () {
+
+                var $fixTable = $('#goodsList .fixTable');
+                $('#goodsList').scroll(function() {
+                    var id = '#' + this.id;
+                    var scrollTop = $(id).scrollTop() || $(id).get(0).scrollTop,
+                        style = {
+                            'position': 'absolute',
+                            'left': '0',
+                            'right': '0',
+                            'top': scrollTop + 'px'
+                        };
+                    if ($fixTable.length) {
+                        (scrollTop === 0) ? $fixTable.addClass('hidden') : $fixTable.removeClass('hidden');
+                        $fixTable.css(style);
+                    } else {
+                        var html = $(id + ' .scrollTable thead').get(0).innerHTML;
+                        var table = $('<table class="table table-bordered fixTable"><thead>' + html + '</thead></table>');
+                        table.css(style);
+                        $(id).append(table);
+                        $fixTable = $(this).find('.fixTable');
+                    }
+                });
+            });
+
 			function changeStatus(value,id){
 				var $this = $(value);
    				var choseValue = $this.val();
@@ -134,7 +178,7 @@
 	</HEAD>
 	<body>
 	<div style='width: 100%'>
-	<div style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
+	<div id="goodsList" style='width:100%; float: left; height:100%; overflow:scroll;overflow-x:hidden'>
 		<s:form id="Form1" name="Form1" disabled="true">
 			<input type="hidden" name="initflag" id="initflag" value="1"/>
 			<input type="hidden" name="pageNO" id="pageNO" value="1"/>
@@ -142,8 +186,10 @@
 		</s:form>
 		<s:form id="Form2" name="Form2" >
 			<table id="rounded-corner" style="margin: 0px; width: 100%; text-align: left; border-collapse: collapse;">
+				<thead>
 				<tr>
-					<td colspan="6">
+					<td style="width: 1%"></td>
+					<td colspan="10" style="text-align: left;">
 						节目名：
 						<input type="text" size="25" name="demandName" id="demandName" value="" />
 						cp:
@@ -155,10 +201,6 @@
 						</s:select>
 						<input onclick="findByFuzzy();" type="button" value="查询"/>
 					</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
 					<td><input type="button" value="批量通过" onclick="batchPass();"/></td>
 					<td><input type="button" value="已处理" onclick="window.location.href = 'epg/jhJhEpgAction_onlineResult.do'"/></td>
 				</tr>
@@ -193,6 +235,11 @@
 					<th scope="col" class="rounded" style="width: 9%;">
 						是否同步到聚合
 					</th>
+
+					<th scope="col" class="rounded" style="width: 9%;">
+					    备注
+					</th>
+
 					<th scope="col" class="rounded" style="width: 9%;">
 						反馈
 					</th>
@@ -200,15 +247,17 @@
 						操作
 					</th>
 				</tr>
+				</thead>
+
 				<c:forEach items="${report}" var="report" varStatus="vs">
 					<tr>
-						<td>
+						<td style="width: 5px">
 							<input type="checkbox" id="report_id" name="report_id" value="${report.id}" />
 						</td>
-						<td>
+						<td >
 							${report.itemName}
 						</td>
-						<td>
+						<td >
 							${report.createTime}
 						</td>
 						<td>
@@ -243,7 +292,10 @@
 							${report.isJh==true?'是':'否'}
 						</td>
 						<td>
-							<input  type="text" value="${report.feedback}" onblur="saveFeedback(this,${report.id})"/>
+								${report.remarks}
+						</td>
+						<td>
+							<input  type="text" value="${report.feedback}" onblur="saveFeedback(this,${report.id})" size="10"/>
 						</td>
 						<td>
 						<%--  <a href="../programa/relateIntoRight.do?programaId=${report.id}" target="right_frame2" onclick="check('${vs.index}');" id="${vs.index}">关联内容</a> --%>

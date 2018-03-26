@@ -231,7 +231,7 @@ public class HybjReportServiceImpl implements IHybjReportService {
 		Object [] params = paramsList.toArray();
 		//组织排序
 		LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
-		orderby.put("t.createTime,t.verifyTime", "desc");
+		orderby.put("t.createTime,t.verifyTime", "asc");
 		//修改，添加分页功能 begin
 		PageInfo pageInfo = new PageInfo(request);
 		List<HybjReport> list = hybjReportDao.findCollectionByConditionWithPage(hqlWhere, params, orderby ,pageInfo);
@@ -256,11 +256,17 @@ public class HybjReportServiceImpl implements IHybjReportService {
             hqlWhere += " and t.reportStatus = ? ";
             paramsList.add( hybjReport.getReportStatus());
         }
+		if(!StringUtils.isBlank(hybjReport.getProgramaName())){
+			hqlWhere += " and t.programaName = ? ";
+			paramsList.add( hybjReport.getProgramaName());
+		}
         if(!StringUtils.isBlank(hybjReport.getStatus())){
-            if(hybjReport.getStatus().contains("And")){
+            if(hybjReport.getStatus().contains("PassAndFail")){
                 hqlWhere += " and t.status in ('fail','pass')";
-            }else {
-                hqlWhere += " and t.status =:status";
+            }else if(hybjReport.getStatus().contains("dxPassAnddxFail")){
+				hqlWhere += " and t.status in ('dxfail','dxpass')";
+			} else {
+                hqlWhere += " and t.status = ?";
                 paramsList.add( hybjReport.getStatus());
             }
         }
@@ -268,7 +274,7 @@ public class HybjReportServiceImpl implements IHybjReportService {
         Object [] params = paramsList.toArray();
         //组织排序
         LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
-        orderby.put("t.createTime,t.verifyTime", "desc");
+        orderby.put(" t.createTime,t.verifyTime", "asc");
         //修改，添加分页功能 begin
         PageInfo pageInfo = new PageInfo(request);
         List<HybjReport> list = hybjReportDao.findCollectionByConditionWithPage(hqlWhere, params, orderby ,pageInfo);

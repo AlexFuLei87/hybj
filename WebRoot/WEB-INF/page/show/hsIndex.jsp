@@ -37,6 +37,7 @@
 			<td colspan=2 class="ta_01" align="center" background="${pageContext.request.contextPath }/images/b-info.gif"><strong>公告首页</strong></td>
 		</tr>
 		 --%>
+
 		<tr>
 			<td width="50%" height="84" align="left" valign="top" >
 			

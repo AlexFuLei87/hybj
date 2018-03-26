@@ -210,14 +210,14 @@
 			<td class="ta_11" bgColor="#ffffff">
 				<s:textfield name="onlineTime" id="onlineTime" maxlength="50" size="20" ></s:textfield>
 			</td>
-			<td align="center" bgColor="#f5fafe" class="ta_11">预上映时间：</td>
+			<td align="center" bgColor="#f5fafe" class="ta_11">预上线时间：</td>
 			<td class="ta_11" bgColor="#ffffff">
 				<s:textfield name="PreOnlineTime" id="preOnlineTime" maxlength="50" size="20"></s:textfield>
 			</td>
 		</tr>
 
 		<tr>
-			<td align="center" bgColor="#f5fafe" class="ta_11">是否付费：</td>
+			<td align="center" bgColor="#f5fafe" class="ta_11">是否付费：<font color="#FF0000">*</font></td>
 			<td class="ta_11" bgColor="#ffffff">
 				<s:select list="#request.isChargeList" name="isCharge" id="isCharge"
 				          listKey="ddlCode" listValue="ddlName"
@@ -226,7 +226,7 @@
 				          >
 				</s:select>
 			</td>
-			<td align="center" bgColor="#f5fafe" class="ta_11">是否同步聚合：</td>
+			<td align="center" bgColor="#f5fafe" class="ta_11">是否同步聚合：<font color="#FF0000">*</font></td>
 			<td class="ta_11" bgColor="#ffffff">
 				<s:select list="#request.isjhList" name="isjh" id="isjh"
 				          listKey="ddlCode" listValue="ddlName"
