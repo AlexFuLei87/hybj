@@ -167,7 +167,7 @@
 				<thead>
 				<%--<s:if test="#request.permission=='dx'">--%>
 					<tr>
-						<td colspan="9">
+						<td colspan="9" style="text-align: left;">
 							节目名：
 							<input type="text" size="25" name="itemName" id="itemName" value="" />
 							内容方:
